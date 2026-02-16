@@ -1,0 +1,189 @@
+{
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "HimalSnow: AI-Powered Snow Cover Monitoring System",
+      "subtitle": "Real-time Snow Cover Analysis for Northwest Himalaya",
+      "duration": "2018 - 2019",
+      "category": "Snow Hydrology",
+      "description": "Developed an automated system for monitoring snow cover dynamics in the Northwest Himalayan region using multi-sensor satellite data. The system processes MODIS, Sentinel-2, and Landsat imagery to provide near real-time snow cover area mapping and trend analysis.",
+      "detailed_description": "This project addressed the critical need for accurate snow cover monitoring in the Himalayan region, where seasonal snow plays a vital role in water resources. Using Google Earth Engine platform, I developed algorithms that process thousands of satellite images to track snow cover changes with 95% accuracy. The system has been used to study climate change impacts on Himalayan glaciers.",
+      "technologies": [
+        "Google Earth Engine",
+        "Python",
+        "MODIS",
+        "Sentinel-2",
+        "Landsat",
+        "JavaScript",
+        "Time Series Analysis",
+        "Remote Sensing"
+      ],
+      "features": [
+        "Automated cloud masking and snow detection",
+        "Multi-temporal analysis of 20+ years of data",
+        "Interactive web-based visualization dashboard",
+        "Climate trend analysis and statistical modeling",
+        "Integration with ground-based weather stations"
+      ],
+      "outcomes": [
+        "Published research paper in Remote Sensing journal (145 citations)",
+        "Improved accuracy by 15% over existing methods",
+        "Dataset used by 5+ research institutions",
+        "Presented at international conferences"
+      ],
+      "image": "project-himalsnow.jpg",
+      "github": "https://github.com/AnimeshChoudhury/himalsnow-monitor",
+      "demo": "",
+      "publication": "https://doi.org/10.3390/rs13040655",
+      "tags": ["Machine Learning", "Climate Science", "GEE", "Python"]
+    },
+    {
+      "id": "project-2",
+      "title": "DroughtWatch India: ML-Based Drought Forecasting Platform",
+      "subtitle": "Sub-seasonal to Seasonal Agricultural Drought Prediction",
+      "duration": "2020 - 2022",
+      "category": "Agricultural Monitoring",
+      "description": "Built a machine learning framework for predicting agricultural droughts across India using 30+ years of satellite data, meteorological records, and soil moisture indices. The system provides early warnings up to 3 months in advance.",
+      "detailed_description": "Agricultural drought impacts millions of farmers in India annually. This project developed a sophisticated ML pipeline that combines multiple drought indices (SPEI, VCI, SPI) with Random Forest and LSTM models to predict drought conditions. The system analyzes historical patterns and current conditions to provide actionable forecasts for agricultural planning.",
+      "technologies": [
+        "Python",
+        "TensorFlow",
+        "Scikit-learn",
+        "MODIS NDVI",
+        "ERA5 Climate Data",
+        "SPEI/VCI Indices",
+        "Random Forest",
+        "LSTM Networks"
+      ],
+      "features": [
+        "Multi-index drought monitoring (SPEI, VCI, TCI, VHI)",
+        "Machine learning models for 1-3 month forecasts",
+        "District-level drought risk mapping",
+        "Historical trend analysis (1990-2022)",
+        "Crop yield impact assessment"
+      ],
+      "outcomes": [
+        "Published in Journal of Environmental Management (203 citations)",
+        "75% forecast accuracy for 2-month predictions",
+        "Presented at National Workshop on Drought Monitoring",
+        "Adopted by state agricultural departments for pilot testing"
+      ],
+      "image": "project-droughtwatch.jpg",
+      "github": "https://github.com/AnimeshChoudhury/droughtwatch-india",
+      "demo": "",
+      "publication": "https://doi.org/10.1016/j.jenvman.2021.113056",
+      "tags": ["Machine Learning", "Drought", "Agriculture", "SPEI"]
+    },
+    {
+      "id": "project-3",
+      "title": "AirSense: Multi-Pollutant Tracking System",
+      "subtitle": "3D Visualization of Air Quality over Indo-Gangetic Plain",
+      "duration": "2019 - 2020",
+      "category": "Air Quality Monitoring",
+      "description": "Developed an integrated system for tracking and visualizing horizontal and vertical distribution of air pollutants (PM2.5, NO2, CO, SO2) over the Indo-Gangetic Plain using ground sensors and CALIPSO LIDAR satellite data.",
+      "detailed_description": "Air pollution in the Indo-Gangetic Plain affects over 400 million people. This project combined ground-based observations with satellite LIDAR data to create 3D visualizations of pollutant distribution. The system revealed critical patterns in aerosol transport and helped identify pollution sources and their vertical extent in the atmosphere.",
+      "technologies": [
+        "Python",
+        "CALIPSO LIDAR",
+        "Ground Sensors",
+        "Plotly",
+        "NumPy",
+        "Pandas",
+        "Aerosol Analysis",
+        "3D Visualization"
+      ],
+      "features": [
+        "Integration of satellite and ground sensor data",
+        "3D aerosol vertical profile visualization",
+        "Source apportionment analysis",
+        "Temporal trend analysis (seasonal patterns)",
+        "Interactive web-based dashboard"
+      ],
+      "outcomes": [
+        "Presented at Asian Air Pollution Workshop (AAPW-5)",
+        "Identified major dust transport events from Middle East",
+        "Dataset spans 2 years with daily measurements",
+        "Contributed to air quality policy discussions"
+      ],
+      "image": "project-airsense.jpg",
+      "github": "https://github.com/AnimeshChoudhury/airsense-monitoring",
+      "demo": "",
+      "publication": "https://doi.org/10.1007/s13762-022-04520-1",
+      "tags": ["Air Quality", "LIDAR", "Visualization", "Python"]
+    },
+    {
+      "id": "project-4",
+      "title": "ForestSpec: Hyperspectral Tree Species Classifier",
+      "subtitle": "Deep Learning for Himalayan Forest Mapping",
+      "duration": "2018",
+      "category": "Forest Ecology",
+      "description": "Created a comprehensive spectral library and deep learning classifier for identifying Himalayan forest tree species using hyperspectral imagery and field spectroradiometer data.",
+      "detailed_description": "Accurate tree species identification is crucial for forest conservation. This project built a spectral library of 30+ Himalayan tree species using ASD FieldSpec spectroradiometer and developed a CNN-based classifier for automated species mapping from airborne hyperspectral data. The system links spectral signatures to biophysical parameters like chlorophyll content and leaf area index.",
+      "technologies": [
+        "Python",
+        "TensorFlow",
+        "Hyperspectral Imaging",
+        "ASD FieldSpec",
+        "ENVI",
+        "CNN",
+        "Spectral Analysis",
+        "Field Survey"
+      ],
+      "features": [
+        "Spectral library of 30+ tree species (400-2500 nm)",
+        "CNN-based species classification (92% accuracy)",
+        "Correlation with biophysical parameters",
+        "Field validation across multiple sites",
+        "Integration with satellite hyperspectral data"
+      ],
+      "outcomes": [
+        "Spectral library adopted by research institutions",
+        "92% species classification accuracy",
+        "Data collection across 15 forest sites",
+        "Contributed to biodiversity monitoring efforts"
+      ],
+      "image": "project-forestspec.jpg",
+      "github": "https://github.com/AnimeshChoudhury/forestspec-classifier",
+      "demo": "",
+      "publication": "",
+      "tags": ["Deep Learning", "Hyperspectral", "Ecology", "CNN"]
+    },
+    {
+      "id": "project-5",
+      "title": "ThunderTrack: Urban Thunderstorm Prediction System",
+      "subtitle": "High-Resolution Mesoscale Modeling for Indian Cities",
+      "duration": "2022 - Present",
+      "category": "Weather Modeling",
+      "description": "Developing a high-resolution weather prediction system for forecasting thunderstorms over major Indian cities using WRF model and analyzing land-atmosphere interactions during extreme weather events.",
+      "detailed_description": "Urban areas face increasing thunderstorm risks due to rapid urbanization and climate change. This ongoing project uses the WRF-CHEM mesoscale model at 1km resolution to predict thunderstorm formation and evolution over major Indian cities. The research focuses on understanding how urban land use affects convective processes and storm intensity.",
+      "technologies": [
+        "WRF-CHEM",
+        "Python",
+        "NCL",
+        "High-Performance Computing",
+        "Meteorological Modeling",
+        "Satellite Data",
+        "Weather Radar",
+        "Land Surface Modeling"
+      ],
+      "features": [
+        "1km resolution weather modeling",
+        "Real-time data assimilation",
+        "Urban heat island impact analysis",
+        "Storm intensity and trajectory prediction",
+        "Integration with satellite and radar data"
+      ],
+      "outcomes": [
+        "Research ongoing at NIT Rourkela",
+        "Preliminary results show 24-hour forecast skill",
+        "Collaboration with meteorological departments",
+        "Expected publications in 2024"
+      ],
+      "image": "project-thundertrack.jpg",
+      "github": "",
+      "demo": "",
+      "publication": "",
+      "tags": ["Weather Modeling", "WRF", "Urban Climate", "HPC"]
+    }
+  ]
+}

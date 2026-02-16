@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - {{ profile.name }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section style="background: var(--gradient-hero); color: white; padding: 6rem 0 4rem;">
+    <div class="container">
+        <h1 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem;">Research Projects</h1>
+        <p style="font-family: var(--font-mono); font-size: 1.2rem; opacity: 0.9;">Exploring Earth through data and innovation</p>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<section style="background: white; padding: 2rem 0;">
+    <div class="container">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <a href="{{ url_for('projects') }}" class="btn {% if current_category == 'all' %}btn-primary{% else %}btn-outline{% endif %}" style="{% if current_category != 'all' %}color: var(--primary); border-color: var(--primary);{% endif %} padding: 0.75rem 1.5rem;">All Projects</a>
+            {% for cat in categories %}
+            <a href="{{ url_for('projects', category=cat) }}" class="btn {% if current_category == cat %}btn-primary{% else %}btn-outline{% endif %}" style="{% if current_category != cat %}color: var(--primary); border-color: var(--primary);{% endif %} padding: 0.75rem 1.5rem;">{{ cat }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Projects Grid -->
+<section>
+    <div class="container">
+        <div class="card-grid">
+            {% for project in projects %}
+            <div class="card">
+                <div class="card-image">
+                    {% if 'Snow' in project.title %}❄️
+                    {% elif 'Drought' in project.title %}🌾
+                    {% elif 'Air' in project.title %}🌪️
+                    {% elif 'Forest' in project.title %}🌲
+                    {% elif 'Thunder' in project.title %}⚡
+                    {% else %}🛰️
+                    {% endif %}
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">{{ project.category }} • {{ project.duration }}</div>
+                    <h3 class="card-title">{{ project.title }}</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-light); font-weight: 600; margin-bottom: 0.5rem;">{{ project.subtitle }}</p>
+                    <p class="card-description">{{ project.description }}</p>
+                    <div class="card-tags">
+                        {% for tech in project.technologies[:4] %}
+                        <span class="tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.85rem; flex: 1; text-align: center;">View Details</a>
+                        {% if project.publication %}
+                        <a href="{{ project.publication }}" target="_blank" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary); padding: 0.75rem 1.5rem; font-size: 0.85rem;">Paper</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if projects|length == 0 %}
+        <div style="text-align: center; padding: 4rem 0;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🔍</div>
+            <h3 style="font-family: var(--font-display); font-size: 2rem; color: var(--primary); margin-bottom: 1rem;">No Projects Found</h3>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">Try selecting a different category.</p>
+            <a href="{{ url_for('projects') }}" class="btn btn-primary">View All Projects</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section style="background: white;">
+    <div class="container" style="text-align: center;">
+        <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Have a Project Idea?</h2>
+        <p style="font-size: 1.1rem; color: var(--text-light); max-width: 700px; margin: 0 auto 2rem;">I'm always interested in collaborating on innovative research projects in Remote Sensing and Earth Observation.</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-primary" style="padding: 1.25rem 3rem;">Get in Touch</a>
+    </div>
+</section>
+
+<style>
+    .card {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+</style>
+{% endblock %}

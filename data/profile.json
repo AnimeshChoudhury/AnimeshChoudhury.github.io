@@ -1,0 +1,32 @@
+{
+  "name": "Animesh Choudhury",
+  "title": "Junior Research Fellow | Remote Sensing & GIS Specialist",
+  "email": "official.animesh7@gmail.com",
+  "phone": "+91 9046567045",
+  "location": "Purulia, West Bengal, India",
+  "bio": "Accomplished researcher specializing in Remote Sensing, GIS, and Climate Science with extensive experience in satellite data analysis, machine learning applications for environmental monitoring, and geospatial modeling. Strong background in drought monitoring, snow cover mapping, air quality analysis, and land-atmosphere interactions. Proficient in Python, R, Google Earth Engine, and various remote sensing tools.",
+  "tagline": "Transforming Earth Observation Data into Actionable Insights",
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/animeshchoudhury/",
+    "github": "https://github.com/AnimeshChoudhury",
+    "scholar": "https://scholar.google.com/citations?user=0p-FbaoAAAAJ&hl=en",
+    "researchgate": "https://www.researchgate.net/profile/Animesh-Choudhury"
+  },
+  "research_interests": [
+    "Remote Sensing & Earth Observation",
+    "Drought Monitoring & Climate Analysis",
+    "Snow Cover Dynamics & Hydrology",
+    "Machine Learning for Environmental Prediction",
+    "Agricultural Remote Sensing",
+    "Air Quality & Atmospheric Science",
+    "Geospatial Data Analysis"
+  ],
+  "expertise": [
+    "Satellite Data Analysis",
+    "Machine Learning & AI",
+    "GIS & Spatial Analysis",
+    "Climate Modeling",
+    "Python Programming",
+    "Google Earth Engine"
+  ]
+}

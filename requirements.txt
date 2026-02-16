@@ -1,0 +1,35 @@
+# Portfolio Website Requirements
+# Python 3.8+
+
+# Core Web Framework
+Flask==3.0.0
+Werkzeug==3.0.1
+
+# Template Engine (comes with Flask)
+Jinja2==3.1.2
+MarkupSafe==2.1.3
+
+# For generating static site (optional)
+Frozen-Flask==1.0.1
+
+# Form handling and validation
+WTForms==3.1.1
+Flask-WTF==1.2.1
+
+# Email functionality (for contact form)
+Flask-Mail==0.9.1
+
+# Environment variables
+python-dotenv==1.0.0
+
+# Markdown support (for blog posts if needed)
+Markdown==3.5.1
+
+# Image processing (for optimizing images)
+Pillow>=10.0.0
+
+# For deployment helpers
+gunicorn==21.2.0
+
+# Development tools
+python-dateutil>=2.8.0

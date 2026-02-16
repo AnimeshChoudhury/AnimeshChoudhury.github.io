@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}About - {{ profile.name }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section style="background: var(--gradient-hero); color: white; padding: 6rem 0 4rem;">
+    <div class="container">
+        <h1 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem;">About Me</h1>
+        <p style="font-family: var(--font-mono); font-size: 1.2rem; opacity: 0.9;">Remote Sensing Researcher & GIS Specialist</p>
+    </div>
+</section>
+
+<!-- Bio Section -->
+<section style="background: white;">
+    <div class="container">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;">Who I Am</h2>
+            <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
+                <p style="margin-bottom: 1.5rem;">{{ profile.bio }}</p>
+                <p style="margin-bottom: 1.5rem;">With expertise spanning from satellite data analysis to machine learning applications in environmental monitoring, I bridge the gap between cutting-edge technology and real-world environmental challenges. My work focuses on leveraging Earth observation data to understand and predict environmental changes, particularly in critical areas like drought monitoring, snow hydrology, and air quality analysis.</p>
+                <p>I am passionate about using geospatial technologies to address pressing environmental issues and contribute to sustainable development goals.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Timeline -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">Career Journey</div>
+            <h2>Professional Experience</h2>
+        </div>
+        <div class="timeline">
+            {% for exp in experience %}
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">{{ exp.position }}</h3>
+                    <div class="timeline-meta">{{ exp.organization }}, {{ exp.location }} | {{ exp.period }}</div>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        {% for resp in exp.responsibilities %}
+                        <li style="margin-bottom: 0.5rem; color: var(--text);">{{ resp }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Education -->
+<section style="background: white;">
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">Academic Background</div>
+            <h2>Education</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            {% for edu in education %}
+            <div style="background: var(--gradient-card); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; border-left: 4px solid var(--primary);">
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">{{ edu.degree }}</h3>
+                <div style="font-style: italic; color: var(--text-light); margin-bottom: 0.5rem;">{{ edu.institution }}</div>
+                <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent);">{{ edu.year }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">Technical Proficiency</div>
+            <h2>Skills & Expertise</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            {% for category, skill_list in skills.items() %}
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">{{ category }}</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    {% if skill_list is iterable and skill_list is not string %}
+                        {% for skill in skill_list %}
+                        <span class="tag">{{ skill }}</span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="tag">{{ skill_list }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Languages -->
+{% if languages %}
+<section style="background: white;">
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">Communication</div>
+            <h2>Languages</h2>
+        </div>
+        <div style="max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+            {% for lang, proficiency in languages.items() %}
+            <div>
+                <div style="font-family: var(--font-display); font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">{{ lang }}</div>
+                <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent);">{{ proficiency }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<section style="background: var(--dark); color: white; text-align: center;">
+    <div class="container">
+        <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1.5rem;">Interested in Working Together?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">I'm always open to discussing research collaborations and new opportunities.</p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Me</a>
+            <a href="{{ url_for('view_cv') }}" target="_blank" class="btn btn-outline">Download CV</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
