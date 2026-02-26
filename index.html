@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Animesh Choudhury - Transforming Earth Observation Data into Actionable Insights. Remote Sensing Researcher specializing in Earth Observation, Machine Learning, and Climate Science.">
+    <meta name="keywords" content="Remote Sensing, GIS, Machine Learning, Earth Observation, Climate Science, Drought Monitoring, Animesh Choudhury">
+    <meta name="author" content="Animesh Choudhury">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Animesh Choudhury - Remote Sensing Researcher">
+    <meta property="og:description" content="Transforming Earth Observation Data into Actionable Insights">
+    
+    <title>Animesh Choudhury - Remote Sensing Researcher</title>
+    
+    <!-- Fonts - Bold, distinctive choices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/main.css">
+    
+    
+    <style>
+        :root {
+            /* Creative color scheme - Deep ocean meets earth tones */
+            --primary: #0a4d68;        /* Deep ocean blue */
+            --primary-light: #088395;   /* Teal */
+            --accent: #e8630a;          /* Bold orange */
+            --accent-light: #ff8c42;    /* Light orange */
+            --dark: #1a1a2e;            /* Almost black */
+            --mid-dark: #2d3250;        /* Dark slate */
+            --light: #f7f9fb;           /* Off white */
+            --text: #2d3250;            /* Text color */
+            --text-light: #6b7280;      /* Light text */
+            
+            /* Gradients */
+            --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent) 100%);
+            --gradient-card: linear-gradient(145deg, rgba(8, 131, 149, 0.05) 0%, rgba(232, 99, 10, 0.05) 100%);
+            
+            /* Fonts */
+            --font-display: 'Playfair Display', serif;
+            --font-mono: 'Space Mono', monospace;
+            --font-body: 'Work Sans', sans-serif;
+            
+            /* Spacing */
+            --section-padding: 120px;
+            --container-width: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated grain texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        /* Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navigation - Fixed & Bold */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+        
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        /* Main content spacing */
+        main {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 6rem;
+        }
+        
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.3s ease;
+                padding: 2rem;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">AC</a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about" class="">About</a></li>
+                <li><a href="projects" class="">Projects</a></li>
+                <li><a href="publications" class="">Publications</a></li>
+                <li><a href="contact" class="">Contact</a></li>
+                <li><a href="view-cv" target="_blank" style="background: var(--accent); color: white; padding: 0.5rem 1.5rem; border-radius: 50px;">CV</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Animesh Choudhury</h1>
+            <p class="tagline">Transforming Earth Observation Data into Actionable Insights</p>
+            <p>Accomplished researcher specializing in Remote Sensing, GIS, and Climate Science with extensive experience in satellite data analysis, machine learning applications for environmental monitoring, and geospatial modeling. Strong background in drought monitoring, snow cover mapping, air quality analysis, and land-atmosphere interactions. Proficient in Python, R, Google Earth Engine, and various remote sensing tools.</p>
+            <div class="cta-buttons">
+                <a href="projects" class="btn btn-primary">View Projects</a>
+                <a href="contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Interests -->
+<section style="background: white;">
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">What I Do</div>
+            <h2>Research Interests</h2>
+        </div>
+        <div class="card-grid">
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    🛰️
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Remote Sensing &amp; Earth Observation</h3>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    🌍
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Drought Monitoring &amp; Climate Analysis</h3>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    ❄️
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Snow Cover Dynamics &amp; Hydrology</h3>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    🤖
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Machine Learning for Environmental Prediction</h3>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    🌾
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Agricultural Remote Sensing</h3>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    🌪️
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Air Quality &amp; Atmospheric Science</h3>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    📊
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Geospatial Data Analysis</h3>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">Featured Work</div>
+            <h2>Recent Projects</h2>
+            <p>Explore my latest research projects in Remote Sensing and Earth Observation</p>
+        </div>
+        <div class="card-grid">
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    ❄️
+                    
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">Snow Hydrology • 2018 - 2019</div>
+                    <h3 class="card-title">HimalSnow: AI-Powered Snow Cover Monitoring System</h3>
+                    <p class="card-description">Developed an automated system for monitoring snow cover dynamics in the Northwest Himalayan region using multi-sensor satellite data. The system proce...</p>
+                    <div class="card-tags">
+                        
+                        <span class="tag">Machine Learning</span>
+                        
+                        <span class="tag">Climate Science</span>
+                        
+                        <span class="tag">GEE</span>
+                        
+                    </div>
+                    <a href="project/project-1" class="btn btn-primary" style="display: inline-block; padding: 0.75rem 1.5rem; font-size: 0.85rem;">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    🌾
+                    
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">Agricultural Monitoring • 2020 - 2022</div>
+                    <h3 class="card-title">DroughtWatch India: ML-Based Drought Forecasting Platform</h3>
+                    <p class="card-description">Built a machine learning framework for predicting agricultural droughts across India using 30+ years of satellite data, meteorological records, and so...</p>
+                    <div class="card-tags">
+                        
+                        <span class="tag">Machine Learning</span>
+                        
+                        <span class="tag">Drought</span>
+                        
+                        <span class="tag">Agriculture</span>
+                        
+                    </div>
+                    <a href="project/project-2" class="btn btn-primary" style="display: inline-block; padding: 0.75rem 1.5rem; font-size: 0.85rem;">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-image">
+                    🌪️
+                    
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">Air Quality Monitoring • 2019 - 2020</div>
+                    <h3 class="card-title">AirSense: Multi-Pollutant Tracking System</h3>
+                    <p class="card-description">Developed an integrated system for tracking and visualizing horizontal and vertical distribution of air pollutants (PM2.5, NO2, CO, SO2) over the Indo...</p>
+                    <div class="card-tags">
+                        
+                        <span class="tag">Air Quality</span>
+                        
+                        <span class="tag">LIDAR</span>
+                        
+                        <span class="tag">Visualization</span>
+                        
+                    </div>
+                    <a href="project/project-3" class="btn btn-primary" style="display: inline-block; padding: 0.75rem 1.5rem; font-size: 0.85rem;">Learn More</a>
+                </div>
+            </div>
+            
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="projects" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Stats -->
+<section style="background: var(--dark); color: white;">
+    <div class="container">
+        <div class="section-header" style="color: white;">
+            <div class="subtitle" style="color: var(--accent);">Impact</div>
+            <h2 style="color: white;">Research Metrics</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: center;">
+            <div class="fade-in">
+                <div style="font-family: var(--font-display); font-size: 4rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">6+</div>
+                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8;">Core Expertise Areas</div>
+            </div>
+            <div class="fade-in">
+                <div style="font-family: var(--font-display); font-size: 4rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">3</div>
+                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8;">Journal Publications</div>
+            </div>
+            <div class="fade-in">
+                <div style="font-family: var(--font-display); font-size: 4rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">400+</div>
+                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8;">Total Citations</div>
+            </div>
+            <div class="fade-in">
+                <div style="font-family: var(--font-display); font-size: 4rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">5+</div>
+                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8;">Research Projects</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section style="background: white;">
+    <div class="container" style="text-align: center;">
+        <h2 style="font-family: var(--font-display); font-size: 3rem; color: var(--primary); margin-bottom: 2rem;">Let's Collaborate</h2>
+        <p style="font-size: 1.2rem; color: var(--text-light); max-width: 700px; margin: 0 auto 2rem;">Interested in collaborating on research projects or discussing opportunities in Remote Sensing and Earth Observation?</p>
+        <a href="contact" class="btn btn-primary" style="padding: 1.25rem 3rem; font-size: 1rem;">Contact Me</a>
+    </div>
+</section>
+
+<style>
+    .hero {
+        animation: fadeIn 1s ease;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .fade-in {
+        animation: fadeInUp 0.8s ease;
+    }
+    
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+</style>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/animeshchoudhury/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/AnimeshChoudhury" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://scholar.google.com/citations?user=0p-FbaoAAAAJ&amp;hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://www.researchgate.net/profile/Animesh-Choudhury" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                <a href="/cdn-cgi/l/email-protection#f78c8cd7878598919e9b92d9929a969e9bd78a8a" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/919046567045" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="footer-text">
+                © 2026 Animesh Choudhury. Built with passion for Earth observation.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 's

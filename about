@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Animesh Choudhury - Transforming Earth Observation Data into Actionable Insights. Remote Sensing Researcher specializing in Earth Observation, Machine Learning, and Climate Science.">
+    <meta name="keywords" content="Remote Sensing, GIS, Machine Learning, Earth Observation, Climate Science, Drought Monitoring, Animesh Choudhury">
+    <meta name="author" content="Animesh Choudhury">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Animesh Choudhury - Remote Sensing Researcher">
+    <meta property="og:description" content="Transforming Earth Observation Data into Actionable Insights">
+    
+    <title>About - Animesh Choudhury</title>
+    
+    <!-- Fonts - Bold, distinctive choices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/main.css">
+    
+    
+    <style>
+        :root {
+            /* Creative color scheme - Deep ocean meets earth tones */
+            --primary: #0a4d68;        /* Deep ocean blue */
+            --primary-light: #088395;   /* Teal */
+            --accent: #e8630a;          /* Bold orange */
+            --accent-light: #ff8c42;    /* Light orange */
+            --dark: #1a1a2e;            /* Almost black */
+            --mid-dark: #2d3250;        /* Dark slate */
+            --light: #f7f9fb;           /* Off white */
+            --text: #2d3250;            /* Text color */
+            --text-light: #6b7280;      /* Light text */
+            
+            /* Gradients */
+            --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent) 100%);
+            --gradient-card: linear-gradient(145deg, rgba(8, 131, 149, 0.05) 0%, rgba(232, 99, 10, 0.05) 100%);
+            
+            /* Fonts */
+            --font-display: 'Playfair Display', serif;
+            --font-mono: 'Space Mono', monospace;
+            --font-body: 'Work Sans', sans-serif;
+            
+            /* Spacing */
+            --section-padding: 120px;
+            --container-width: 1200px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated grain texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        /* Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navigation - Fixed & Bold */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+        
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        /* Main content spacing */
+        main {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 6rem;
+        }
+        
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                transition: left 0.3s ease;
+                padding: 2rem;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">AC</a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="">Home</a></li>
+                <li><a href="about" class="active">About</a></li>
+                <li><a href="projects" class="">Projects</a></li>
+                <li><a href="publications" class="">Publications</a></li>
+                <li><a href="contact" class="">Contact</a></li>
+                <li><a href="view-cv" target="_blank" style="background: var(--accent); color: white; padding: 0.5rem 1.5rem; border-radius: 50px;">CV</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        
+<!-- Page Header -->
+<section style="background: var(--gradient-hero); color: white; padding: 6rem 0 4rem;">
+    <div class="container">
+        <h1 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem;">About Me</h1>
+        <p style="font-family: var(--font-mono); font-size: 1.2rem; opacity: 0.9;">Remote Sensing Researcher & GIS Specialist</p>
+    </div>
+</section>
+
+<!-- Bio Section -->
+<section style="background: white;">
+    <div class="container">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;">Who I Am</h2>
+            <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
+                <p style="margin-bottom: 1.5rem;">Accomplished researcher specializing in Remote Sensing, GIS, and Climate Science with extensive experience in satellite data analysis, machine learning applications for environmental monitoring, and geospatial modeling. Strong background in drought monitoring, snow cover mapping, air quality analysis, and land-atmosphere interactions. Proficient in Python, R, Google Earth Engine, and various remote sensing tools.</p>
+                <p style="margin-bottom: 1.5rem;">With expertise spanning from satellite data analysis to machine learning applications in environmental monitoring, I bridge the gap between cutting-edge technology and real-world environmental challenges. My work focuses on leveraging Earth observation data to understand and predict environmental changes, particularly in critical areas like drought monitoring, snow hydrology, and air quality analysis.</p>
+                <p>I am passionate about using geospatial technologies to address pressing environmental issues and contribute to sustainable development goals.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Timeline -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">Career Journey</div>
+            <h2>Professional Experience</h2>
+        </div>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Junior Research Fellow</h3>
+                    <div class="timeline-meta">National Institute of Technology, Rourkela, India | Feb 2022 - Present</div>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        
+                        <li style="margin-bottom: 0.5rem; color: var(--text);">Conducting research on land-atmosphere interaction during thunderstorms over major urban areas of India</li>
+                        
+                        <li style="margin-bottom: 0.5rem; color: var(--text);">Utilizing high-resolution mesoscale modeling framework and climatological datasets</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Junior Research Fellow</h3>
+                    <div class="timeline-meta">Department of Remote Sensing and GIS, Vidyasagar University, Midnapore, India | Jan 2020 - Feb 2022</div>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        
+                        <li style="margin-bottom: 0.5rem; color: var(--text);">Developed ML models for prediction of agricultural droughts</li>
+                        
+                        <li style="margin-bottom: 0.5rem; color: var(--text);">Conducted long-term monitoring of droughts using satellite-based indices</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Junior Research Fellow</h3>
+                    <div class="timeline-meta">DST-Mahamana Centre of Excellence in Climate Change Research, BHU, Varanasi, India | Jun 2019 - Jan 2020</div>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        
+                        <li style="margin-bottom: 0.5rem; color: var(--text);">Analyzed horizontal and vertical distribution of air pollutants over Indo-Gangetic plain</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Junior Research Fellow</h3>
+                    <div class="timeline-meta">Indian Institute of Remote Sensing (IIRS), Dehradun, India | Oct 2018 - Mar 2019</div>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        
+                        <li style="margin-bottom: 0.5rem; color: var(--text);">Mapped snow cover area of Northwest Himalaya using MODIS, Sentinel, and Landsat datasets</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Junior Research Fellow</h3>
+                    <div class="timeline-meta">CSIR - Institute of Himalayan Bioresource Technology, Palampur, India | Aug 2018 - Oct 2018</div>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        
+                        <li style="margin-bottom: 0.5rem; color: var(--text);">Created spectral library of forest tree species found in Himalayan Region</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Education -->
+<section style="background: white;">
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">Academic Background</div>
+            <h2>Education</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            
+            <div style="background: var(--gradient-card); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; border-left: 4px solid var(--primary);">
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">PGD (Post Graduate Diploma) in Remote Sensing and GIS</h3>
+                <div style="font-style: italic; color: var(--text-light); margin-bottom: 0.5rem;">Indian Institute of Remote Sensing (IIRS)</div>
+                <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent);">2017-2018</div>
+            </div>
+            
+            <div style="background: var(--gradient-card); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; border-left: 4px solid var(--primary);">
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">M.Sc in Environmental Science</h3>
+                <div style="font-style: italic; color: var(--text-light); margin-bottom: 0.5rem;">Asutosh College, Calcutta University</div>
+                <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent);">2015-2017</div>
+            </div>
+            
+            <div style="background: var(--gradient-card); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; border-left: 4px solid var(--primary);">
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">B.Sc in Physics</h3>
+                <div style="font-style: italic; color: var(--text-light); margin-bottom: 0.5rem;">Raghunathpur College, Burdwan University</div>
+                <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent);">2009-2013</div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section>
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">Technical Proficiency</div>
+            <h2>Skills & Expertise</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Remote Sensing Tools</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    
+                        
+                        <span class="tag">ENVI</span>
+                        
+                        <span class="tag">SNAP</span>
+                        
+                        <span class="tag">Idrisi</span>
+                        
+                        <span class="tag">ERDAS Imagine</span>
+                        
+                    
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">GIS Software</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    
+                        
+                        <span class="tag">ArcGIS</span>
+                        
+                        <span class="tag">QGIS</span>
+                        
+                        <span class="tag">Google Earth Engine</span>
+                        
+                    
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Programming</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    
+                        
+                        <span class="tag">Python</span>
+                        
+                        <span class="tag">R</span>
+                        
+                        <span class="tag">SQL</span>
+                        
+                        <span class="tag">MySQL</span>
+                        
+                    
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Data Science &amp; ML</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    
+                        
+                        <span class="tag">Machine Learning</span>
+                        
+                        <span class="tag">Deep Learning</span>
+                        
+                        <span class="tag">Data Analysis</span>
+                        
+                    
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Domain Expertise</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    
+                        
+                        <span class="tag">Drought Monitoring</span>
+                        
+                        <span class="tag">Snow Cover Mapping</span>
+                        
+                        <span class="tag">Air Quality Analysis</span>
+                        
+                    
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Other Tools</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    
+                        
+                        <span class="tag">WRF-CHEM</span>
+                        
+                        <span class="tag">MODIS</span>
+                        
+                        <span class="tag">Sentinel</span>
+                        
+                        <span class="tag">Landsat</span>
+                        
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Languages -->
+
+<section style="background: white;">
+    <div class="container">
+        <div class="section-header">
+            <div class="subtitle">Communication</div>
+            <h2>Languages</h2>
+        </div>
+        <div style="max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+            
+            <div>
+                <div style="font-family: var(--font-display); font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">Bengali</div>
+                <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent);">Native</div>
+            </div>
+            
+            <div>
+                <div style="font-family: var(--font-display); font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">English</div>
+                <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent);">Fluent (C2)</div>
+            </div>
+            
+            <div>
+                <div style="font-family: var(--font-display); font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">Hindi</div>
+                <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent);">Fluent (C2 Speaking, B2 Reading/Writing)</div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section style="background: var(--dark); color: white; text-align: center;">
+    <div class="container">
+        <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1.5rem;">Interested in Working Together?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">I'm always open to discussing research collaborations and new opportunities.</p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <a href="contact" class="btn btn-primary">Contact Me</a>
+            <a href="view-cv" target="_blank" class="btn btn-outline">Download CV</a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/animeshchoudhury/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/AnimeshChoudhury" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://scholar.google.com/citations?user=0p-FbaoAAAAJ&amp;hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://www.researchgate.net/profile/Animesh-Choudhury" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                <a href="/cdn-cgi/l/email-protection#f78c8cd7878598919e9b92d9929a969e9bd78a8a" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/919046567045" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="footer-text">
+                © 2026 Animesh Choudhury. Built with passion for Earth observation.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 's
