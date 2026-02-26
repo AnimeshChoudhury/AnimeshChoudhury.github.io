@@ -9,6 +9,8 @@ import os
 from datetime import datetime
 
 app = Flask(__name__)
+app.config['FREEZER_RELATIVE_URLS'] = True
+app.config['FREEZER_DESTINATION'] = 'build'
 app.config['SECRET_KEY'] = 'your-secret-key-here-change-in-production'
 
 # Load data
