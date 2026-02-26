@@ -132,14 +132,14 @@ def handle_contact():
         'message': 'Thank you for your message! I will get back to you soon.'
     })
 
-@app.route('/cv')
+@app.route('/download-cv')
 def download_cv():
     """Serve CV file for download"""
     return send_from_directory('static/files', 
                              'Animesh_Choudhury_CV.pdf',
                              as_attachment=True)
 
-@app.route('/cv/view')
+@app.route('/view-cv')
 def view_cv():
     """View CV in browser"""
     return send_from_directory('static/files', 
