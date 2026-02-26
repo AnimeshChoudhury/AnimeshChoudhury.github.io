@@ -9,6 +9,7 @@ import shutil
 # --- CRITICAL CONFIGURATION FOR GITHUB PAGES ---
 app.config['FREEZER_RELATIVE_URLS'] = True
 app.config['FREEZER_DESTINATION'] = 'build'
+app.config['FREEZER_DESTINATION_IGNORE'] = ['.git*', 'CNAME']
 
 freezer = Freezer(app)
 
