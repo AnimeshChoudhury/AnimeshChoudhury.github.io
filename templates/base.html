@@ -271,7 +271,7 @@
                 <li><a href="{{ url_for('projects') }}" class="{% if request.endpoint in ['projects', 'project_detail'] %}active{% endif %}">Projects</a></li>
                 <li><a href="{{ url_for('publications') }}" class="{% if request.endpoint == 'publications' %}active{% endif %}">Publications</a></li>
                 <li><a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
-                <li><a href="{{ url_for('view_cv') }}" target="_blank" style="background: var(--accent); color: white; padding: 0.5rem 1.5rem; border-radius: 50px;">CV</a></li>
+                <li><a href="{{ url_for('static', filename='files/Animesh_Choudhury_CV.pdf') }}" download="Animesh_Choudhury_CV.pdf" style="background: var(--accent); color: white; padding: 0.5rem 1.5rem; border-radius: 50px;">CV</a></li>
             </ul>
         </div>
     </nav>
