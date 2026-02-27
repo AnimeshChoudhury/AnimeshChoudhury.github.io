@@ -29,12 +29,44 @@ def load_json(filename):
 
 @app.route('/')
 def index():
-    """Home page"""
+    """Home page with automated metrics"""
     profile = load_json('profile.json')
+    cv_data = load_json('animesh_cv_data.json')
+    
+    # 1. Extract lists
+    pubs = cv_data.get('publications', [])
+    conf_papers = cv_data.get('conference_papers', [])
+    
+    # 2. Automated Calculations
+    metrics = {
+        'journal_pubs': len([p for p in pubs if p.get('type') == 'journal']),
+        'book_chapters': len([p for p in pubs if p.get('type') == 'book_chapter']),
+        'conference_total': len(conf_papers),
+        'total_citations': sum(p.get('citations', 0) for p in pubs),
+    }
+    
+    # 3. Calculate h-index and i10-index
+    citation_list = sorted([p.get('citations', 0) for p in pubs], reverse=True)
+    
+    # h-index: h papers with at least h citations
+    h_index = 0
+    for i, citations in enumerate(citation_list):
+        if citations >= i + 1:
+            h_index = i + 1
+        else:
+            break
+            
+    # i10-index: papers with at least 10 citations
+    i10_index = len([c for c in citation_list if c >= 10])
+    
+    metrics['h_index'] = h_index
+    metrics['i10_index'] = i10_index
+
     projects = load_json('projects.json')['projects'][:3]
     return render_template('index.html', 
                          profile=profile, 
                          featured_projects=projects,
+                         metrics=metrics, # Passing the new metrics
                          current_year=datetime.now().year)
 
 @app.route('/about/')
