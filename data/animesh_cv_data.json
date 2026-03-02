@@ -2,7 +2,7 @@
   "personal_info": {
     "name": "Animesh Choudhury",
     "title": "PhD Researcher in Earth & Atmospheric Sciences | ML for Weather Forecasting | Remote Sensing Specialist",
-    "email": "official.animesh7@gmail.com",
+    "email": "animesh.buddha@gmail.com",
     "phone": "+91 9046567045",
     "date_of_birth": "29/05/1992",
     "nationality": "Indian",
@@ -69,7 +69,7 @@
         "Long-term monitoring of droughts using satellite-based indices (SPEI, VCI, TCI)",
         "Developed ML models for prediction of agricultural droughts",
         "Analyzed regional variation of drought parameters across India",
-        "Published research in Journal of Environmental Management (203 citations)"
+        "Published research in Journal of Environmental Management "
       ]
     },
     {
@@ -93,7 +93,7 @@
       "responsibilities": [
         "Snow cover area mapping of Northwest Himalaya using MODIS, Sentinel, Landsat datasets with Google Earth Engine",
         "Data collection, installation, and supervision of automatic weather station (AWS), snow precipitation gauge (SPG), and snow pack analyzer (SPA)",
-        "Published research in Remote Sensing journal (145 citations)"
+        "Published research in Remote Sensing journal"
       ]
     },
     {
@@ -110,6 +110,24 @@
     }
   ],
   "publications": [
+    {
+      "title": "Analysis and Prediction of PM2.5 Concentrations Over Indian Megacities Using Geospatial Techniques and Deep Learning Models",
+      "authors": "Panda, J., Mukherjee, A., Sarkar, A., Kumar, G., & Choudhury, A.",
+      "venue": "Geospatial Technologies",
+      "year": 2026,
+      "citations": 0,
+      "type": "book_chapter",
+      "doi": "https://doi.org/10.1201/9781003562986-8"
+    },    
+    {
+      "title": "A long-term analysis of pre-monsoon thunderstorm characteristic features over major urban areas of India",
+      "authors": "Roy, D., Panda, J., Mukherjee, A., Choudhury, A., & Panda, S. K.",
+      "venue": "Acta Geophysica",
+      "year": 2026,
+      "citations": 0,
+      "type": "journal",
+      "doi": "https://doi.org/10.1007/s11600-026-01806-7"
+    },
     {
       "title": "Development of a Data-driven weather forecasting system over India with Pangu-Weather architecture and IMDAA reanalysis Data",
       "authors": "Choudhury, A., & Panda, J.",
@@ -148,7 +166,7 @@
       "pages": "599–625",
       "citations": 13,
       "type": "journal",
-      "doi": "https://doi.org/10.1007/s41748-024-00380-2"
+      "doi": "https://doi.org/10.1007/s41748-024-00396-y"
     },
     {
       "title": "Drought trend and its association with land surface temperature (LST) over homogeneous drought regions of India (2001–2019)",
@@ -159,7 +177,7 @@
       "pages": "51",
       "citations": 12,
       "type": "journal",
-      "doi": "https://doi.org/10.1007/s43832-024-00089-4"
+      "doi": "https://doi.org/10.1007/s43832-024-00115-8"
     },
     {
       "title": "Urban Heat: UHI and Heat Stress Threat to Megacities",
