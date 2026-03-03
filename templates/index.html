@@ -6,14 +6,26 @@
 <!-- Hero Section -->
 <section class="hero">
     <div class="container">
-        <div class="hero-content">
-            <h1>{{ profile.name }}</h1>
-            <p class="tagline">{{ profile.tagline }}</p>
-            <p>{{ profile.bio }}</p>
-            <div class="cta-buttons">
-                <a href="{{ url_for('projects') }}" class="btn btn-primary">View Projects</a>
-                <a href="{{ url_for('contact') }}" class="btn btn-outline">Get in Touch</a>
+        <div class="hero-content hero-flex">
+
+            <!-- Profile Image -->
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='images/profile_image.png') }}" 
+                     alt="{{ profile.name }}">
             </div>
+
+            <!-- Hero Text Content -->
+            <div class="hero-text">
+                <h1>{{ profile.name }}</h1>
+                <p class="tagline">{{ profile.tagline }}</p>
+                <p>{{ profile.bio }}</p>
+
+                <div class="cta-buttons">
+                    <a href="{{ url_for('projects') }}" class="btn btn-primary">View Projects</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-outline">Get in Touch</a>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
