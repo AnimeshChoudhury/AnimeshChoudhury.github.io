@@ -132,6 +132,32 @@ section {
     margin: 0 auto;
 }
 
+/* Hero Flex Layout */
+.hero-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* centers image + text together */
+    gap: 4rem;
+    text-align: left;
+}
+
+/* Profile Image */
+/* Profile Image - Larger Square */
+.hero-image img {
+    width: 350px;          /* Increase size */
+    height: auto;          /* Keep original ratio */
+    border-radius: 12px;   /* Slight rounding instead of circle */
+    object-fit: contain;   /* Show full image */
+    border: 5px solid white;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    animation: fadeInUp 0.8s ease;
+}
+
+/* Hero Text */
+.hero-text {
+    max-width: 650px;
+}
+
 /* Cards */
 .card-grid {
     display: grid;
