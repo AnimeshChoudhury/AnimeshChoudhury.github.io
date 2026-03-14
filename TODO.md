@@ -7,4 +7,4 @@
 - [ ] Verify Netlify deploy logs show success (installs Python, pip deps, runs build_static.py)
 - [x] Task complete: Changes ready for deploy
 
-Status: ✅ Final fix: runtime.txt → 'python-3.11.6' (correct Netlify/mise format). Push to deploy!
+Status: ✅ Fixed: runtime.txt commented out. Netlify uses default Python, skips mise. Push to deploy!
