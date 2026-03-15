@@ -1,34 +1,48 @@
 """
-Build static version for Netlify deployment
+Build static version for deployment
 """
 from flask_frozen import Freezer
 from app import app, load_json
 import os
 import shutil
 
-# Configuration
+# --- CRITICAL CONFIGURATION FOR GITHUB PAGES ---
 app.config['FREEZER_RELATIVE_URLS'] = True
 app.config['FREEZER_DESTINATION'] = 'build'
+app.config['FREEZER_DESTINATION_IGNORE'] = ['.git*', 'CNAME']
 
 freezer = Freezer(app)
 
-# Register dynamic routes
 @freezer.register_generator
 def project_detail():
+    """Tells Frozen-Flask about your dynamic project IDs"""
     projects_data = load_json('projects.json')
     for project in projects_data['projects']:
         yield {'project_id': project['id']}
 
+@freezer.register_generator
+def projects():
+    """Generate pages for each category"""
+    projects_data = load_json('projects.json')
+    
+    # Generate main projects page (all)
+    yield {}
+    
+    # Generate page for each category
+    categories = set(p['category'] for p in projects_data['projects'])
+    for category in categories:
+        yield {'category': category}
+
 if __name__ == '__main__':
-    # Clean and build
+    # Clean build directory
     if os.path.exists('build'):
         shutil.rmtree('build')
     
-    print("Building static site...")
+    print("Generating static files for GitHub Pages...")
     freezer.freeze()
     
     # Create .nojekyll
     with open('build/.nojekyll', 'w') as f:
         pass
     
-    print("Build complete!")
+    print("Done! Ready to push to GitHub.")
