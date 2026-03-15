@@ -7,89 +7,178 @@
 <section style="background: var(--gradient-hero); color: white; padding: 6rem 0 4rem;">
     <div class="container">
         <h1 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem;">Research Projects</h1>
-        <p style="font-family: var(--font-mono); font-size: 1.2rem; opacity: 0.9;">Exploring Earth through data and innovation</p>
-    </div>
-</section>
-
-<!-- Filter Section -->
-<section style="background: white; padding: 2rem 0;">
-    <div class="container">
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-            <a href="{{ url_for('projects') }}" class="btn {% if current_category == 'all' %}btn-primary{% else %}btn-outline{% endif %}" style="{% if current_category != 'all' %}color: var(--primary); border-color: var(--primary);{% endif %} padding: 0.75rem 1.5rem;">All Projects</a>
-            {% for cat in categories %}
-            <a href="{{ url_for('projects', category=cat) }}" class="btn {% if current_category == cat %}btn-primary{% else %}btn-outline{% endif %}" style="{% if current_category != cat %}color: var(--primary); border-color: var(--primary);{% endif %} padding: 0.75rem 1.5rem;">{{ cat }}</a>
-            {% endfor %}
-        </div>
+        <p style="font-family: var(--font-mono); font-size: 1.2rem; opacity: 0.9;">Exploring Earth systems through data science and remote sensing</p>
     </div>
 </section>
 
 <!-- Projects Grid -->
-<section>
+<section style="background: white;">
     <div class="container">
-        <div class="card-grid">
+        <!-- Category Filter -->
+        <div style="margin-bottom: 3rem; text-align: center;">
+            <div style="display: inline-flex; gap: 1rem; flex-wrap: wrap; background: var(--light); padding: 0.5rem; border-radius: 50px;">
+                <button class="filter-btn active" onclick="filterProjects('all')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: var(--primary); color: white; font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+                    All Projects
+                </button>
+                {% for category in categories %}
+                <button class="filter-btn" onclick="filterProjects('{{ category }}')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: transparent; color: var(--text); font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+                    {{ category }}
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projectsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
             {% for project in projects %}
-            <div class="card">
-                <div class="card-image">
-                    {% if 'Snow' in project.title %}❄️
-                    {% elif 'Drought' in project.title %}🌾
-                    {% elif 'Air' in project.title %}🌪️
-                    {% elif 'Forest' in project.title %}🌲
-                    {% elif 'Thunder' in project.title %}⚡
-                    {% else %}🛰️
-                    {% endif %}
+            <article class="project-card" data-category="{{ project.category }}" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; height: 100%; display: flex; flex-direction: column;">
+                <!-- Project Image/Icon -->
+                <div style="height: 200px; background: var(--gradient-ocean); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                    <div style="font-size: 4rem; opacity: 0.2;">🛰️</div>
+                    <div style="position: absolute; top: 1rem; right: 1rem;">
+                        <span style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-family: var(--font-mono); font-size: 0.8rem;">{{ project.category }}</span>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <div class="card-meta">{{ project.category }} • {{ project.duration }}</div>
-                    <h3 class="card-title">{{ project.title }}</h3>
-                    <p style="font-size: 0.95rem; color: var(--text-light); font-weight: 600; margin-bottom: 0.5rem;">{{ project.subtitle }}</p>
-                    <p class="card-description">{{ project.description }}</p>
-                    <div class="card-tags">
-                        {% for tech in project.technologies[:4] %}
-                        <span class="tag">{{ tech }}</span>
+                
+                <!-- Project Content -->
+                <div style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">
+                        <a href="{{ url_for('project_detail', project_id=project.id) }}" style="color: inherit; text-decoration: none;">
+                            {{ project.title }}
+                        </a>
+                    </h3>
+                    
+                    <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 1rem;">{{ project.subtitle }}</p>
+                    
+                    <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">{{ project.description }}</p>
+                    
+                    <!-- Tech Tags -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        {% for tech in project.technologies[:3] %}
+                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">{{ tech }}</span>
                         {% endfor %}
                     </div>
-                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                        <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.85rem; flex: 1; text-align: center;">View Details</a>
-                        {% if project.publication %}
-                        <a href="{{ project.publication }}" target="_blank" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary); padding: 0.75rem 1.5rem; font-size: 0.85rem;">Paper</a>
-                        {% endif %}
-                    </div>
+                    
+                    <!-- View Details Button -->
+                    <a href="{{ url_for('project_detail', project_id=project.id) }}" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; text-align: center; font-family: var(--font-mono); transition: all 0.3s; display: inline-block;">
+                        View Details →
+                    </a>
                 </div>
-            </div>
+            </article>
             {% endfor %}
         </div>
-        
-        {% if projects|length == 0 %}
-        <div style="text-align: center; padding: 4rem 0;">
-            <div style="font-size: 4rem; margin-bottom: 1rem;">🔍</div>
-            <h3 style="font-family: var(--font-display); font-size: 2rem; color: var(--primary); margin-bottom: 1rem;">No Projects Found</h3>
-            <p style="color: var(--text-light); margin-bottom: 2rem;">Try selecting a different category.</p>
-            <a href="{{ url_for('projects') }}" class="btn btn-primary">View All Projects</a>
+
+        <!-- No Results Message -->
+        <div id="noResults" style="display: none; text-align: center; padding: 4rem 0;">
+            <p style="font-size: 1.2rem; color: var(--text); opacity: 0.6; margin-bottom: 1rem;">No projects found in this category.</p>
+            <button onclick="filterProjects('all')" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; border: none; cursor: pointer; font-family: var(--font-mono);">View All Projects</button>
         </div>
-        {% endif %}
     </div>
 </section>
 
-<!-- CTA Section -->
-<section style="background: white;">
-    <div class="container" style="text-align: center;">
-        <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Have a Project Idea?</h2>
-        <p style="font-size: 1.1rem; color: var(--text-light); max-width: 700px; margin: 0 auto 2rem;">I'm always interested in collaborating on innovative research projects in Remote Sensing and Earth Observation.</p>
-        <a href="{{ url_for('contact') }}" class="btn btn-primary" style="padding: 1.25rem 3rem;">Get in Touch</a>
-    </div>
-</section>
-
-<style>
-    .card {
-        opacity: 0;
-        animation: fadeInUp 0.6s ease forwards;
+<!-- JavaScript for Client-Side Filtering -->
+<script>
+function filterProjects(category) {
+    const projectCards = document.querySelectorAll('.project-card');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const noResults = document.getElementById('noResults');
+    const projectsGrid = document.getElementById('projectsGrid');
+    
+    // Update active button
+    filterButtons.forEach(btn => {
+        btn.style.background = 'transparent';
+        btn.style.color = 'var(--text)';
+        btn.classList.remove('active');
+    });
+    
+    // Find and activate clicked button
+    filterButtons.forEach(btn => {
+        if (btn.textContent.trim() === category || 
+            (category === 'all' && btn.textContent.includes('All Projects'))) {
+            btn.style.background = 'var(--primary)';
+            btn.style.color = 'white';
+            btn.classList.add('active');
+        }
+    });
+    
+    // Filter projects
+    let visibleCount = 0;
+    projectCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        
+        if (category === 'all' || cardCategory === category) {
+            card.style.display = 'flex';
+            // Fade in animation
+            card.style.opacity = '0';
+            setTimeout(() => {
+                card.style.opacity = '1';
+            }, 10);
+            visibleCount++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    // Show/hide no results message
+    if (visibleCount === 0) {
+        projectsGrid.style.display = 'none';
+        noResults.style.display = 'block';
+    } else {
+        projectsGrid.style.display = 'grid';
+        noResults.style.display = 'none';
     }
     
-    .card:nth-child(1) { animation-delay: 0.1s; }
-    .card:nth-child(2) { animation-delay: 0.2s; }
-    .card:nth-child(3) { animation-delay: 0.3s; }
-    .card:nth-child(4) { animation-delay: 0.4s; }
-    .card:nth-child(5) { animation-delay: 0.5s; }
-    .card:nth-child(6) { animation-delay: 0.6s; }
+    // Update URL hash (optional - for bookmarking)
+    if (category !== 'all') {
+        window.location.hash = category.toLowerCase().replace(/\s+/g, '-');
+    } else {
+        window.location.hash = '';
+    }
+}
+
+// Load filter from URL hash on page load
+window.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+        // Convert hash back to category name
+        const category = hash.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        
+        // Find matching category
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        let found = false;
+        filterButtons.forEach(btn => {
+            if (btn.textContent.trim().toLowerCase() === category.toLowerCase()) {
+                filterProjects(btn.textContent.trim());
+                found = true;
+            }
+        });
+        
+        if (!found) {
+            filterProjects('all');
+        }
+    }
+});
+</script>
+
+<!-- Add hover effects and transitions -->
+<style>
+.project-card {
+    opacity: 1;
+    transition: all 0.3s ease, opacity 0.5s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+}
+
+.filter-btn:not(.active):hover {
+    background: rgba(10, 77, 104, 0.1) !important;
+}
 </style>
+
 {% endblock %}

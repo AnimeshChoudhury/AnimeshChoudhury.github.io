@@ -20,18 +20,7 @@ def project_detail():
     for project in projects_data['projects']:
         yield {'project_id': project['id']}
 
-@freezer.register_generator
-def projects():
-    """Generate pages for each category"""
-    projects_data = load_json('projects.json')
-    
-    # Generate main projects page (all)
-    yield {}
-    
-    # Generate page for each category
-    categories = set(p['category'] for p in projects_data['projects'])
-    for category in categories:
-        yield {'category': category}
+# No need for projects generator anymore - JavaScript handles filtering!
 
 if __name__ == '__main__':
     # Clean build directory
