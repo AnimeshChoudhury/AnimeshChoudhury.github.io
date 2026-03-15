@@ -1,30 +1,25 @@
 [build]
-  command = "pip install -r requirements.txt && python build_static.py"
+  command = """
+    pip install Flask==3.0.0 Frozen-Flask==1.0.1 Jinja2==3.1.2 && \
+    python3 build_static.py
+  """
   publish = "build"
 
 [build.environment]
   PYTHON_VERSION = "3.11"
 
-# Redirect all routes to handle SPA navigation
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Enable form submissions
-[[plugins]]
-  package = "@netlify/plugin-forms"
-
-# Headers for security
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "no-referrer-when-downgrade"
 
-# Cache static assets
 [[headers]]
   for = "/static/*"
   [headers.values]
