@@ -88,23 +88,13 @@ def projects():
     profile = load_json('profile.json')
     all_projects = load_json('projects.json')['projects']
     
-    # Get category filter from query parameter
-    category = request.args.get('category', 'all')
-    
-    # Filter projects
-    if category != 'all':
-        filtered_projects = [p for p in all_projects if p['category'] == category]
-    else:
-        filtered_projects = all_projects
-    
     # Get unique categories for filter buttons
     categories = sorted(list(set(p['category'] for p in all_projects)))
     
     return render_template('projects.html',
                          profile=profile,
-                         projects=filtered_projects,
+                         projects=all_projects,  # Pass ALL projects
                          categories=categories,
-                         current_category=category,
                          current_year=datetime.now().year)
 
 @app.route('/project/<project_id>/')

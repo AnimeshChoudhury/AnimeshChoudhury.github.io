@@ -1,184 +1,139 @@
 {% extends "base.html" %}
 
-{% block title %}Projects - {{ profile.name }}{% endblock %}
+{% block title %}Projects — {{ profile.name }}{% endblock %}
 
 {% block content %}
-<!-- Page Header -->
-<section style="background: var(--gradient-hero); color: white; padding: 6rem 0 4rem;">
-    <div class="container">
-        <h1 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem;">Research Projects</h1>
-        <p style="font-family: var(--font-mono); font-size: 1.2rem; opacity: 0.9;">Exploring Earth systems through data science and remote sensing</p>
+
+<!-- ══ PAGE HEADER ══════════════════════════════════ -->
+<section class="page-header">
+    <div class="container page-header-content">
+        <h1>Research Projects</h1>
+        <p>Exploring Earth systems through data science, remote sensing, and geospatial intelligence</p>
     </div>
 </section>
 
-<!-- Projects Grid -->
+
+<!-- ══ PROJECTS GRID ════════════════════════════════ -->
 <section style="background: white;">
     <div class="container">
+
         <!-- Category Filter -->
-        <div style="margin-bottom: 3rem; text-align: center;">
-            <div style="display: inline-flex; gap: 1rem; flex-wrap: wrap; background: var(--light); padding: 0.5rem; border-radius: 50px;">
-                <button class="filter-btn active" onclick="filterProjects('all')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: var(--primary); color: white; font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+        <div class="filter-bar reveal">
+            <div class="filter-pills" role="group" aria-label="Project category filter">
+                <button class="filter-btn active" onclick="filterProjects('all')" id="filter-all">
                     All Projects
                 </button>
                 {% for category in categories %}
-                <button class="filter-btn" onclick="filterProjects('{{ category }}')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: transparent; color: var(--text); font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+                <button class="filter-btn" onclick="filterProjects('{{ category }}')" id="filter-{{ loop.index }}">
                     {{ category }}
                 </button>
                 {% endfor %}
             </div>
         </div>
 
-        <!-- Projects Grid -->
-        <div id="projectsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+        <!-- Grid -->
+        <div id="projectsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 2rem;">
             {% for project in projects %}
-            <article class="project-card" data-category="{{ project.category }}" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; height: 100%; display: flex; flex-direction: column;">
-                <!-- Project Image/Icon -->
-                <div style="height: 200px; background: var(--gradient-ocean); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                    <div style="font-size: 4rem; opacity: 0.2;">🛰️</div>
-                    <div style="position: absolute; top: 1rem; right: 1rem;">
-                        <span style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-family: var(--font-mono); font-size: 0.8rem;">{{ project.category }}</span>
-                    </div>
+            <article class="project-card reveal reveal-delay-{{ loop.index if loop.index <= 6 else 6 }}"
+                     data-category="{{ project.category }}">
+
+                <!-- Header -->
+                <div class="project-card-header">
+                    <span style="opacity: 0.25; font-size: 3.2rem;">
+                        {% if 'Snow' in project.title %}❄️
+                        {% elif 'Drought' in project.title %}🌾
+                        {% elif 'Air' in project.title %}🌪️
+                        {% elif 'Forest' in project.title %}🌲
+                        {% else %}🛰️
+                        {% endif %}
+                    </span>
+                    <span class="project-category-badge">{{ project.category }}</span>
                 </div>
-                
-                <!-- Project Content -->
-                <div style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">
-                        <a href="{{ url_for('project_detail', project_id=project.id) }}" style="color: inherit; text-decoration: none;">
-                            {{ project.title }}
-                        </a>
-                    </h3>
-                    
-                    <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 1rem;">{{ project.subtitle }}</p>
-                    
-                    <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">{{ project.description }}</p>
-                    
-                    <!-- Tech Tags -->
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+
+                <!-- Body -->
+                <div class="project-card-body">
+                    <a href="{{ url_for('project_detail', project_id=project.id) }}"
+                       class="project-card-title">{{ project.title }}</a>
+                    <div class="project-card-subtitle">{{ project.subtitle }}</div>
+                    <p class="project-card-desc">{{ project.description }}</p>
+
+                    <div class="project-tech-tags">
                         {% for tech in project.technologies[:3] %}
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">{{ tech }}</span>
+                        <span class="project-tech-tag">{{ tech }}</span>
                         {% endfor %}
                     </div>
-                    
-                    <!-- View Details Button -->
-                    <a href="{{ url_for('project_detail', project_id=project.id) }}" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; text-align: center; font-family: var(--font-mono); transition: all 0.3s; display: inline-block;">
-                        View Details →
+
+                    <a href="{{ url_for('project_detail', project_id=project.id) }}"
+                       class="project-card-link">
+                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
                     </a>
                 </div>
+
             </article>
             {% endfor %}
         </div>
 
-        <!-- No Results Message -->
-        <div id="noResults" style="display: none; text-align: center; padding: 4rem 0;">
-            <p style="font-size: 1.2rem; color: var(--text); opacity: 0.6; margin-bottom: 1rem;">No projects found in this category.</p>
-            <button onclick="filterProjects('all')" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; border: none; cursor: pointer; font-family: var(--font-mono);">View All Projects</button>
+        <!-- No Results -->
+        <div id="noResults" style="display: none; text-align: center; padding: 5rem 0;">
+            <i class="fas fa-satellite" style="font-size: 3rem; color: var(--text-muted); opacity: 0.4; margin-bottom: 1rem; display:block;"></i>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                No projects found in this category.
+            </p>
+            <button onclick="filterProjects('all')"
+                    style="background: var(--primary); color: white; padding: 0.75rem 1.75rem; border-radius: 6px; border: none; cursor: pointer; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; transition: background 0.2s;">
+                View All Projects
+            </button>
         </div>
+
     </div>
 </section>
 
-<!-- JavaScript for Client-Side Filtering -->
+
+<!-- ══ FILTER JS ═════════════════════════════════════ -->
 <script>
 function filterProjects(category) {
-    const projectCards = document.querySelectorAll('.project-card');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const noResults = document.getElementById('noResults');
+    const cards        = document.querySelectorAll('.project-card');
+    const buttons      = document.querySelectorAll('.filter-btn');
+    const noResults    = document.getElementById('noResults');
     const projectsGrid = document.getElementById('projectsGrid');
-    
-    // Update active button
-    filterButtons.forEach(btn => {
-        btn.style.background = 'transparent';
-        btn.style.color = 'var(--text)';
-        btn.classList.remove('active');
+
+    /* Update button states */
+    buttons.forEach(btn => btn.classList.remove('active'));
+    buttons.forEach(btn => {
+        const isAll     = (category === 'all' && btn.textContent.trim() === 'All Projects');
+        const isMatch   = btn.textContent.trim() === category;
+        if (isAll || isMatch) btn.classList.add('active');
     });
-    
-    // Find and activate clicked button
-    filterButtons.forEach(btn => {
-        if (btn.textContent.trim() === category || 
-            (category === 'all' && btn.textContent.includes('All Projects'))) {
-            btn.style.background = 'var(--primary)';
-            btn.style.color = 'white';
-            btn.classList.add('active');
-        }
-    });
-    
-    // Filter projects
-    let visibleCount = 0;
-    projectCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        
-        if (category === 'all' || cardCategory === category) {
-            card.style.display = 'flex';
-            // Fade in animation
+
+    /* Filter cards */
+    let visible = 0;
+    cards.forEach(card => {
+        const show = (category === 'all' || card.dataset.category === category);
+        card.style.display = show ? 'flex' : 'none';
+        if (show) {
             card.style.opacity = '0';
-            setTimeout(() => {
-                card.style.opacity = '1';
-            }, 10);
-            visibleCount++;
-        } else {
-            card.style.display = 'none';
+            setTimeout(() => { card.style.opacity = '1'; }, 20);
+            visible++;
         }
     });
-    
-    // Show/hide no results message
-    if (visibleCount === 0) {
-        projectsGrid.style.display = 'none';
-        noResults.style.display = 'block';
-    } else {
-        projectsGrid.style.display = 'grid';
-        noResults.style.display = 'none';
-    }
-    
-    // Update URL hash (optional - for bookmarking)
-    if (category !== 'all') {
-        window.location.hash = category.toLowerCase().replace(/\s+/g, '-');
-    } else {
-        window.location.hash = '';
-    }
+
+    noResults.style.display    = visible ? 'none' : 'block';
+    projectsGrid.style.display = visible ? 'grid' : 'none';
+
+    /* Update URL hash */
+    history.replaceState(null, '', category !== 'all' ? '#' + category.toLowerCase().replace(/\s+/g, '-') : location.pathname);
 }
 
-// Load filter from URL hash on page load
-window.addEventListener('DOMContentLoaded', function() {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-        // Convert hash back to category name
-        const category = hash.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        
-        // Find matching category
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        let found = false;
-        filterButtons.forEach(btn => {
-            if (btn.textContent.trim().toLowerCase() === category.toLowerCase()) {
-                filterProjects(btn.textContent.trim());
-                found = true;
-            }
-        });
-        
-        if (!found) {
-            filterProjects('all');
-        }
-    }
+/* Restore filter from URL hash */
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = location.hash.slice(1);
+    if (!hash) return;
+    const category = hash.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const match = [...document.querySelectorAll('.filter-btn')].find(
+        b => b.textContent.trim().toLowerCase() === category.toLowerCase()
+    );
+    if (match) filterProjects(match.textContent.trim());
 });
 </script>
-
-<!-- Add hover effects and transitions -->
-<style>
-.project-card {
-    opacity: 1;
-    transition: all 0.3s ease, opacity 0.5s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-}
-
-.filter-btn:hover {
-    transform: translateY(-2px);
-}
-
-.filter-btn:not(.active):hover {
-    background: rgba(10, 77, 104, 0.1) !important;
-}
-</style>
 
 {% endblock %}

@@ -1,66 +1,85 @@
 {% extends "base.html" %}
 
-{% block title %}{{ project.title }} - {{ profile.name }}{% endblock %}
+{% block title %}{{ project.title }} — {{ profile.name }}{% endblock %}
 
 {% block content %}
-<!-- Project Header -->
-<section style="background: var(--gradient-hero); color: white; padding: 8rem 0 4rem;">
-    <div class="container">
-        <div style="margin-bottom: 1rem;">
-            <a href="{{ url_for('projects') }}" style="color: white; font-family: var(--font-mono); font-size: 0.9rem; text-decoration: none; opacity: 0.8;">← Back to Projects</a>
+
+<!-- ══ PROJECT HEADER ════════════════════════════════ -->
+<section class="page-header">
+    <div class="container page-header-content">
+        <a href="{{ url_for('projects') }}" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+                    text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.75rem;">
+            {{ project.category }} · {{ project.duration }}
         </div>
-        <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem;">{{ project.category }} • {{ project.duration }}</div>
-        <h1 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem;">{{ project.title }}</h1>
-        <p style="font-size: 1.3rem; opacity: 0.95; margin-bottom: 2rem;">{{ project.subtitle }}</p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <h1>{{ project.title }}</h1>
+        <p>{{ project.subtitle }}</p>
+
+        {% if project.github or project.publication or project.demo %}
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
             {% if project.github %}
-            <a href="{{ project.github }}" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> View Code</a>
+            <a href="{{ project.github }}" target="_blank" rel="noopener" class="btn btn-outline">
+                <i class="fab fa-github"></i> View Code
+            </a>
             {% endif %}
             {% if project.publication %}
-            <a href="{{ project.publication }}" target="_blank" class="btn btn-outline"><i class="fas fa-file-alt"></i> Read Paper</a>
+            <a href="{{ project.publication }}" target="_blank" rel="noopener" class="btn btn-outline">
+                <i class="fas fa-file-alt"></i> Read Paper
+            </a>
             {% endif %}
             {% if project.demo %}
-            <a href="{{ project.demo }}" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            <a href="{{ project.demo }}" target="_blank" rel="noopener" class="btn btn-primary">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
             {% endif %}
         </div>
+        {% endif %}
     </div>
 </section>
 
-<!-- Project Content -->
-<section style="background: white;">
+
+<!-- ══ PROJECT CONTENT ═══════════════════════════════ -->
+<section style="background: white;" class="project-detail-section">
     <div class="container">
-        <div style="max-width: 900px; margin: 0 auto;">
+        <div style="max-width: 880px; margin: 0 auto;">
+
             <!-- Overview -->
-            <div style="margin-bottom: 4rem;">
-                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Overview</h2>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">{{ project.description }}</p>
+            <div style="margin-bottom: 4rem;" class="reveal">
+                <h2>Overview</h2>
+                <p style="font-size: 1.05rem; line-height: 1.85; color: var(--text);">
+                    {{ project.description }}
+                </p>
             </div>
 
             <!-- Detailed Description -->
-            <div style="margin-bottom: 4rem;">
-                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Project Details</h2>
-                <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text);">{{ project.detailed_description }}</p>
+            <div style="margin-bottom: 4rem;" class="reveal reveal-delay-1">
+                <h2>Project Details</h2>
+                <p style="font-size: 1rem; line-height: 1.85; color: var(--text-muted);">
+                    {{ project.detailed_description }}
+                </p>
             </div>
 
             <!-- Technologies -->
-            <div style="margin-bottom: 4rem;">
-                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Technologies Used</h2>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <div style="margin-bottom: 4rem;" class="reveal reveal-delay-2">
+                <h2>Technologies Used</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem;">
                     {% for tech in project.technologies %}
-                    <span style="font-family: var(--font-mono); font-size: 0.9rem; padding: 0.5rem 1.2rem; background: var(--gradient-card); color: var(--primary); border-radius: 25px; border: 2px solid var(--primary); font-weight: 600;">{{ tech }}</span>
+                    <span class="tech-pill">{{ tech }}</span>
                     {% endfor %}
                 </div>
             </div>
 
-            <!-- Features -->
+            <!-- Key Features -->
             {% if project.features %}
-            <div style="margin-bottom: 4rem;">
-                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Key Features</h2>
-                <ul style="list-style: none; padding: 0;">
+            <div style="margin-bottom: 4rem;" class="reveal reveal-delay-3">
+                <h2>Key Features</h2>
+                <ul class="features-list">
                     {% for feature in project.features %}
-                    <li style="padding: 1rem; margin-bottom: 0.75rem; background: var(--gradient-card); border-left: 4px solid var(--accent); border-radius: 8px;">
-                        <i class="fas fa-check-circle" style="color: var(--accent); margin-right: 0.75rem;"></i>
-                        <span style="font-size: 1.05rem; color: var(--text);">{{ feature }}</span>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>{{ feature }}</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -69,33 +88,46 @@
 
             <!-- Outcomes -->
             {% if project.outcomes %}
-            <div style="margin-bottom: 4rem;">
-                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Outcomes & Impact</h2>
-                <div style="background: var(--primary); color: white; padding: 2.5rem; border-radius: 12px;">
-                    <ul style="list-style: none; padding: 0;">
+            <div style="margin-bottom: 4rem;" class="reveal reveal-delay-4">
+                <h2>Outcomes &amp; Impact</h2>
+                <div class="outcomes-box">
+                    <ul>
                         {% for outcome in project.outcomes %}
-                        <li style="padding: 0.75rem 0; font-size: 1.05rem; line-height: 1.6;">
-                            <i class="fas fa-star" style="color: var(--accent); margin-right: 0.75rem;"></i>
-                            {{ outcome }}
+                        <li>
+                            <i class="fas fa-star"></i>
+                            <span>{{ outcome }}</span>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
             {% endif %}
+
         </div>
     </div>
 </section>
 
-<!-- Related Links -->
+
+<!-- ══ EXPLORE MORE CTA ══════════════════════════════ -->
 <section>
     <div class="container" style="text-align: center;">
-        <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;">Explore More</h2>
-        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-            <a href="{{ url_for('projects') }}" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);">All Projects</a>
-            <a href="{{ url_for('publications') }}" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);">Publications</a>
-            <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Me</a>
+        <div class="reveal">
+            <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.25rem); color: var(--primary); margin-bottom: 2rem; font-weight: 900;">
+                Explore More
+            </h2>
+            <div class="cta-buttons-centered">
+                <a href="{{ url_for('projects') }}" class="btn btn-outline-dark">
+                    <i class="fas fa-th-large"></i> All Projects
+                </a>
+                <a href="{{ url_for('publications') }}" class="btn btn-outline-dark">
+                    <i class="fas fa-book"></i> Publications
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
         </div>
     </div>
 </section>
+
 {% endblock %}

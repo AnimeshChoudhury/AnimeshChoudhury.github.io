@@ -1,36 +1,45 @@
 {% extends "base.html" %}
 
-{% block title %}Publications - {{ profile.name }}{% endblock %}
+{% block title %}Publications — {{ profile.name }}{% endblock %}
 
 {% block content %}
-<!-- Page Header -->
-<section style="background: var(--gradient-hero); color: white; padding: 6rem 0 4rem;">
-    <div class="container">
-        <h1 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem;">Publications</h1>
-        <p style="font-family: var(--font-mono); font-size: 1.2rem; opacity: 0.9;">Research papers and academic contributions</p>
+
+<!-- ══ PAGE HEADER ══════════════════════════════════ -->
+<section class="page-header">
+    <div class="container page-header-content">
+        <h1>Publications</h1>
+        <p>Peer-reviewed research papers, conference proceedings &amp; academic contributions</p>
     </div>
 </section>
 
-<!-- Journal Publications -->
+
+<!-- ══ JOURNAL ARTICLES ══════════════════════════════ -->
 <section style="background: white;">
     <div class="container">
-        <div class="section-header">
-            <div class="subtitle">Peer-Reviewed</div>
+        <div class="section-header reveal">
+            <span class="subtitle">Peer-Reviewed</span>
             <h2>Journal Articles</h2>
         </div>
+
         <div style="max-width: 900px; margin: 0 auto;">
             {% for pub in publications %}
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-{{ loop.index if loop.index <=6 else 6 }}">
                 <h3 class="publication-title">"{{ pub.title }}"</h3>
                 <p class="publication-authors">{{ pub.authors }}</p>
-                <p class="publication-venue"><i>{{ pub.venue }}</i>, {{ pub.year }}</p>
+                <p class="publication-venue"><em>{{ pub.venue }}</em>, {{ pub.year }}</p>
                 <div class="publication-meta">
-                    {% if pub.citations > 0 %}
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> {{ pub.citations }} citations</span>
+                    {% if pub.citations and pub.citations > 0 %}
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> {{ pub.citations }} citations
+                    </span>
                     {% endif %}
-                    <span><i class="fas fa-calendar"></i> {{ pub.year }}</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>{{ pub.year }}
+                    </span>
                     {% if pub.doi %}
-                    <a href="{{ pub.doi }}" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="{{ pub.doi }}" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     {% endif %}
                 </div>
             </div>
@@ -39,23 +48,29 @@
     </div>
 </section>
 
-<!-- Conference Papers -->
+
+<!-- ══ CONFERENCE PAPERS ═════════════════════════════ -->
 {% if conference_papers %}
 <section>
     <div class="container">
-        <div class="section-header">
-            <div class="subtitle">Proceedings</div>
+        <div class="section-header reveal">
+            <span class="subtitle">Proceedings</span>
             <h2>Conference Papers</h2>
         </div>
+
         <div style="max-width: 900px; margin: 0 auto;">
             {% for paper in conference_papers %}
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-{{ loop.index if loop.index <=6 else 6 }}" style="border-left-color: var(--primary);">
                 <h3 class="publication-title">"{{ paper.title }}"</h3>
-                <p class="publication-venue"><i>{{ paper.venue }}</i>, {{ paper.year }}</p>
+                <p class="publication-venue"><em>{{ paper.venue }}</em>, {{ paper.year }}</p>
                 <div class="publication-meta">
-                    <span><i class="fas fa-calendar"></i> {{ paper.year }}</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>{{ paper.year }}
+                    </span>
                     {% if paper.url %}
-                    <a href="{{ paper.url }}" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> View Paper</a>
+                    <a href="{{ paper.url }}" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> View Paper
+                    </a>
                     {% endif %}
                 </div>
             </div>
@@ -65,16 +80,32 @@
 </section>
 {% endif %}
 
-<!-- CTA -->
+
+<!-- ══ CTA ══════════════════════════════════════════ -->
 <section style="background: white; text-align: center;">
     <div class="container">
-        <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Research Collaboration</h2>
-        <p style="font-size: 1.1rem; color: var(--text-light); max-width: 700px; margin: 0 auto 2rem;">Interested in collaborating on research or citing my work?</p>
-        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-            <a href="{{ profile.social.scholar }}" target="_blank" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-            <a href="{{ profile.social.researchgate }}" target="_blank" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);"><i class="fab fa-researchgate"></i> ResearchGate</a>
-            <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Me</a>
+        <div class="reveal">
+            <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--primary); margin-bottom: 1rem; font-weight: 900;">
+                Research Collaboration
+            </h2>
+            <p style="font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.75;">
+                Interested in collaborating on research or exploring citation opportunities?
+            </p>
+            <div class="cta-buttons-centered">
+                <a href="{{ profile.social.scholar }}" target="_blank" rel="noopener"
+                   class="btn btn-outline-dark">
+                    <i class="fas fa-graduation-cap"></i> Google Scholar
+                </a>
+                <a href="{{ profile.social.researchgate }}" target="_blank" rel="noopener"
+                   class="btn btn-outline-dark">
+                    <i class="fab fa-researchgate"></i> ResearchGate
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
         </div>
     </div>
 </section>
+
 {% endblock %}

@@ -1,28 +1,33 @@
 {% extends "base.html" %}
 
-{% block title %}{{ profile.name }} - Remote Sensing Researcher{% endblock %}
+{% block title %}{{ profile.name }} — Remote Sensing Researcher{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+
+<!-- ══ HERO ═══════════════════════════════════════ -->
 <section class="hero">
     <div class="container">
         <div class="hero-content hero-flex">
 
-            <!-- Profile Image -->
+            <!-- Profile Photo -->
             <div class="hero-image">
-                <img src="{{ url_for('static', filename='images/profile_image.png') }}" 
-                     alt="{{ profile.name }}">
+                <img src="{{ url_for('static', filename='images/profile_image.png') }}"
+                     alt="Portrait of {{ profile.name }}"
+                     width="300" height="300">
             </div>
 
-            <!-- Hero Text Content -->
+            <!-- Text -->
             <div class="hero-text">
                 <h1>{{ profile.name }}</h1>
                 <p class="tagline">{{ profile.tagline }}</p>
                 <p>{{ profile.bio }}</p>
-
                 <div class="cta-buttons">
-                    <a href="{{ url_for('projects') }}" class="btn btn-primary">View Projects</a>
-                    <a href="{{ url_for('contact') }}" class="btn btn-outline">Get in Touch</a>
+                    <a href="{{ url_for('projects') }}" class="btn btn-primary">
+                        <i class="fas fa-satellite-dish"></i> View Projects
+                    </a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i> Get in Touch
+                    </a>
                 </div>
             </div>
 
@@ -30,46 +35,41 @@
     </div>
 </section>
 
-<!-- Research Interests -->
+
+<!-- ══ RESEARCH INTERESTS ══════════════════════════ -->
 <section style="background: white;">
     <div class="container">
-        <div class="section-header">
-            <div class="subtitle">What I Do</div>
+        <div class="section-header reveal">
+            <span class="subtitle">What I Do</span>
             <h2>Research Interests</h2>
         </div>
+
         <div class="card-grid">
+            {% set icons = ['🛰️','🌍','❄️','🤖','🌾','🌪️','📊'] %}
             {% for interest in profile.research_interests %}
-            <div class="card fade-in">
-                <div class="card-image">
-                    {% if loop.index == 1 %}🛰️
-                    {% elif loop.index == 2 %}🌍
-                    {% elif loop.index == 3 %}❄️
-                    {% elif loop.index == 4 %}🤖
-                    {% elif loop.index == 5 %}🌾
-                    {% elif loop.index == 6 %}🌪️
-                    {% else %}📊
-                    {% endif %}
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">{{ interest }}</h3>
-                </div>
+            <div class="interest-card reveal reveal-delay-{{ loop.index if loop.index <= 6 else 6 }}">
+                <div class="interest-icon">{{ icons[loop.index0] if loop.index0 < icons|length else '📡' }}</div>
+                <h3>{{ interest }}</h3>
             </div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- Featured Projects -->
+
+<!-- ══ FEATURED PROJECTS ═══════════════════════════ -->
 <section>
     <div class="container">
-        <div class="section-header">
-            <div class="subtitle">Featured Work</div>
+        <div class="section-header reveal">
+            <span class="subtitle">Featured Work</span>
             <h2>Recent Projects</h2>
-            <p>Explore my latest research projects in Remote Sensing and Earth Observation</p>
+            <p>Exploring Earth systems through satellite data, machine learning, and environmental analysis.</p>
         </div>
+
         <div class="card-grid">
+            {% set icons = ['❄️','🌾','🌪️','🌲','🛰️'] %}
             {% for project in featured_projects %}
-            <div class="card fade-in">
+            <div class="card reveal reveal-delay-{{ loop.index }}">
                 <div class="card-image">
                     {% if 'Snow' in project.title %}❄️
                     {% elif 'Drought' in project.title %}🌾
@@ -79,120 +79,124 @@
                     {% endif %}
                 </div>
                 <div class="card-content">
-                    <div class="card-meta">{{ project.category }} • {{ project.duration }}</div>
+                    <div class="card-meta">{{ project.category }} · {{ project.duration }}</div>
                     <h3 class="card-title">{{ project.title }}</h3>
-                    <p class="card-description">{{ project.description[:150] }}...</p>
+                    <p class="card-description">{{ project.description[:160] }}…</p>
                     <div class="card-tags">
                         {% for tag in project.tags[:3] %}
                         <span class="tag">{{ tag }}</span>
                         {% endfor %}
                     </div>
-                    <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-primary" style="display: inline-block; padding: 0.75rem 1.5rem; font-size: 0.85rem;">Learn More</a>
+                    <a href="{{ url_for('project_detail', project_id=project.id) }}"
+                       class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.78rem;">
+                        Learn More <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+                    </a>
                 </div>
             </div>
             {% endfor %}
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="{{ url_for('projects') }}" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);">View All Projects</a>
+
+        <div style="text-align: center; margin-top: 3rem;" class="reveal">
+            <a href="{{ url_for('projects') }}" class="btn btn-outline-dark">
+                View All Projects <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+            </a>
         </div>
     </div>
 </section>
 
-<!-- Quick Stats -->
-<section style="background: var(--dark); color: white; padding: 5rem 0;">
+
+<!-- ══ RESEARCH METRICS ══════════════════════════════ -->
+<section class="stats-section">
     <div class="container">
-        <div class="section-header" style="color: white; margin-bottom: 4rem;">
-            <div class="subtitle" style="color: var(--accent);">Impact</div>
+        <div class="section-header reveal" style="margin-bottom: 3rem;">
+            <span class="subtitle" style="color: var(--accent);">Impact</span>
             <h2 style="color: white;">Research Metrics</h2>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: center;">
-            
-            <div class="fade-in">
-                <div style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">
-                    {{ metrics.journal_pubs }}
-                </div>
-                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.8rem;">
-                    Journal Publications
-                </div>
-            </div>
 
-            <div class="fade-in">
-                <div style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">
-                    {{ metrics.conference_total }}
-                </div>
-                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.8rem;">
-                    Conference
-                </div>
+        <div class="stats-grid">
+            <div class="stat-item reveal reveal-delay-1">
+                <span class="stat-number" data-target="{{ metrics.journal_pubs }}">0</span>
+                <span class="stat-label">Journal Publications</span>
             </div>
-
-            <div class="fade-in">
-                <div style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">
-                    {{ metrics.book_chapters }}
-                </div>
-                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.8rem;">
-                    Book Chapters
-                </div>
+            <div class="stat-item reveal reveal-delay-2">
+                <span class="stat-number" data-target="{{ metrics.conference_total }}">0</span>
+                <span class="stat-label">Conference Papers</span>
             </div>
-
-            <div class="fade-in">
-                <div style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">
-                    {{ metrics.total_citations }}+
-                </div>
-                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.8rem;">
-                    Total Citations
-                </div>
+            <div class="stat-item reveal reveal-delay-3">
+                <span class="stat-number" data-target="{{ metrics.book_chapters }}">0</span>
+                <span class="stat-label">Book Chapters</span>
             </div>
-
-            <div class="fade-in">
-                <div style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">
-                    {{ metrics.h_index }}
-                </div>
-                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.8rem;">
-                    h-index
-                </div>
+            <div class="stat-item reveal reveal-delay-4">
+                <span class="stat-number" data-target="{{ metrics.total_citations }}">0</span>
+                <span class="stat-label">Total Citations</span>
             </div>
-
-            <div class="fade-in">
-                <div style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem;">
-                    {{ metrics.i10_index }}
-                </div>
-                <div style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.8rem;">
-                    i10-index
-                </div>
+            <div class="stat-item reveal reveal-delay-5">
+                <span class="stat-number" data-target="{{ metrics.h_index }}">0</span>
+                <span class="stat-label">h-index</span>
             </div>
-
+            <div class="stat-item reveal reveal-delay-6">
+                <span class="stat-number" data-target="{{ metrics.i10_index }}">0</span>
+                <span class="stat-label">i10-index</span>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Call to Action -->
+
+<!-- ══ CALL TO ACTION ════════════════════════════════ -->
 <section style="background: white;">
     <div class="container" style="text-align: center;">
-        <h2 style="font-family: var(--font-display); font-size: 3rem; color: var(--primary); margin-bottom: 2rem;">Let's Collaborate</h2>
-        <p style="font-size: 1.2rem; color: var(--text-light); max-width: 700px; margin: 0 auto 2rem;">Interested in collaborating on research projects or discussing opportunities in Remote Sensing and Earth Observation?</p>
-        <a href="{{ url_for('contact') }}" class="btn btn-primary" style="padding: 1.25rem 3rem; font-size: 1rem;">Contact Me</a>
+        <div class="reveal">
+            <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); color: var(--primary); margin-bottom: 1rem; font-weight: 900;">
+                Let's Collaborate
+            </h2>
+            <p style="font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.75;">
+                Open to research collaborations, consulting opportunities, and discussions around Remote Sensing, Earth Observation, and Geospatial Intelligence.
+            </p>
+            <a href="{{ url_for('contact') }}" class="btn btn-primary" style="padding: 1.1rem 3rem; font-size: 0.9rem;">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
+        </div>
     </div>
 </section>
 
-<style>
-    .hero {
-        animation: fadeIn 1s ease;
+{% endblock %}
+
+{% block extra_js %}
+<script>
+/* ── Counter animation for stat numbers ── */
+function animateCounter(el, target, duration) {
+    const start     = performance.now();
+    const startVal  = 0;
+    el.textContent  = startVal;
+
+    function update(ts) {
+        const elapsed  = ts - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased    = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(startVal + (target - startVal) * eased);
+        if (progress < 1) requestAnimationFrame(update);
     }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    .fade-in {
-        animation: fadeInUp 0.8s ease;
-    }
-    
-    .card:nth-child(1) { animation-delay: 0.1s; }
-    .card:nth-child(2) { animation-delay: 0.2s; }
-    .card:nth-child(3) { animation-delay: 0.3s; }
-    .card:nth-child(4) { animation-delay: 0.4s; }
-    .card:nth-child(5) { animation-delay: 0.5s; }
-    .card:nth-child(6) { animation-delay: 0.6s; }
-</style>
+
+    requestAnimationFrame(update);
+}
+
+/* Trigger counters once stats section enters the viewport */
+const statNumbers   = document.querySelectorAll('.stat-number[data-target]');
+let countersStarted = false;
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !countersStarted) {
+            countersStarted = true;
+            statNumbers.forEach(el => {
+                const target = parseInt(el.dataset.target, 10);
+                animateCounter(el, target, 1600);
+            });
+        }
+    });
+}, { threshold: 0.4 });
+
+if (statNumbers.length) counterObserver.observe(statNumbers[0].closest('section') || document.body);
+</script>
 {% endblock %}
