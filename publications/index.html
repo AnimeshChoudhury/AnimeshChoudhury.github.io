@@ -3,456 +3,655 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Animesh Choudhury - Transforming Earth Observation Data into Actionable Insights. Remote Sensing Researcher specializing in Earth Observation, Machine Learning, and Climate Science.">
+    <meta name="description" content="Animesh Choudhury — Transforming Earth Observation Data into Actionable Insights. Remote Sensing Researcher specializing in Earth Observation, Machine Learning, and Climate Science.">
     <meta name="keywords" content="Remote Sensing, GIS, Machine Learning, Earth Observation, Climate Science, Drought Monitoring, Animesh Choudhury">
     <meta name="author" content="Animesh Choudhury">
-    
-    <!-- Open Graph / Social Media -->
+
+    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Animesh Choudhury - Remote Sensing Researcher">
+    <meta property="og:title" content="Animesh Choudhury — Remote Sensing Researcher">
     <meta property="og:description" content="Transforming Earth Observation Data into Actionable Insights">
-    
-    <title>Publications - Animesh Choudhury</title>
-    
-    <!-- Fonts - Bold, distinctive choices -->
+
+    <title>Publications — Animesh Choudhury</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="../static/css/main.css">
     
-    
+
     <style>
+        /* ════════════════════════════════════════
+           DESIGN TOKENS
+        ════════════════════════════════════════ */
         :root {
-            /* Creative color scheme - Deep ocean meets earth tones */
-            --primary: #0a4d68;        /* Deep ocean blue */
-            --primary-light: #088395;   /* Teal */
-            --accent: #e8630a;          /* Bold orange */
-            --accent-light: #ff8c42;    /* Light orange */
-            --dark: #1a1a2e;            /* Almost black */
-            --mid-dark: #2d3250;        /* Dark slate */
-            --light: #f7f9fb;           /* Off white */
-            --text: #2d3250;            /* Text color */
-            --text-light: #6b7280;      /* Light text */
-            
-            /* Gradients */
-            --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent) 100%);
-            --gradient-card: linear-gradient(145deg, rgba(8, 131, 149, 0.05) 0%, rgba(232, 99, 10, 0.05) 100%);
-            
-            /* Fonts */
-            --font-display: 'Playfair Display', serif;
-            --font-mono: 'Space Mono', monospace;
-            --font-body: 'Work Sans', sans-serif;
-            
-            /* Spacing */
-            --section-padding: 120px;
-            --container-width: 1200px;
+            /* ── Palette ── */
+            --primary:        #0b4f6c;   /* deep ocean */
+            --primary-light:  #1a7a99;   /* teal */
+            --accent:         #e05d07;   /* bold amber-orange */
+            --accent-dark:    #c24f00;
+            --dark:           #111827;
+            --bg:             #f5f7fa;
+            --bg-input:       #fafbfc;
+            --text:           #1e293b;
+            --text-muted:     #64748b;
+
+            /* ── Gradients ── */
+            --gradient-hero: linear-gradient(
+                150deg,
+                #0b3d55 0%,
+                #0b4f6c 30%,
+                #1a7a99 65%,
+                #c24f00 100%
+            );
+            --gradient-card: linear-gradient(
+                145deg,
+                rgba(26, 122, 153, 0.06) 0%,
+                rgba(224, 93, 7, 0.05) 100%
+            );
+
+            /* ── Typography ── */
+            --font-display: 'Syne', sans-serif;
+            --font-mono:    'Space Mono', monospace;
+            --font-body:    'Inter', sans-serif;
+
+            /* ── Spacing ── */
+            --section-padding:  100px;
+            --container-width:  1200px;
+
+            /* ── Transitions ── */
+            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        
-        * {
+
+        /* ════════════════════════════════════════
+           RESET & BASE
+        ════════════════════════════════════════ */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: var(--font-body);
             color: var(--text);
-            background: var(--light);
-            line-height: 1.6;
+            background: var(--bg);
+            line-height: 1.65;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        /* Animated grain texture overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        
-        /* Container */
+
+        img { display: block; }
+
+        /* ════════════════════════════════════════
+           CONTAINER
+        ════════════════════════════════════════ */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
-        /* Navigation - Fixed & Bold */
+
+        /* ════════════════════════════════════════
+           NAVIGATION
+        ════════════════════════════════════════ */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1.5rem 0;
-            border-bottom: 2px solid var(--primary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(11, 79, 108, 0.12);
+            box-shadow: 0 1px 20px rgba(0,0,0,0.04);
+            padding: 0;
+            transition: padding 0.3s var(--ease-out),
+                        box-shadow 0.3s ease,
+                        background 0.3s ease;
         }
-        
+
+        nav.scrolled {
+            background: rgba(255,255,255,0.97);
+            box-shadow: 0 4px 28px rgba(0,0,0,0.09);
+        }
+
         nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 72px;
+            transition: height 0.3s var(--ease-out);
         }
-        
+
+        nav.scrolled .container {
+            height: 60px;
+        }
+
+        /* Logo */
         .logo {
             font-family: var(--font-display);
-            font-size: 1.8rem;
+            font-size: 1.55rem;
             font-weight: 900;
             color: var(--primary);
             text-decoration: none;
-            letter-spacing: -0.02em;
-            transition: all 0.3s ease;
+            letter-spacing: -0.03em;
+            transition: color 0.22s;
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
         }
-        
-        .logo:hover {
+
+        .logo span {
             color: var(--accent);
-            transform: translateY(-2px);
         }
-        
+
+        .logo:hover { color: var(--primary-light); }
+
+        /* Nav links */
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
             align-items: center;
         }
-        
+
         .nav-links a {
             font-family: var(--font-mono);
-            font-size: 0.9rem;
+            font-size: 0.78rem;
             font-weight: 700;
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             position: relative;
-            transition: color 0.3s ease;
+            padding-bottom: 3px;
+            transition: color 0.22s;
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 3px;
+            height: 2px;
             background: var(--accent);
-            transition: width 0.3s ease;
+            border-radius: 1px;
+            transition: width 0.28s var(--ease-out);
         }
-        
-        .nav-links a:hover {
-            color: var(--accent);
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
         }
-        
+
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
         }
-        
-        .nav-links a.active {
-            color: var(--primary);
+
+        /* CV Button */
+        .nav-cv-btn {
+            font-family: var(--font-mono) !important;
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+            background: var(--accent) !important;
+            color: white !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            transition: background 0.22s, transform 0.22s, box-shadow 0.22s !important;
+            box-shadow: 0 2px 10px rgba(224,93,7,0.25);
         }
-        
-        /* Mobile menu toggle */
+
+        .nav-cv-btn:hover {
+            background: var(--accent-dark) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(224,93,7,0.35) !important;
+        }
+
+        .nav-cv-btn::after { display: none !important; }
+
+        /* Mobile toggle */
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            gap: 6px;
+            gap: 5px;
+            padding: 4px;
         }
-        
+
         .menu-toggle span {
-            width: 30px;
-            height: 3px;
+            display: block;
+            width: 26px;
+            height: 2px;
             background: var(--primary);
-            transition: all 0.3s ease;
+            border-radius: 1px;
+            transition: all 0.28s ease;
         }
-        
-        /* Main content spacing */
+
+        /* ════════════════════════════════════════
+           MAIN CONTENT
+        ════════════════════════════════════════ */
         main {
-            padding-top: 80px;
+            padding-top: 72px;
             min-height: 100vh;
         }
-        
-        /* Footer */
+
+        /* ════════════════════════════════════════
+           FOOTER
+        ════════════════════════════════════════ */
         footer {
             background: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 6rem;
+            color: rgba(255,255,255,0.8);
+            padding: 4rem 0 2.5rem;
+            margin-top: 0;
         }
-        
-        footer .container {
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-brand .logo:hover { color: rgba(255,255,255,0.75); }
+
+        .footer-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 0.04em;
+            max-width: 260px;
+            line-height: 1.6;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.22s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 14px rgba(224,93,7,0.35);
+        }
+
+        .footer-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1rem;
         }
-        
-        .footer-social {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .footer-social a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .footer-text {
+
+        .footer-copy {
             font-family: var(--font-mono);
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 0.03em;
         }
-        
-        /* Responsive */
+
+        .footer-built {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.28);
+        }
+
+        /* ════════════════════════════════════════
+           RESPONSIVE — MOBILE NAV
+        ════════════════════════════════════════ */
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 72px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 80px);
-                background: rgba(255, 255, 255, 0.98);
+                height: calc(100vh - 72px);
+                background: rgba(255,255,255,0.99);
                 flex-direction: column;
                 justify-content: center;
-                transition: left 0.3s ease;
+                gap: 2rem;
+                transition: left 0.3s var(--ease-out);
                 padding: 2rem;
+                box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05);
             }
-            
-            .nav-links.active {
-                left: 0;
+
+            .nav-links.active { left: 0; }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                letter-spacing: 0.06em;
             }
-            
-            .menu-toggle {
-                display: flex;
+
+            .menu-toggle { display: flex; }
+
+            .footer-top {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            
-            footer .container {
+
+            .footer-bottom {
                 flex-direction: column;
                 text-align: center;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
+
+    <!-- ── Navigation ──────────────────────────── -->
+    <nav id="mainNav">
         <div class="container">
-            <a href="../index.html" class="logo">AC</a>
-            <div class="menu-toggle" onclick="toggleMenu()">
+            <a href="../index.html" class="logo" aria-label="Animesh Choudhury Home">
+                A<span>C</span>
+            </a>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" id="menuToggleBtn">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="../index.html" class="">Home</a></li>
-                <li><a href="../about/index.html" class="">About</a></li>
-                <li><a href="../projects/index.html" class="">Projects</a></li>
+            </button>
+
+            <ul class="nav-links" id="navLinks" role="navigation">
+                <li><a href="../index.html"        class="">Home</a></li>
+                <li><a href="../about/index.html"        class="">About</a></li>
+                <li><a href="../projects/index.html"     class="">Projects</a></li>
                 <li><a href="index.html" class="active">Publications</a></li>
-                <li><a href="../contact/index.html" class="">Contact</a></li>
-                <li><a href="../static/files/Animesh_Choudhury_CV.pdf" download="Animesh_Choudhury_CV.pdf" style="background: var(--accent); color: white; padding: 0.5rem 1.5rem; border-radius: 50px;">CV</a></li>
+                <li><a href="../contact/index.html"      class="">Contact</a></li>
+                <li>
+                    <a href="../static/files/Animesh_Choudhury_CV.pdf"
+                       download="Animesh_Choudhury_CV.pdf"
+                       class="nav-cv-btn">
+                        <i class="fas fa-download" style="font-size:0.7rem; margin-right:0.35rem;"></i>CV
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- ── Main Content ────────────────────────── -->
     <main>
         
-<!-- Page Header -->
-<section style="background: var(--gradient-hero); color: white; padding: 6rem 0 4rem;">
-    <div class="container">
-        <h1 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem;">Publications</h1>
-        <p style="font-family: var(--font-mono); font-size: 1.2rem; opacity: 0.9;">Research papers and academic contributions</p>
+
+<!-- ══ PAGE HEADER ══════════════════════════════════ -->
+<section class="page-header">
+    <div class="container page-header-content">
+        <h1>Publications</h1>
+        <p>Peer-reviewed research papers, conference proceedings &amp; academic contributions</p>
     </div>
 </section>
 
-<!-- Journal Publications -->
+
+<!-- ══ JOURNAL ARTICLES ══════════════════════════════ -->
 <section style="background: white;">
     <div class="container">
-        <div class="section-header">
-            <div class="subtitle">Peer-Reviewed</div>
+        <div class="section-header reveal">
+            <span class="subtitle">Peer-Reviewed</span>
             <h2>Journal Articles</h2>
         </div>
+
         <div style="max-width: 900px; margin: 0 auto;">
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-1">
                 <h3 class="publication-title">"Analysis and Prediction of PM2.5 Concentrations Over Indian Megacities Using Geospatial Techniques and Deep Learning Models"</h3>
                 <p class="publication-authors">Panda, J., Mukherjee, A., Sarkar, A., Kumar, G., &amp; Choudhury, A.</p>
-                <p class="publication-venue"><i>Geospatial Technologies</i>, 2026</p>
+                <p class="publication-venue"><em>Geospatial Technologies</em>, 2026</p>
                 <div class="publication-meta">
                     
-                    <span><i class="fas fa-calendar"></i> 2026</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2026
+                    </span>
                     
-                    <a href="https://doi.org/10.1201/9781003562986-8" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://doi.org/10.1201/9781003562986-8" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-2">
                 <h3 class="publication-title">"A long-term analysis of pre-monsoon thunderstorm characteristic features over major urban areas of India"</h3>
                 <p class="publication-authors">Roy, D., Panda, J., Mukherjee, A., Choudhury, A., &amp; Panda, S. K.</p>
-                <p class="publication-venue"><i>Acta Geophysica</i>, 2026</p>
+                <p class="publication-venue"><em>Acta Geophysica</em>, 2026</p>
                 <div class="publication-meta">
                     
-                    <span><i class="fas fa-calendar"></i> 2026</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2026
+                    </span>
                     
-                    <a href="https://doi.org/10.1007/s11600-026-01806-7" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://doi.org/10.1007/s11600-026-01806-7" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-3">
                 <h3 class="publication-title">"Development of a Data-driven weather forecasting system over India with Pangu-Weather architecture and IMDAA reanalysis Data"</h3>
                 <p class="publication-authors">Choudhury, A., &amp; Panda, J.</p>
-                <p class="publication-venue"><i>In Preparation</i>, 2025</p>
+                <p class="publication-venue"><em>In Preparation</em>, 2025</p>
                 <div class="publication-meta">
                     
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> 2 citations</span>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> 2 citations
+                    </span>
                     
-                    <span><i class="fas fa-calendar"></i> 2025</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2025
+                    </span>
                     
-                    <a href="https://arxiv.org/abs/2503.12956" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://arxiv.org/abs/2503.12956" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-4">
                 <h3 class="publication-title">"BharatBench: Dataset for data-driven weather forecasting over India"</h3>
                 <p class="publication-authors">Choudhury, A., Panda, J., &amp; Mukherjee, A.</p>
-                <p class="publication-venue"><i>In Preparation</i>, 2024</p>
+                <p class="publication-venue"><em>In Preparation</em>, 2024</p>
                 <div class="publication-meta">
                     
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> 5 citations</span>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> 5 citations
+                    </span>
                     
-                    <span><i class="fas fa-calendar"></i> 2024</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2024
+                    </span>
                     
-                    <a href="https://arxiv.org/abs/2405.07534" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://arxiv.org/abs/2405.07534" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-5">
                 <h3 class="publication-title">"Analyzing urban footprints over four coastal cities of India and the association with rainfall and temperature using deep learning models"</h3>
                 <p class="publication-authors">Mukherjee, A., Panda, J., Choudhury, A., Singh, S., &amp; Bhattacharyya, S.</p>
-                <p class="publication-venue"><i>Urban Climate</i>, 2024</p>
+                <p class="publication-venue"><em>Urban Climate</em>, 2024</p>
                 <div class="publication-meta">
                     
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> 5 citations</span>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> 5 citations
+                    </span>
                     
-                    <span><i class="fas fa-calendar"></i> 2024</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2024
+                    </span>
                     
-                    <a href="https://doi.org/10.1016/j.uclim.2024.102123" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://doi.org/10.1016/j.uclim.2024.102123" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-6">
                 <h3 class="publication-title">"Analysis and Forecasting of Temporal Rainfall Variability Over Hundred Indian Cities Using Deep Learning Approaches"</h3>
                 <p class="publication-authors">Singh, S., Mukherjee, A., Panda, J. et al.</p>
-                <p class="publication-venue"><i>Earth Systems and Environment</i>, 2024</p>
+                <p class="publication-venue"><em>Earth Systems and Environment</em>, 2024</p>
                 <div class="publication-meta">
                     
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> 13 citations</span>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> 13 citations
+                    </span>
                     
-                    <span><i class="fas fa-calendar"></i> 2024</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2024
+                    </span>
                     
-                    <a href="https://doi.org/10.1007/s41748-024-00396-y" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://doi.org/10.1007/s41748-024-00396-y" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-6">
                 <h3 class="publication-title">"Drought trend and its association with land surface temperature (LST) over homogeneous drought regions of India (2001–2019)"</h3>
                 <p class="publication-authors">Choudhury, A.</p>
-                <p class="publication-venue"><i>Discover Water</i>, 2024</p>
+                <p class="publication-venue"><em>Discover Water</em>, 2024</p>
                 <div class="publication-meta">
                     
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> 12 citations</span>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> 12 citations
+                    </span>
                     
-                    <span><i class="fas fa-calendar"></i> 2024</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2024
+                    </span>
                     
-                    <a href="https://doi.org/10.1007/s43832-024-00115-8" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://doi.org/10.1007/s43832-024-00115-8" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-6">
                 <h3 class="publication-title">"Urban Heat: UHI and Heat Stress Threat to Megacities"</h3>
                 <p class="publication-authors">Panda, J., Mukherjee, A., Choudhury, A., Biswas, S.</p>
-                <p class="publication-venue"><i>Climate Crisis: Adaptive Approaches and Sustainability. Sustainable Development Goals Series. Springer, Cham</i>, 2023</p>
+                <p class="publication-venue"><em>Climate Crisis: Adaptive Approaches and Sustainability. Sustainable Development Goals Series. Springer, Cham</em>, 2023</p>
                 <div class="publication-meta">
                     
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> 8 citations</span>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> 8 citations
+                    </span>
                     
-                    <span><i class="fas fa-calendar"></i> 2023</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2023
+                    </span>
                     
-                    <a href="https://doi.org/10.1007/978-3-031-28728-2" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://doi.org/10.1007/978-3-031-28728-2" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-6">
                 <h3 class="publication-title">"Transport of a severe dust storm from Middle East to Indian region and its impact on surrounding environment"</h3>
                 <p class="publication-authors">Budakoti, S., Singh, C. &amp; Choudhury, A.</p>
-                <p class="publication-venue"><i>International Journal of Environmental Science and Technology</i>, 2022</p>
+                <p class="publication-venue"><em>International Journal of Environmental Science and Technology</em>, 2022</p>
                 <div class="publication-meta">
                     
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> 6 citations</span>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> 6 citations
+                    </span>
                     
-                    <span><i class="fas fa-calendar"></i> 2022</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2022
+                    </span>
                     
-                    <a href="https://doi.org/10.1007/s13762-022-04520-1" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://doi.org/10.1007/s13762-022-04520-1" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-6">
                 <h3 class="publication-title">"Regional variation of drought parameters and long-term trends over India using standardized precipitation evapotranspiration index"</h3>
                 <p class="publication-authors">Choudhury, A., Dutta, D., Bera, D., Kundu, A.</p>
-                <p class="publication-venue"><i>Journal of Environmental Management</i>, 2021</p>
+                <p class="publication-venue"><em>Journal of Environmental Management</em>, 2021</p>
                 <div class="publication-meta">
                     
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> 42 citations</span>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> 42 citations
+                    </span>
                     
-                    <span><i class="fas fa-calendar"></i> 2021</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2021
+                    </span>
                     
-                    <a href="https://doi.org/10.1016/j.jenvman.2021.113056" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://doi.org/10.1016/j.jenvman.2021.113056" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-6">
                 <h3 class="publication-title">"A Response of Snow Cover to the Climate in the Northwest Himalaya (NWH) Using Satellite Products"</h3>
                 <p class="publication-authors">Choudhury A, Yadav AC, Bonafoni S</p>
-                <p class="publication-venue"><i>Remote Sensing</i>, 2021</p>
+                <p class="publication-venue"><em>Remote Sensing</em>, 2021</p>
                 <div class="publication-meta">
                     
-                    <span class="citation-count"><i class="fas fa-quote-right"></i> 27 citations</span>
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> 27 citations
+                    </span>
                     
-                    <span><i class="fas fa-calendar"></i> 2021</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2021
+                    </span>
                     
-                    <a href="https://doi.org/10.3390/rs13040655" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> DOI</a>
+                    <a href="https://doi.org/10.3390/rs13040655" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> DOI
+                    </a>
                     
                 </div>
             </div>
@@ -461,56 +660,74 @@
     </div>
 </section>
 
-<!-- Conference Papers -->
+
+<!-- ══ CONFERENCE PAPERS ═════════════════════════════ -->
 
 <section>
     <div class="container">
-        <div class="section-header">
-            <div class="subtitle">Proceedings</div>
+        <div class="section-header reveal">
+            <span class="subtitle">Proceedings</span>
             <h2>Conference Papers</h2>
         </div>
+
         <div style="max-width: 900px; margin: 0 auto;">
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-1" style="border-left-color: var(--primary);">
                 <h3 class="publication-title">"A Step Towards Building Medium-Range Data-Driven Weather Forecasting System Over India"</h3>
-                <p class="publication-venue"><i>IEEE Conference</i>, 2024</p>
+                <p class="publication-venue"><em>IEEE Conference</em>, 2024</p>
                 <div class="publication-meta">
-                    <span><i class="fas fa-calendar"></i> 2024</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2024
+                    </span>
                     
-                    <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10984239" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> View Paper</a>
+                    <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10984239" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> View Paper
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-2" style="border-left-color: var(--primary);">
                 <h3 class="publication-title">"Monitoring of Surface Water of East Kolkata Wetlands (1984-2015) with Global Surface Water Dataset"</h3>
-                <p class="publication-venue"><i>ACRS 2020</i>, 2020</p>
+                <p class="publication-venue"><em>ACRS 2020</em>, 2020</p>
                 <div class="publication-meta">
-                    <span><i class="fas fa-calendar"></i> 2020</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2020
+                    </span>
                     
-                    <a href="https://a-a-r-s.org/proceeding/ACRS2020/yi3x7w.pdf" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> View Paper</a>
+                    <a href="https://a-a-r-s.org/proceeding/ACRS2020/yi3x7w.pdf" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> View Paper
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-3" style="border-left-color: var(--primary);">
                 <h3 class="publication-title">"Role of Earth Observation Data and Hydrological Modeling in Supporting UN SDGs in North West Himalaya"</h3>
-                <p class="publication-venue"><i>ISPRS Archives</i>, 2020</p>
+                <p class="publication-venue"><em>ISPRS Archives</em>, 2020</p>
                 <div class="publication-meta">
-                    <span><i class="fas fa-calendar"></i> 2020</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2020
+                    </span>
                     
-                    <a href="https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XLIII-B3-2020/853/2020/" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> View Paper</a>
+                    <a href="https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XLIII-B3-2020/853/2020/" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> View Paper
+                    </a>
                     
                 </div>
             </div>
             
-            <div class="publication-item">
+            <div class="publication-item reveal reveal-delay-4" style="border-left-color: var(--primary);">
                 <h3 class="publication-title">"Simulation of an Extreme Dust Episode using WRF-CHEM"</h3>
-                <p class="publication-venue"><i>IASTA 2018</i>, 2018</p>
+                <p class="publication-venue"><em>IASTA 2018</em>, 2018</p>
                 <div class="publication-meta">
-                    <span><i class="fas fa-calendar"></i> 2018</span>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>2018
+                    </span>
                     
-                    <a href="https://cas.iitd.ac.in/iasta2018/pdf/E-Proceedings_IASTA-2018.pdf" target="_blank" style="color: var(--primary); text-decoration: none;"><i class="fas fa-external-link-alt"></i> View Paper</a>
+                    <a href="https://cas.iitd.ac.in/iasta2018/pdf/E-Proceedings_IASTA-2018.pdf" target="_blank" rel="noopener" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> View Paper
+                    </a>
                     
                 </div>
             </div>
@@ -520,61 +737,91 @@
 </section>
 
 
-<!-- CTA -->
+
+<!-- ══ CTA ══════════════════════════════════════════ -->
 <section style="background: white; text-align: center;">
     <div class="container">
-        <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Research Collaboration</h2>
-        <p style="font-size: 1.1rem; color: var(--text-light); max-width: 700px; margin: 0 auto 2rem;">Interested in collaborating on research or citing my work?</p>
-        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-            <a href="https://scholar.google.com/citations?user=0p-FbaoAAAAJ&amp;hl=en" target="_blank" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-            <a href="https://www.researchgate.net/profile/Animesh-Choudhury" target="_blank" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);"><i class="fab fa-researchgate"></i> ResearchGate</a>
-            <a href="../contact/index.html" class="btn btn-primary">Contact Me</a>
+        <div class="reveal">
+            <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--primary); margin-bottom: 1rem; font-weight: 900;">
+                Research Collaboration
+            </h2>
+            <p style="font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.75;">
+                Interested in collaborating on research or exploring citation opportunities?
+            </p>
+            <div class="cta-buttons-centered">
+                <a href="https://scholar.google.com/citations?user=0p-FbaoAAAAJ&amp;hl=en" target="_blank" rel="noopener"
+                   class="btn btn-outline-dark">
+                    <i class="fas fa-graduation-cap"></i> Google Scholar
+                </a>
+                <a href="https://www.researchgate.net/profile/Animesh-Choudhury" target="_blank" rel="noopener"
+                   class="btn btn-outline-dark">
+                    <i class="fab fa-researchgate"></i> ResearchGate
+                </a>
+                <a href="../contact/index.html" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
         </div>
     </div>
 </section>
+
 
     </main>
 
-    <!-- Footer -->
+    <!-- ── Footer ──────────────────────────────── -->
     <footer>
         <div class="container">
-            <div class="footer-social">
-                <a href="https://www.linkedin.com/in/animeshchoudhury/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/AnimeshChoudhury" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://scholar.google.com/citations?user=0p-FbaoAAAAJ&amp;hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://www.researchgate.net/profile/Animesh-Choudhury" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-                <a href="mailto:animesh.buddha@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://wa.me/919046567045" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" >A<span style="color:var(--accent);">C</span></a>
+                    <p class="footer-tagline">Remote Sensing Researcher — Earth Observation &amp; Geospatial Intelligence</p>
+                </div>
+
+                <div class="footer-social" aria-label="Social links">
+                    <a href="https://www.linkedin.com/in/animeshchoudhury/"    target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/AnimeshChoudhury"      target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=0p-FbaoAAAAJ&amp;hl=en"     target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://www.researchgate.net/profile/Animesh-Choudhury" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                    <a href="mailto:animesh.buddha@gmail.com"       title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/919046567045" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
-            <div class="footer-text">
-                © 2026 Animesh Choudhury. Built with passion for Earth observation.
+
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Animesh Choudhury. All rights reserved.</span>
+                <span class="footer-built">Built with Flask · Hosted on GitHub Pages</span>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <!-- ── Scripts ─────────────────────────────── -->
+    <script src="../static/js/main.js"></script>
+    <script>
+        /* ── Mobile nav toggle ── */
         function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+            const navLinks   = document.getElementById('navLinks');
+            const toggleBtn  = document.getElementById('menuToggleBtn');
+            const isOpen     = navLinks.classList.toggle('active');
+            toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const navLinks = document.getElementById('navLinks');
-            const menuToggle = document.querySelector('.menu-toggle');
-            
-            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+
+        /* Click-outside closes menu */
+        document.addEventListener('click', function(e) {
+            const navLinks  = document.getElementById('navLinks');
+            const menuBtn   = document.getElementById('menuToggleBtn');
+            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
                 navLinks.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
             }
         });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 's
+
+        /* ── Scroll-shrink nav ── */
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    </script>
+
+    
+</body>
+</html>

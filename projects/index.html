@@ -3,679 +3,770 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Animesh Choudhury - Transforming Earth Observation Data into Actionable Insights. Remote Sensing Researcher specializing in Earth Observation, Machine Learning, and Climate Science.">
+    <meta name="description" content="Animesh Choudhury — Transforming Earth Observation Data into Actionable Insights. Remote Sensing Researcher specializing in Earth Observation, Machine Learning, and Climate Science.">
     <meta name="keywords" content="Remote Sensing, GIS, Machine Learning, Earth Observation, Climate Science, Drought Monitoring, Animesh Choudhury">
     <meta name="author" content="Animesh Choudhury">
-    
-    <!-- Open Graph / Social Media -->
+
+    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Animesh Choudhury - Remote Sensing Researcher">
+    <meta property="og:title" content="Animesh Choudhury — Remote Sensing Researcher">
     <meta property="og:description" content="Transforming Earth Observation Data into Actionable Insights">
-    
-    <title>Projects - Animesh Choudhury</title>
-    
-    <!-- Fonts - Bold, distinctive choices -->
+
+    <title>Projects — Animesh Choudhury</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="../static/css/main.css">
     
-    
+
     <style>
+        /* ════════════════════════════════════════
+           DESIGN TOKENS
+        ════════════════════════════════════════ */
         :root {
-            /* Creative color scheme - Deep ocean meets earth tones */
-            --primary: #0a4d68;        /* Deep ocean blue */
-            --primary-light: #088395;   /* Teal */
-            --accent: #e8630a;          /* Bold orange */
-            --accent-light: #ff8c42;    /* Light orange */
-            --dark: #1a1a2e;            /* Almost black */
-            --mid-dark: #2d3250;        /* Dark slate */
-            --light: #f7f9fb;           /* Off white */
-            --text: #2d3250;            /* Text color */
-            --text-light: #6b7280;      /* Light text */
-            
-            /* Gradients */
-            --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent) 100%);
-            --gradient-card: linear-gradient(145deg, rgba(8, 131, 149, 0.05) 0%, rgba(232, 99, 10, 0.05) 100%);
-            
-            /* Fonts */
-            --font-display: 'Playfair Display', serif;
-            --font-mono: 'Space Mono', monospace;
-            --font-body: 'Work Sans', sans-serif;
-            
-            /* Spacing */
-            --section-padding: 120px;
-            --container-width: 1200px;
+            /* ── Palette ── */
+            --primary:        #0b4f6c;   /* deep ocean */
+            --primary-light:  #1a7a99;   /* teal */
+            --accent:         #e05d07;   /* bold amber-orange */
+            --accent-dark:    #c24f00;
+            --dark:           #111827;
+            --bg:             #f5f7fa;
+            --bg-input:       #fafbfc;
+            --text:           #1e293b;
+            --text-muted:     #64748b;
+
+            /* ── Gradients ── */
+            --gradient-hero: linear-gradient(
+                150deg,
+                #0b3d55 0%,
+                #0b4f6c 30%,
+                #1a7a99 65%,
+                #c24f00 100%
+            );
+            --gradient-card: linear-gradient(
+                145deg,
+                rgba(26, 122, 153, 0.06) 0%,
+                rgba(224, 93, 7, 0.05) 100%
+            );
+
+            /* ── Typography ── */
+            --font-display: 'Syne', sans-serif;
+            --font-mono:    'Space Mono', monospace;
+            --font-body:    'Inter', sans-serif;
+
+            /* ── Spacing ── */
+            --section-padding:  100px;
+            --container-width:  1200px;
+
+            /* ── Transitions ── */
+            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        
-        * {
+
+        /* ════════════════════════════════════════
+           RESET & BASE
+        ════════════════════════════════════════ */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: var(--font-body);
             color: var(--text);
-            background: var(--light);
-            line-height: 1.6;
+            background: var(--bg);
+            line-height: 1.65;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        /* Animated grain texture overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        
-        /* Container */
+
+        img { display: block; }
+
+        /* ════════════════════════════════════════
+           CONTAINER
+        ════════════════════════════════════════ */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
-        /* Navigation - Fixed & Bold */
+
+        /* ════════════════════════════════════════
+           NAVIGATION
+        ════════════════════════════════════════ */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1.5rem 0;
-            border-bottom: 2px solid var(--primary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(11, 79, 108, 0.12);
+            box-shadow: 0 1px 20px rgba(0,0,0,0.04);
+            padding: 0;
+            transition: padding 0.3s var(--ease-out),
+                        box-shadow 0.3s ease,
+                        background 0.3s ease;
         }
-        
+
+        nav.scrolled {
+            background: rgba(255,255,255,0.97);
+            box-shadow: 0 4px 28px rgba(0,0,0,0.09);
+        }
+
         nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 72px;
+            transition: height 0.3s var(--ease-out);
         }
-        
+
+        nav.scrolled .container {
+            height: 60px;
+        }
+
+        /* Logo */
         .logo {
             font-family: var(--font-display);
-            font-size: 1.8rem;
+            font-size: 1.55rem;
             font-weight: 900;
             color: var(--primary);
             text-decoration: none;
-            letter-spacing: -0.02em;
-            transition: all 0.3s ease;
+            letter-spacing: -0.03em;
+            transition: color 0.22s;
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
         }
-        
-        .logo:hover {
+
+        .logo span {
             color: var(--accent);
-            transform: translateY(-2px);
         }
-        
+
+        .logo:hover { color: var(--primary-light); }
+
+        /* Nav links */
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
             align-items: center;
         }
-        
+
         .nav-links a {
             font-family: var(--font-mono);
-            font-size: 0.9rem;
+            font-size: 0.78rem;
             font-weight: 700;
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             position: relative;
-            transition: color 0.3s ease;
+            padding-bottom: 3px;
+            transition: color 0.22s;
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 3px;
+            height: 2px;
             background: var(--accent);
-            transition: width 0.3s ease;
+            border-radius: 1px;
+            transition: width 0.28s var(--ease-out);
         }
-        
-        .nav-links a:hover {
-            color: var(--accent);
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
         }
-        
+
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
         }
-        
-        .nav-links a.active {
-            color: var(--primary);
+
+        /* CV Button */
+        .nav-cv-btn {
+            font-family: var(--font-mono) !important;
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+            background: var(--accent) !important;
+            color: white !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            transition: background 0.22s, transform 0.22s, box-shadow 0.22s !important;
+            box-shadow: 0 2px 10px rgba(224,93,7,0.25);
         }
-        
-        /* Mobile menu toggle */
+
+        .nav-cv-btn:hover {
+            background: var(--accent-dark) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(224,93,7,0.35) !important;
+        }
+
+        .nav-cv-btn::after { display: none !important; }
+
+        /* Mobile toggle */
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            gap: 6px;
+            gap: 5px;
+            padding: 4px;
         }
-        
+
         .menu-toggle span {
-            width: 30px;
-            height: 3px;
+            display: block;
+            width: 26px;
+            height: 2px;
             background: var(--primary);
-            transition: all 0.3s ease;
+            border-radius: 1px;
+            transition: all 0.28s ease;
         }
-        
-        /* Main content spacing */
+
+        /* ════════════════════════════════════════
+           MAIN CONTENT
+        ════════════════════════════════════════ */
         main {
-            padding-top: 80px;
+            padding-top: 72px;
             min-height: 100vh;
         }
-        
-        /* Footer */
+
+        /* ════════════════════════════════════════
+           FOOTER
+        ════════════════════════════════════════ */
         footer {
             background: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 6rem;
+            color: rgba(255,255,255,0.8);
+            padding: 4rem 0 2.5rem;
+            margin-top: 0;
         }
-        
-        footer .container {
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-brand .logo:hover { color: rgba(255,255,255,0.75); }
+
+        .footer-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 0.04em;
+            max-width: 260px;
+            line-height: 1.6;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.22s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 14px rgba(224,93,7,0.35);
+        }
+
+        .footer-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1rem;
         }
-        
-        .footer-social {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .footer-social a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .footer-text {
+
+        .footer-copy {
             font-family: var(--font-mono);
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 0.03em;
         }
-        
-        /* Responsive */
+
+        .footer-built {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.28);
+        }
+
+        /* ════════════════════════════════════════
+           RESPONSIVE — MOBILE NAV
+        ════════════════════════════════════════ */
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 72px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 80px);
-                background: rgba(255, 255, 255, 0.98);
+                height: calc(100vh - 72px);
+                background: rgba(255,255,255,0.99);
                 flex-direction: column;
                 justify-content: center;
-                transition: left 0.3s ease;
+                gap: 2rem;
+                transition: left 0.3s var(--ease-out);
                 padding: 2rem;
+                box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05);
             }
-            
-            .nav-links.active {
-                left: 0;
+
+            .nav-links.active { left: 0; }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                letter-spacing: 0.06em;
             }
-            
-            .menu-toggle {
-                display: flex;
+
+            .menu-toggle { display: flex; }
+
+            .footer-top {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            
-            footer .container {
+
+            .footer-bottom {
                 flex-direction: column;
                 text-align: center;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
+
+    <!-- ── Navigation ──────────────────────────── -->
+    <nav id="mainNav">
         <div class="container">
-            <a href="../index.html" class="logo">AC</a>
-            <div class="menu-toggle" onclick="toggleMenu()">
+            <a href="../index.html" class="logo" aria-label="Animesh Choudhury Home">
+                A<span>C</span>
+            </a>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" id="menuToggleBtn">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="../index.html" class="">Home</a></li>
-                <li><a href="../about/index.html" class="">About</a></li>
-                <li><a href="index.html" class="active">Projects</a></li>
+            </button>
+
+            <ul class="nav-links" id="navLinks" role="navigation">
+                <li><a href="../index.html"        class="">Home</a></li>
+                <li><a href="../about/index.html"        class="">About</a></li>
+                <li><a href="index.html"     class="active">Projects</a></li>
                 <li><a href="../publications/index.html" class="">Publications</a></li>
-                <li><a href="../contact/index.html" class="">Contact</a></li>
-                <li><a href="../static/files/Animesh_Choudhury_CV.pdf" download="Animesh_Choudhury_CV.pdf" style="background: var(--accent); color: white; padding: 0.5rem 1.5rem; border-radius: 50px;">CV</a></li>
+                <li><a href="../contact/index.html"      class="">Contact</a></li>
+                <li>
+                    <a href="../static/files/Animesh_Choudhury_CV.pdf"
+                       download="Animesh_Choudhury_CV.pdf"
+                       class="nav-cv-btn">
+                        <i class="fas fa-download" style="font-size:0.7rem; margin-right:0.35rem;"></i>CV
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- ── Main Content ────────────────────────── -->
     <main>
         
-<!-- Page Header -->
-<section style="background: var(--gradient-hero); color: white; padding: 6rem 0 4rem;">
-    <div class="container">
-        <h1 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem;">Research Projects</h1>
-        <p style="font-family: var(--font-mono); font-size: 1.2rem; opacity: 0.9;">Exploring Earth systems through data science and remote sensing</p>
+
+<!-- ══ PAGE HEADER ══════════════════════════════════ -->
+<section class="page-header">
+    <div class="container page-header-content">
+        <h1>Research Projects</h1>
+        <p>Exploring Earth systems through data science, remote sensing, and geospatial intelligence</p>
     </div>
 </section>
 
-<!-- Projects Grid -->
+
+<!-- ══ PROJECTS GRID ════════════════════════════════ -->
 <section style="background: white;">
     <div class="container">
+
         <!-- Category Filter -->
-        <div style="margin-bottom: 3rem; text-align: center;">
-            <div style="display: inline-flex; gap: 1rem; flex-wrap: wrap; background: var(--light); padding: 0.5rem; border-radius: 50px;">
-                <button class="filter-btn active" onclick="filterProjects('all')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: var(--primary); color: white; font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+        <div class="filter-bar reveal">
+            <div class="filter-pills" role="group" aria-label="Project category filter">
+                <button class="filter-btn active" onclick="filterProjects('all')" id="filter-all">
                     All Projects
                 </button>
                 
-                <button class="filter-btn" onclick="filterProjects('Agricultural Monitoring')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: transparent; color: var(--text); font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+                <button class="filter-btn" onclick="filterProjects('Agricultural Monitoring')" id="filter-1">
                     Agricultural Monitoring
                 </button>
                 
-                <button class="filter-btn" onclick="filterProjects('Air Quality Monitoring')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: transparent; color: var(--text); font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+                <button class="filter-btn" onclick="filterProjects('Air Quality Monitoring')" id="filter-2">
                     Air Quality Monitoring
                 </button>
                 
-                <button class="filter-btn" onclick="filterProjects('Forest Ecology')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: transparent; color: var(--text); font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+                <button class="filter-btn" onclick="filterProjects('Forest Ecology')" id="filter-3">
                     Forest Ecology
                 </button>
                 
-                <button class="filter-btn" onclick="filterProjects('Snow Hydrology')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: transparent; color: var(--text); font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+                <button class="filter-btn" onclick="filterProjects('Snow Hydrology')" id="filter-4">
                     Snow Hydrology
                 </button>
                 
-                <button class="filter-btn" onclick="filterProjects('Weather Modeling')" style="padding: 0.75rem 1.5rem; border-radius: 50px; border: none; background: transparent; color: var(--text); font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+                <button class="filter-btn" onclick="filterProjects('Weather Modeling')" id="filter-5">
                     Weather Modeling
                 </button>
                 
             </div>
         </div>
 
-        <!-- Projects Grid -->
-        <div id="projectsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem;">
+        <!-- Grid -->
+        <div id="projectsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 2rem;">
             
-            <article class="project-card" data-category="Snow Hydrology" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; height: 100%; display: flex; flex-direction: column;">
-                <!-- Project Image/Icon -->
-                <div style="height: 200px; background: var(--gradient-ocean); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                    <div style="font-size: 4rem; opacity: 0.2;">🛰️</div>
-                    <div style="position: absolute; top: 1rem; right: 1rem;">
-                        <span style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-family: var(--font-mono); font-size: 0.8rem;">Snow Hydrology</span>
-                    </div>
+            <article class="project-card reveal reveal-delay-1"
+                     data-category="Snow Hydrology">
+
+                <!-- Header -->
+                <div class="project-card-header">
+                    <span style="opacity: 0.25; font-size: 3.2rem;">
+                        ❄️
+                        
+                    </span>
+                    <span class="project-category-badge">Snow Hydrology</span>
                 </div>
-                
-                <!-- Project Content -->
-                <div style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">
-                        <a href="../project/project-1/index.html" style="color: inherit; text-decoration: none;">
-                            HimalSnow: AI-Powered Snow Cover Monitoring System
-                        </a>
-                    </h3>
-                    
-                    <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 1rem;">Real-time Snow Cover Analysis for Northwest Himalaya</p>
-                    
-                    <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">Developed an automated system for monitoring snow cover dynamics in the Northwest Himalayan region using multi-sensor satellite data. The system processes MODIS, Sentinel-2, and Landsat imagery to provide near real-time snow cover area mapping and trend analysis.</p>
-                    
-                    <!-- Tech Tags -->
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+
+                <!-- Body -->
+                <div class="project-card-body">
+                    <a href="../project/project-1/index.html"
+                       class="project-card-title">HimalSnow: AI-Powered Snow Cover Monitoring System</a>
+                    <div class="project-card-subtitle">Real-time Snow Cover Analysis for Northwest Himalaya</div>
+                    <p class="project-card-desc">Developed an automated system for monitoring snow cover dynamics in the Northwest Himalayan region using multi-sensor satellite data. The system processes MODIS, Sentinel-2, and Landsat imagery to provide near real-time snow cover area mapping and trend analysis.</p>
+
+                    <div class="project-tech-tags">
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">Google Earth Engine</span>
+                        <span class="project-tech-tag">Google Earth Engine</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">Python</span>
+                        <span class="project-tech-tag">Python</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">MODIS</span>
+                        <span class="project-tech-tag">MODIS</span>
                         
                     </div>
-                    
-                    <!-- View Details Button -->
-                    <a href="../project/project-1/index.html" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; text-align: center; font-family: var(--font-mono); transition: all 0.3s; display: inline-block;">
-                        View Details →
+
+                    <a href="../project/project-1/index.html"
+                       class="project-card-link">
+                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
                     </a>
                 </div>
+
             </article>
             
-            <article class="project-card" data-category="Agricultural Monitoring" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; height: 100%; display: flex; flex-direction: column;">
-                <!-- Project Image/Icon -->
-                <div style="height: 200px; background: var(--gradient-ocean); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                    <div style="font-size: 4rem; opacity: 0.2;">🛰️</div>
-                    <div style="position: absolute; top: 1rem; right: 1rem;">
-                        <span style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-family: var(--font-mono); font-size: 0.8rem;">Agricultural Monitoring</span>
-                    </div>
+            <article class="project-card reveal reveal-delay-2"
+                     data-category="Agricultural Monitoring">
+
+                <!-- Header -->
+                <div class="project-card-header">
+                    <span style="opacity: 0.25; font-size: 3.2rem;">
+                        🌾
+                        
+                    </span>
+                    <span class="project-category-badge">Agricultural Monitoring</span>
                 </div>
-                
-                <!-- Project Content -->
-                <div style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">
-                        <a href="../project/project-2/index.html" style="color: inherit; text-decoration: none;">
-                            DroughtWatch India: ML-Based Drought Forecasting Platform
-                        </a>
-                    </h3>
-                    
-                    <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 1rem;">Sub-seasonal to Seasonal Agricultural Drought Prediction</p>
-                    
-                    <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">Built a machine learning framework for predicting agricultural droughts across India using 30+ years of satellite data, meteorological records, and soil moisture indices. The system provides early warnings up to 3 months in advance.</p>
-                    
-                    <!-- Tech Tags -->
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+
+                <!-- Body -->
+                <div class="project-card-body">
+                    <a href="../project/project-2/index.html"
+                       class="project-card-title">DroughtWatch India: ML-Based Drought Forecasting Platform</a>
+                    <div class="project-card-subtitle">Sub-seasonal to Seasonal Agricultural Drought Prediction</div>
+                    <p class="project-card-desc">Built a machine learning framework for predicting agricultural droughts across India using 30+ years of satellite data, meteorological records, and soil moisture indices. The system provides early warnings up to 3 months in advance.</p>
+
+                    <div class="project-tech-tags">
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">Python</span>
+                        <span class="project-tech-tag">Python</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">TensorFlow</span>
+                        <span class="project-tech-tag">TensorFlow</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">Scikit-learn</span>
+                        <span class="project-tech-tag">Scikit-learn</span>
                         
                     </div>
-                    
-                    <!-- View Details Button -->
-                    <a href="../project/project-2/index.html" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; text-align: center; font-family: var(--font-mono); transition: all 0.3s; display: inline-block;">
-                        View Details →
+
+                    <a href="../project/project-2/index.html"
+                       class="project-card-link">
+                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
                     </a>
                 </div>
+
             </article>
             
-            <article class="project-card" data-category="Air Quality Monitoring" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; height: 100%; display: flex; flex-direction: column;">
-                <!-- Project Image/Icon -->
-                <div style="height: 200px; background: var(--gradient-ocean); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                    <div style="font-size: 4rem; opacity: 0.2;">🛰️</div>
-                    <div style="position: absolute; top: 1rem; right: 1rem;">
-                        <span style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-family: var(--font-mono); font-size: 0.8rem;">Air Quality Monitoring</span>
-                    </div>
+            <article class="project-card reveal reveal-delay-3"
+                     data-category="Air Quality Monitoring">
+
+                <!-- Header -->
+                <div class="project-card-header">
+                    <span style="opacity: 0.25; font-size: 3.2rem;">
+                        🌪️
+                        
+                    </span>
+                    <span class="project-category-badge">Air Quality Monitoring</span>
                 </div>
-                
-                <!-- Project Content -->
-                <div style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">
-                        <a href="../project/project-3/index.html" style="color: inherit; text-decoration: none;">
-                            AirSense: Multi-Pollutant Tracking System
-                        </a>
-                    </h3>
-                    
-                    <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 1rem;">3D Visualization of Air Quality over Indo-Gangetic Plain</p>
-                    
-                    <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">Developed an integrated system for tracking and visualizing horizontal and vertical distribution of air pollutants (PM2.5, NO2, CO, SO2) over the Indo-Gangetic Plain using ground sensors and CALIPSO LIDAR satellite data.</p>
-                    
-                    <!-- Tech Tags -->
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+
+                <!-- Body -->
+                <div class="project-card-body">
+                    <a href="../project/project-3/index.html"
+                       class="project-card-title">AirSense: Multi-Pollutant Tracking System</a>
+                    <div class="project-card-subtitle">3D Visualization of Air Quality over Indo-Gangetic Plain</div>
+                    <p class="project-card-desc">Developed an integrated system for tracking and visualizing horizontal and vertical distribution of air pollutants (PM2.5, NO2, CO, SO2) over the Indo-Gangetic Plain using ground sensors and CALIPSO LIDAR satellite data.</p>
+
+                    <div class="project-tech-tags">
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">Python</span>
+                        <span class="project-tech-tag">Python</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">CALIPSO LIDAR</span>
+                        <span class="project-tech-tag">CALIPSO LIDAR</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">Ground Sensors</span>
+                        <span class="project-tech-tag">Ground Sensors</span>
                         
                     </div>
-                    
-                    <!-- View Details Button -->
-                    <a href="../project/project-3/index.html" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; text-align: center; font-family: var(--font-mono); transition: all 0.3s; display: inline-block;">
-                        View Details →
+
+                    <a href="../project/project-3/index.html"
+                       class="project-card-link">
+                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
                     </a>
                 </div>
+
             </article>
             
-            <article class="project-card" data-category="Forest Ecology" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; height: 100%; display: flex; flex-direction: column;">
-                <!-- Project Image/Icon -->
-                <div style="height: 200px; background: var(--gradient-ocean); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                    <div style="font-size: 4rem; opacity: 0.2;">🛰️</div>
-                    <div style="position: absolute; top: 1rem; right: 1rem;">
-                        <span style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-family: var(--font-mono); font-size: 0.8rem;">Forest Ecology</span>
-                    </div>
+            <article class="project-card reveal reveal-delay-4"
+                     data-category="Forest Ecology">
+
+                <!-- Header -->
+                <div class="project-card-header">
+                    <span style="opacity: 0.25; font-size: 3.2rem;">
+                        🌲
+                        
+                    </span>
+                    <span class="project-category-badge">Forest Ecology</span>
                 </div>
-                
-                <!-- Project Content -->
-                <div style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">
-                        <a href="../project/project-4/index.html" style="color: inherit; text-decoration: none;">
-                            ForestSpec: Hyperspectral Tree Species Classifier
-                        </a>
-                    </h3>
-                    
-                    <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 1rem;">Deep Learning for Himalayan Forest Mapping</p>
-                    
-                    <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">Created a comprehensive spectral library and deep learning classifier for identifying Himalayan forest tree species using hyperspectral imagery and field spectroradiometer data.</p>
-                    
-                    <!-- Tech Tags -->
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+
+                <!-- Body -->
+                <div class="project-card-body">
+                    <a href="../project/project-4/index.html"
+                       class="project-card-title">ForestSpec: Hyperspectral Tree Species Classifier</a>
+                    <div class="project-card-subtitle">Deep Learning for Himalayan Forest Mapping</div>
+                    <p class="project-card-desc">Created a comprehensive spectral library and deep learning classifier for identifying Himalayan forest tree species using hyperspectral imagery and field spectroradiometer data.</p>
+
+                    <div class="project-tech-tags">
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">Python</span>
+                        <span class="project-tech-tag">Python</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">TensorFlow</span>
+                        <span class="project-tech-tag">TensorFlow</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">Hyperspectral Imaging</span>
+                        <span class="project-tech-tag">Hyperspectral Imaging</span>
                         
                     </div>
-                    
-                    <!-- View Details Button -->
-                    <a href="../project/project-4/index.html" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; text-align: center; font-family: var(--font-mono); transition: all 0.3s; display: inline-block;">
-                        View Details →
+
+                    <a href="../project/project-4/index.html"
+                       class="project-card-link">
+                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
                     </a>
                 </div>
+
             </article>
             
-            <article class="project-card" data-category="Weather Modeling" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s; height: 100%; display: flex; flex-direction: column;">
-                <!-- Project Image/Icon -->
-                <div style="height: 200px; background: var(--gradient-ocean); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                    <div style="font-size: 4rem; opacity: 0.2;">🛰️</div>
-                    <div style="position: absolute; top: 1rem; right: 1rem;">
-                        <span style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-family: var(--font-mono); font-size: 0.8rem;">Weather Modeling</span>
-                    </div>
+            <article class="project-card reveal reveal-delay-5"
+                     data-category="Weather Modeling">
+
+                <!-- Header -->
+                <div class="project-card-header">
+                    <span style="opacity: 0.25; font-size: 3.2rem;">
+                        🛰️
+                        
+                    </span>
+                    <span class="project-category-badge">Weather Modeling</span>
                 </div>
-                
-                <!-- Project Content -->
-                <div style="padding: 2rem; flex: 1; display: flex; flex-direction: column;">
-                    <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">
-                        <a href="../project/project-5/index.html" style="color: inherit; text-decoration: none;">
-                            ThunderTrack: Urban Thunderstorm Prediction System
-                        </a>
-                    </h3>
-                    
-                    <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); margin-bottom: 1rem;">High-Resolution Mesoscale Modeling for Indian Cities</p>
-                    
-                    <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem; flex: 1;">Developing a high-resolution weather prediction system for forecasting thunderstorms over major Indian cities using WRF model and analyzing land-atmosphere interactions during extreme weather events.</p>
-                    
-                    <!-- Tech Tags -->
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+
+                <!-- Body -->
+                <div class="project-card-body">
+                    <a href="../project/project-5/index.html"
+                       class="project-card-title">ThunderTrack: Urban Thunderstorm Prediction System</a>
+                    <div class="project-card-subtitle">High-Resolution Mesoscale Modeling for Indian Cities</div>
+                    <p class="project-card-desc">Developing a high-resolution weather prediction system for forecasting thunderstorms over major Indian cities using WRF model and analyzing land-atmosphere interactions during extreme weather events.</p>
+
+                    <div class="project-tech-tags">
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">WRF-CHEM</span>
+                        <span class="project-tech-tag">WRF-CHEM</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">Python</span>
+                        <span class="project-tech-tag">Python</span>
                         
-                        <span style="background: var(--light); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-family: var(--font-mono);">NCL</span>
+                        <span class="project-tech-tag">NCL</span>
                         
                     </div>
-                    
-                    <!-- View Details Button -->
-                    <a href="../project/project-5/index.html" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; text-align: center; font-family: var(--font-mono); transition: all 0.3s; display: inline-block;">
-                        View Details →
+
+                    <a href="../project/project-5/index.html"
+                       class="project-card-link">
+                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
                     </a>
                 </div>
+
             </article>
             
         </div>
 
-        <!-- No Results Message -->
-        <div id="noResults" style="display: none; text-align: center; padding: 4rem 0;">
-            <p style="font-size: 1.2rem; color: var(--text); opacity: 0.6; margin-bottom: 1rem;">No projects found in this category.</p>
-            <button onclick="filterProjects('all')" style="background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; border: none; cursor: pointer; font-family: var(--font-mono);">View All Projects</button>
+        <!-- No Results -->
+        <div id="noResults" style="display: none; text-align: center; padding: 5rem 0;">
+            <i class="fas fa-satellite" style="font-size: 3rem; color: var(--text-muted); opacity: 0.4; margin-bottom: 1rem; display:block;"></i>
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                No projects found in this category.
+            </p>
+            <button onclick="filterProjects('all')"
+                    style="background: var(--primary); color: white; padding: 0.75rem 1.75rem; border-radius: 6px; border: none; cursor: pointer; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; transition: background 0.2s;">
+                View All Projects
+            </button>
         </div>
+
     </div>
 </section>
 
-<!-- JavaScript for Client-Side Filtering -->
+
+<!-- ══ FILTER JS ═════════════════════════════════════ -->
 <script>
 function filterProjects(category) {
-    const projectCards = document.querySelectorAll('.project-card');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const noResults = document.getElementById('noResults');
+    const cards        = document.querySelectorAll('.project-card');
+    const buttons      = document.querySelectorAll('.filter-btn');
+    const noResults    = document.getElementById('noResults');
     const projectsGrid = document.getElementById('projectsGrid');
-    
-    // Update active button
-    filterButtons.forEach(btn => {
-        btn.style.background = 'transparent';
-        btn.style.color = 'var(--text)';
-        btn.classList.remove('active');
+
+    /* Update button states */
+    buttons.forEach(btn => btn.classList.remove('active'));
+    buttons.forEach(btn => {
+        const isAll     = (category === 'all' && btn.textContent.trim() === 'All Projects');
+        const isMatch   = btn.textContent.trim() === category;
+        if (isAll || isMatch) btn.classList.add('active');
     });
-    
-    // Find and activate clicked button
-    filterButtons.forEach(btn => {
-        if (btn.textContent.trim() === category || 
-            (category === 'all' && btn.textContent.includes('All Projects'))) {
-            btn.style.background = 'var(--primary)';
-            btn.style.color = 'white';
-            btn.classList.add('active');
-        }
-    });
-    
-    // Filter projects
-    let visibleCount = 0;
-    projectCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        
-        if (category === 'all' || cardCategory === category) {
-            card.style.display = 'flex';
-            // Fade in animation
+
+    /* Filter cards */
+    let visible = 0;
+    cards.forEach(card => {
+        const show = (category === 'all' || card.dataset.category === category);
+        card.style.display = show ? 'flex' : 'none';
+        if (show) {
             card.style.opacity = '0';
-            setTimeout(() => {
-                card.style.opacity = '1';
-            }, 10);
-            visibleCount++;
-        } else {
-            card.style.display = 'none';
+            setTimeout(() => { card.style.opacity = '1'; }, 20);
+            visible++;
         }
     });
-    
-    // Show/hide no results message
-    if (visibleCount === 0) {
-        projectsGrid.style.display = 'none';
-        noResults.style.display = 'block';
-    } else {
-        projectsGrid.style.display = 'grid';
-        noResults.style.display = 'none';
-    }
-    
-    // Update URL hash (optional - for bookmarking)
-    if (category !== 'all') {
-        window.location.hash = category.toLowerCase().replace(/\s+/g, '-');
-    } else {
-        window.location.hash = '';
-    }
+
+    noResults.style.display    = visible ? 'none' : 'block';
+    projectsGrid.style.display = visible ? 'grid' : 'none';
+
+    /* Update URL hash */
+    history.replaceState(null, '', category !== 'all' ? '#' + category.toLowerCase().replace(/\s+/g, '-') : location.pathname);
 }
 
-// Load filter from URL hash on page load
-window.addEventListener('DOMContentLoaded', function() {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-        // Convert hash back to category name
-        const category = hash.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        
-        // Find matching category
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        let found = false;
-        filterButtons.forEach(btn => {
-            if (btn.textContent.trim().toLowerCase() === category.toLowerCase()) {
-                filterProjects(btn.textContent.trim());
-                found = true;
-            }
-        });
-        
-        if (!found) {
-            filterProjects('all');
-        }
-    }
+/* Restore filter from URL hash */
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = location.hash.slice(1);
+    if (!hash) return;
+    const category = hash.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const match = [...document.querySelectorAll('.filter-btn')].find(
+        b => b.textContent.trim().toLowerCase() === category.toLowerCase()
+    );
+    if (match) filterProjects(match.textContent.trim());
 });
 </script>
-
-<!-- Add hover effects and transitions -->
-<style>
-.project-card {
-    opacity: 1;
-    transition: all 0.3s ease, opacity 0.5s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-}
-
-.filter-btn:hover {
-    transform: translateY(-2px);
-}
-
-.filter-btn:not(.active):hover {
-    background: rgba(10, 77, 104, 0.1) !important;
-}
-</style>
 
 
     </main>
 
-    <!-- Footer -->
+    <!-- ── Footer ──────────────────────────────── -->
     <footer>
         <div class="container">
-            <div class="footer-social">
-                <a href="https://www.linkedin.com/in/animeshchoudhury/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/AnimeshChoudhury" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://scholar.google.com/citations?user=0p-FbaoAAAAJ&amp;hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://www.researchgate.net/profile/Animesh-Choudhury" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-                <a href="mailto:animesh.buddha@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://wa.me/919046567045" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo" >A<span style="color:var(--accent);">C</span></a>
+                    <p class="footer-tagline">Remote Sensing Researcher — Earth Observation &amp; Geospatial Intelligence</p>
+                </div>
+
+                <div class="footer-social" aria-label="Social links">
+                    <a href="https://www.linkedin.com/in/animeshchoudhury/"    target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/AnimeshChoudhury"      target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=0p-FbaoAAAAJ&amp;hl=en"     target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://www.researchgate.net/profile/Animesh-Choudhury" target="_blank" rel="noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                    <a href="mailto:animesh.buddha@gmail.com"       title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/919046567045" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
-            <div class="footer-text">
-                © 2026 Animesh Choudhury. Built with passion for Earth observation.
+
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Animesh Choudhury. All rights reserved.</span>
+                <span class="footer-built">Built with Flask · Hosted on GitHub Pages</span>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <!-- ── Scripts ─────────────────────────────── -->
+    <script src="../static/js/main.js"></script>
+    <script>
+        /* ── Mobile nav toggle ── */
         function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+            const navLinks   = document.getElementById('navLinks');
+            const toggleBtn  = document.getElementById('menuToggleBtn');
+            const isOpen     = navLinks.classList.toggle('active');
+            toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         }
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const navLinks = document.getElementById('navLinks');
-            const menuToggle = document.querySelector('.menu-toggle');
-            
-            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+
+        /* Click-outside closes menu */
+        document.addEventListener('click', function(e) {
+            const navLinks  = document.getElementById('navLinks');
+            const menuBtn   = document.getElementById('menuToggleBtn');
+            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
                 navLinks.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
             }
         });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 's
+
+        /* ── Scroll-shrink nav ── */
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    </script>
+
+    
+</body>
+</html>
