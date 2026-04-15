@@ -118,7 +118,7 @@
       "citations": 0,
       "type": "book_chapter",
       "doi": "https://doi.org/10.1201/9781003562986-8"
-    },    
+    },
     {
       "title": "A long-term analysis of pre-monsoon thunderstorm characteristic features over major urban areas of India",
       "authors": "Roy, D., Panda, J., Mukherjee, A., Choudhury, A., & Panda, S. K.",
@@ -142,7 +142,7 @@
       "authors": "Choudhury, A., Panda, J., & Mukherjee, A.",
       "venue": "In Preparation",
       "year": 2024,
-      "citations": 5,
+      "citations": 6,
       "type": "journal",
       "doi": "https://arxiv.org/abs/2405.07534"
     },
@@ -153,7 +153,7 @@
       "year": 2024,
       "volume": "57",
       "pages": "102123",
-      "citations": 5,
+      "citations": 8,
       "type": "journal",
       "doi": "https://doi.org/10.1016/j.uclim.2024.102123"
     },
@@ -164,7 +164,7 @@
       "year": 2024,
       "volume": "8",
       "pages": "599–625",
-      "citations": 13,
+      "citations": 17,
       "type": "journal",
       "doi": "https://doi.org/10.1007/s41748-024-00396-y"
     },
@@ -184,7 +184,7 @@
       "authors": "Panda, J., Mukherjee, A., Choudhury, A., Biswas, S.",
       "venue": "Climate Crisis: Adaptive Approaches and Sustainability. Sustainable Development Goals Series. Springer, Cham",
       "year": 2023,
-      "citations": 8,
+      "citations": 11,
       "type": "book_chapter",
       "doi": "https://doi.org/10.1007/978-3-031-28728-2"
     },
@@ -204,7 +204,7 @@
       "year": 2021,
       "volume": "296",
       "pages": "113056",
-      "citations": 42,
+      "citations": 45,
       "type": "journal",
       "doi": "https://doi.org/10.1016/j.jenvman.2021.113056"
     },

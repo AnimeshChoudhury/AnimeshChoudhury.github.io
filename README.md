@@ -1,273 +1,247 @@
-# Animesh Choudhury - Portfolio Website
+# Animesh Choudhury — Portfolio Website
 
-A creative, multi-page portfolio website for showcasing research work, publications, and projects.
+A professional, multi-page academic portfolio built with **Flask** and **Frozen-Flask**, statically generated and deployed to both **GitHub Pages** and **Netlify**.
 
-## 🎨 Design Style
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-3.0-000000?logo=flask&logoColor=white)
+![Netlify](https://img.shields.io/badge/Deployed%20on-Netlify-00C7B7?logo=netlify&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-222222?logo=github&logoColor=white)
 
-**Creative Portfolio** with bold colors, modern typography, and smooth animations.
+---
 
-**Color Scheme:**
-- Deep Ocean Blue (#0a4d68) - Primary
-- Teal (#088395) - Primary Light  
-- Bold Orange (#e8630a) - Accent
-- Dark Slate (#2d3250) - Text
-
-**Typography:**
-- Display: Playfair Display (bold headers)
-- Mono: Space Mono (labels, code)
-- Body: Work Sans (clean, readable)
-
-## 📁 Project Structure
+## 🗂️ Project Structure
 
 ```
 Portfolio/
-├── venv/                     # Virtual environment
-├── app.py                    # Flask application
-├── requirements.txt          # Dependencies
-├── setup_data.py            # Data setup script
-├── README.md                # This file
-├── data/                    # Data files (auto-created)
-│   ├── profile.json
-│   ├── animesh_cv_data.json
-│   └── projects.json
-├── static/                  # Static files
+├── app.py                    # Flask application & route definitions
+├── build_static.py           # Frozen-Flask static site generator
+├── requirements.txt          # Python dependencies
+├── netlify.toml              # Netlify build & deploy configuration
+├── .github/
+│   └── workflows/
+│       └── deploy.yml        # GitHub Actions workflow → GitHub Pages
+├── .gitignore
+├── README.md
+│
+├── data/                     # JSON data files (source of truth)
+│   ├── profile.json          # Personal info, social links, contact
+│   ├── animesh_cv_data.json  # Publications, experience, education, skills
+│   └── projects.json         # Research project details
+│
+├── static/                   # Static assets (served as-is)
 │   ├── css/
 │   │   └── main.css
 │   ├── js/
 │   │   └── main.js
-│   ├── images/              # Your images
+│   ├── images/
+│   │   └── profile_image.png
 │   └── files/
 │       └── Animesh_Choudhury_CV.pdf
-└── templates/               # HTML templates
-    ├── base.html
-    ├── index.html
-    ├── about.html
-    ├── projects.html
-    ├── project_detail.html
-    ├── publications.html
-    ├── contact.html
-    └── 404.html
+│
+└── templates/                # Jinja2 HTML templates
+    ├── base.html             # Shared layout, nav, footer
+    ├── index.html            # Home / hero page
+    ├── about.html            # Bio, experience, education, skills
+    ├── projects.html         # Projects showcase with filter
+    ├── project_detail.html   # Individual project page
+    ├── publications.html     # Journal papers & conference proceedings
+    ├── contact.html          # Contact form & social links
+    └── 404.html              # Custom 404 error page
 ```
 
-## 🚀 Installation & Setup
+---
 
-### Step 1: Activate Virtual Environment
+## 🎨 Design
+
+| Token | Value |
+|---|---|
+| Primary | `#0a4d68` — Deep Ocean Blue |
+| Primary Light | `#088395` — Teal |
+| Accent | `#e8630a` — Bold Orange |
+| Text | `#2d3250` — Dark Slate |
+| Display font | Playfair Display |
+| Body font | Work Sans |
+| Mono font | Space Mono |
+
+---
+
+## 🚀 Local Development
+
+### 1. Clone the repository
 
 ```powershell
-# Navigate to Portfolio folder
-cd D:\VSCODE_Works\Portfolio
+git clone https://github.com/AnimeshChoudhury/AnimeshChoudhury.github.io.git
+cd Portfolio
+```
 
-# Activate virtual environment
+### 2. Set up virtual environment
+
+```powershell
+python -m venv venv
 venv\Scripts\activate
 ```
 
-### Step 2: Install Dependencies
+### 3. Install dependencies
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-### Step 3: Create Data Files (First Time Only)
-
-```powershell
-python setup_data.py
-```
-
-This creates:
-- `data/profile.json` - Your profile information
-- `data/animesh_cv_data.json` - Your CV data  
-- `data/projects.json` - Project details
-
-### Step 4: Add Your CV (Optional)
-
-Copy your CV PDF to:
-```
-static/files/Animesh_Choudhury_CV.pdf
-```
-
-### Step 5: Run the Website
+### 4. Run the development server
 
 ```powershell
 python app.py
 ```
 
-Visit: **http://localhost:5000**
+Visit **http://localhost:5000** — the app reloads automatically on code changes.
 
-## 📄 Pages
+---
 
-1. **Home** (`/`) - Hero section with introduction
-2. **About** (`/about`) - Detailed bio, experience, education
-3. **Projects** (`/projects`) - Showcase of research projects
-4. **Publications** (`/publications`) - Research papers and citations
-5. **Contact** (`/contact`) - Contact form and social links
+## 📦 Deployment
 
-## 🎯 Features
+This project uses **Frozen-Flask** to convert the Flask app into a fully static site. The same source is deployed to two platforms — a single `git push` to `main` triggers both.
 
-- ✅ Responsive design (mobile, tablet, desktop)
-- ✅ Creative, modern layout
-- ✅ 5 detailed research projects
-- ✅ Publications with citation counts
-- ✅ Contact form
-- ✅ CV download
-- ✅ Social media integration
-- ✅ Smooth animations
-- ✅ Fast loading
+### GitHub Pages (via GitHub Actions)
 
-## 🛠️ Customization
+Configured in `.github/workflows/deploy.yml`. On every push to `main`, GitHub Actions:
+1. Installs dependencies from `requirements.txt`
+2. Runs `python build_static.py` to freeze the site
+3. Deploys the `build/` output to the `gh-pages` branch
 
-### Update Your Information
+### Netlify (via `netlify.toml`)
+
+Netlify picks up the same push and runs its own build pipeline.
+
+| Setting | Value |
+|---|---|
+| Build command | `pip install -r requirements.txt && python build_static.py` |
+| Publish directory | `build` |
+| Python version | `3.11` |
+
+### Deploying an Update
+
+```powershell
+git add .
+git commit -m "your message"
+git push origin main
+```
+
+Both GitHub Pages and Netlify will rebuild and redeploy automatically.
+
+### Manual Deployment (Drag & Drop — Netlify only)
+
+1. Generate the static build locally:
+   ```powershell
+   python build_static.py
+   ```
+2. Drag the `build/` folder into the Netlify dashboard under **Sites → Deploy manually**.
+
+> **Note:** The `build/` folder is excluded from version control via `.gitignore` — it is always regenerated by CI.
+
+---
+
+## ✏️ Customization Guide
+
+### Update personal information
 
 Edit `data/profile.json`:
 ```json
 {
   "name": "Your Name",
-  "title": "Your Title",
-  "email": "your.email@example.com",
-  ...
+  "title": "Your Academic Title",
+  "email": "you@example.com",
+  "social": {
+    "linkedin": "https://linkedin.com/in/yourprofile",
+    "github": "https://github.com/YourUsername",
+    "scholar": "https://scholar.google.com/citations?user=..."
+  }
 }
 ```
 
-### Add/Edit Projects
+### Add or edit publications & experience
+
+Edit `data/animesh_cv_data.json`. Key sections:
+- `publications` — journal papers with `type`, `year`, `citations`
+- `conference_papers` — conference proceedings
+- `experience` — work history
+- `education` — degrees
+- `skills` — categorized skill sets
+
+### Add or edit projects
 
 Edit `data/projects.json`:
 ```json
 {
   "projects": [
     {
-      "title": "Project Name",
-      "description": "Project description",
-      ...
+      "id": "unique-slug",
+      "title": "Project Title",
+      "category": "Remote Sensing",
+      "description": "Short description shown on cards.",
+      "image": "project-image.jpg"
     }
   ]
 }
 ```
 
-### Change Colors
+### Change colours
 
-Edit `templates/base.html` (CSS variables section):
+CSS custom properties are defined at the top of `static/css/main.css`:
 ```css
 :root {
-  --primary: #0a4d68;      /* Change primary color */
-  --accent: #e8630a;       /* Change accent color */
-  ...
+  --primary: #0a4d68;
+  --primary-light: #088395;
+  --accent: #e8630a;
 }
 ```
-
-## 📦 Deployment to Netlify
-
-### Method 1: Drag & Drop
-
-1. Build static site:
-   ```powershell
-   python build_static.py
-   ```
-
-2. Drag `build/` folder to Netlify
-
-### Method 2: Git Deployment
-
-1. Create `.gitignore`:
-   ```
-   venv/
-   __pycache__/
-   *.pyc
-   .env
-   ```
-
-2. Push to GitHub
-
-3. Connect GitHub repo to Netlify
-
-4. Build settings:
-   - Build command: `pip install -r requirements.txt && python build_static.py`
-   - Publish directory: `build`
-
-## 🔧 Troubleshooting
-
-### "FileNotFoundError: data\profile.json"
-
-**Solution:** Run `python setup_data.py`
-
-### "No module named 'flask'"
-
-**Solution:** 
-```powershell
-venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-### Port 5000 already in use
-
-**Solution:** Change port in `app.py`:
-```python
-app.run(debug=True, port=5001)  # Change 5000 to 5001
-```
-
-### Contact form not working
-
-The contact form currently logs to console. For production:
-1. Use Netlify Forms (free)
-2. Use FormSpree (free)
-3. Set up Flask-Mail (requires email configuration)
-
-## 📊 Project Stats
-
-- **5 Research Projects** (imaginative, based on your experience)
-- **3 Journal Publications** (from your CV)
-- **2 Conference Papers** (from your CV)
-- **6 Skill Categories** (from your CV)
-- **5 Work Experiences** (from your CV)
-
-## 🌐 Social Links
-
-Update in `data/profile.json`:
-```json
-"social": {
-  "linkedin": "https://www.linkedin.com/in/animeshchoudhury/",
-  "github": "https://github.com/AnimeshChoudhury",
-  "scholar": "https://scholar.google.com/citations?user=...",
-  "researchgate": "https://www.researchgate.net/profile/..."
-}
-```
-
-## 🎨 Adding Images
-
-### Profile Photo
-
-1. Add to: `static/images/profile.jpg`
-2. Update in templates where needed
-
-### Project Images
-
-1. Add to: `static/images/project-name.jpg`
-2. Update in `data/projects.json`:
-   ```json
-   "image": "project-himalsnow.jpg"
-   ```
-
-## 📝 To-Do
-
-- [ ] Add real project images
-- [ ] Add profile photo
-- [ ] Set up email for contact form
-- [ ] Add Google Analytics (optional)
-- [ ] Deploy to Netlify
-- [ ] Connect custom domain (optional)
-
-## 🆘 Support
-
-For issues or questions:
-1. Check the troubleshooting section above
-2. Make sure virtual environment is activated
-3. Ensure all files are in correct folders
-4. Try running `python setup_data.py` again
-
-## 📜 License
-
-Personal use only.
 
 ---
 
-**Built with**: Flask, HTML5, CSS3, JavaScript
-**Author**: Animesh Choudhury
-**Last Updated**: February 2026
+## 📄 Pages
+
+| Route | Template | Description |
+|---|---|---|
+| `/` | `index.html` | Hero, metrics, featured projects |
+| `/about/` | `about.html` | Bio, experience, education, skills |
+| `/projects/` | `projects.html` | All projects with category filter |
+| `/project/<id>/` | `project_detail.html` | Single project deep-dive |
+| `/publications/` | `publications.html` | Journal papers & conference proceedings |
+| `/contact/` | `contact.html` | Contact form & social links |
+| `/download-cv/` | — | Serves CV PDF as download |
+| `/view-cv/` | — | Opens CV PDF inline |
+
+---
+
+## 🔧 Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| `FileNotFoundError: data\profile.json` | Ensure `data/profile.json`, `animesh_cv_data.json`, and `projects.json` exist — edit them directly |
+| `No module named 'flask'` | Activate venv, then `pip install -r requirements.txt` |
+| Port 5000 in use | Change `port=5000` to `port=5001` in `app.py` |
+| Netlify build fails | Check Python version is `3.11` in `netlify.toml` |
+| GitHub Actions deploy fails | Check the Actions tab for logs; ensure `requirements.txt` is up to date |
+| Contact form not saving data | Integrate **Netlify Forms** (add `netlify` attribute to `<form>`) |
+
+---
+
+## 🛡️ Security Headers
+
+The following security headers are applied globally via `netlify.toml`:
+
+- `X-Frame-Options: DENY`
+- `X-XSS-Protection: 1; mode=block`
+- `X-Content-Type-Options: nosniff`
+- Static assets are cached for **1 year** (`Cache-Control: immutable`)
+
+---
+
+## 📜 License
+
+Personal use only. All content © Animesh Choudhury.
+
+---
+
+**Stack:** Python · Flask · Frozen-Flask · Jinja2 · HTML5 · CSS3 · JavaScript  
+**Hosted on:** Netlify · GitHub Pages  
+**Last updated:** April 2026
