@@ -1,189 +1,280 @@
 {
   "projects": [
     {
-      "id": "project-1",
-      "title": "HimalSnow: AI-Powered Snow Cover Monitoring System",
-      "subtitle": "Real-time Snow Cover Analysis for Northwest Himalaya",
-      "duration": "2018 - 2019",
-      "category": "Snow Hydrology",
-      "description": "Developed an automated system for monitoring snow cover dynamics in the Northwest Himalayan region using multi-sensor satellite data. The system processes MODIS, Sentinel-2, and Landsat imagery to provide near real-time snow cover area mapping and trend analysis.",
-      "detailed_description": "This project addressed the critical need for accurate snow cover monitoring in the Himalayan region, where seasonal snow plays a vital role in water resources. Using Google Earth Engine platform, I developed algorithms that process thousands of satellite images to track snow cover changes with 95% accuracy. The system has been used to study climate change impacts on Himalayan glaciers.",
+      "id": "urban-utility-network",
+      "title": "Urban Utility Network Explorer",
+      "subtitle": "Satellite + Street-Level Intelligence for Bengaluru's Power Grid",
+      "duration": "2024 - Present",
+      "category": "GIS & Urban Analytics",
+      "description": "An end-to-end Python GIS pipeline that downloads real OSM utility infrastructure data for Bengaluru, enriches it with satellite imagery from Google Earth Engine, and serves interactive analysis through a Streamlit dashboard — network tracing, flood risk, vegetation encroachment, and terrain analysis all in one command.",
+      "detailed_description": "Urban utility networks are increasingly vulnerable to climate-driven risks. This project builds a reproducible, production-ready GIS pipeline integrating OpenStreetMap infrastructure data with four Google Earth Engine satellite datasets (DynamicWorld LULC, SRTM terrain, Sentinel-2 NDVI, and JRC Global Surface Water). The core analysis identifies which substations lie in flood-prone zones, which power lines face vegetation encroachment risk, and which grid segments cross steep terrain. A Streamlit dashboard with Folium interactive maps, network graph tracing (Dijkstra), and outage simulation visualizes the full risk picture. The pipeline runs end-to-end with a single command and includes a synthetic offline demo mode requiring no GEE authentication.",
       "technologies": [
+        "Python",
         "Google Earth Engine",
-        "Python",
-        "MODIS",
+        "Streamlit",
+        "GeoPandas",
+        "OSMnx",
+        "NetworkX",
+        "Folium",
         "Sentinel-2",
-        "Landsat",
-        "JavaScript",
-        "Time Series Analysis",
-        "Remote Sensing"
+        "SRTM",
+        "JRC Global Surface Water",
+        "Rasterio",
+        "Geemap",
+        "Dijkstra Shortest Path"
       ],
       "features": [
-        "Automated cloud masking and snow detection",
-        "Multi-temporal analysis of 20+ years of data",
-        "Interactive web-based visualization dashboard",
-        "Climate trend analysis and statistical modeling",
-        "Integration with ground-based weather stations"
+        "Live OSM data download — real power lines, substations & towers for Bengaluru",
+        "500 m service-area buffer analysis and spatial joins",
+        "Network graph model with Dijkstra shortest-path tracing",
+        "GEE flood risk mapping (JRC GSW) — 50.6% of substations in flood-prone zones",
+        "Sentinel-2 NDVI vegetation risk — 188 km of lines at encroachment risk",
+        "SRTM terrain slope analysis — 321 km of lines crossing steep terrain (>15°)",
+        "5-tab interactive Streamlit dashboard with toggleable satellite + OSM layers",
+        "Offline synthetic demo mode — no GEE account needed",
+        "Fully reproducible: pinned dependencies, deterministic seed (seed=42), EPSG:4326 / UTM 43N"
       ],
       "outcomes": [
-        "Published research paper in Remote Sensing journal",
-        "Improved accuracy by 15% over existing methods",
-        "Dataset used by 5+ research institutions",
-        "Presented at international conferences"
+        "Identified 89 of 176 substations (50.6%) in flood-prone zones",
+        "Flagged 188 km of power lines at vegetation encroachment risk",
+        "Detected 321 km of grid lines crossing steep terrain (>15° slope)",
+        "Integrated 4 GEE satellite datasets with real-time OSM network data",
+        "Built end-to-end pipeline runnable with a single command"
       ],
-      "image": "project-himalsnow.jpg",
-      "github": "https://github.com/AnimeshChoudhury/himalsnow-monitor",
+      "gee_datasets": [
+        {
+          "script": "01_lulc_analysis.py",
+          "dataset": "DynamicWorld V1",
+          "resolution": "10 m",
+          "purpose": "Urban vs. vegetation land cover"
+        },
+        {
+          "script": "02_slope_analysis.py",
+          "dataset": "USGS SRTM",
+          "resolution": "30 m",
+          "purpose": "Terrain slope in degrees"
+        },
+        {
+          "script": "03_ndvi_analysis.py",
+          "dataset": "Sentinel-2 SR",
+          "resolution": "10 m",
+          "purpose": "Vegetation density (encroachment risk)"
+        },
+        {
+          "script": "04_flood_risk.py",
+          "dataset": "JRC Global Surface Water",
+          "resolution": "30 m",
+          "purpose": "Historical flood occurrence"
+        }
+      ],
+      "image": "project-utilitynetwork.jpg",
+      "github": "https://github.com/AnimeshChoudhury/UtilityNetwork",
       "demo": "",
-      "publication": "https://doi.org/10.3390/rs13040655",
-      "tags": ["Machine Learning", "Climate Science", "GEE", "Python"]
+      "publication": "",
+      "tags": ["GIS", "Google Earth Engine", "Streamlit", "Python", "OSM", "Flood Risk", "Network Analysis"]
     },
     {
-      "id": "project-2",
-      "title": "DroughtWatch India: ML-Based Drought Forecasting Platform",
-      "subtitle": "Sub-seasonal to Seasonal Agricultural Drought Prediction",
-      "duration": "2020 - 2022",
-      "category": "Agricultural Monitoring",
-      "description": "Built a machine learning framework for predicting agricultural droughts across India using 30+ years of satellite data, meteorological records, and soil moisture indices. The system provides early warnings up to 3 months in advance.",
-      "detailed_description": "Agricultural drought impacts millions of farmers in India annually. This project developed a sophisticated ML pipeline that combines multiple drought indices (SPEI, VCI, SPI) with Random Forest and LSTM models to predict drought conditions. The system analyzes historical patterns and current conditions to provide actionable forecasts for agricultural planning.",
+      "id": "bharatbench",
+      "title": "BharatBench",
+      "subtitle": "A Benchmark Dataset for Data-Driven Weather Forecasting over India",
+      "duration": "2024 - Present",
+      "category": "Machine Learning & Data Science",
+      "description": "A ready-to-use dataset and benchmarking framework designed to accelerate data-driven weather forecasting research over India. Derived from IMDAA reanalysis with pre-processed, ML-ready data optimized for limited computational resources.",
+      "detailed_description": "BharatBench addresses the gap in regional weather forecasting research by providing a high-quality dataset specifically tailored to the Indian monsoon region. Unlike global datasets like WeatherBench (ERA5), BharatBench focuses on the meteorologically distinct Indian subcontinent with complex orography (Himalayas, Western Ghats) and diverse microclimates. The dataset spans 31 years (1990–2020) with 6-hourly temporal resolution, covering surface variables (2m temperature, wind, pressure, precipitation) and 13 pressure levels. With a 32×32 grid at 1.08° resolution, it is trainable on standard laptop CPUs. Complete benchmarks are provided: persistence, climatology, weekly climatology, linear regression, CNN, and ConvLSTM baselines with evaluation code.",
       "technologies": [
         "Python",
         "TensorFlow",
-        "Scikit-learn",
-        "MODIS NDVI",
-        "ERA5 Climate Data",
-        "SPEI/VCI Indices",
-        "Random Forest",
-        "LSTM Networks"
-      ],
-      "features": [
-        "Multi-index drought monitoring (SPEI, VCI, TCI, VHI)",
-        "Machine learning models for 1-3 month forecasts",
-        "District-level drought risk mapping",
-        "Historical trend analysis (1990-2022)",
-        "Crop yield impact assessment"
-      ],
-      "outcomes": [
-        "Published in Journal of Environmental Management",
-        "75% forecast accuracy for 2-month predictions",
-        "Presented at National Workshop on Drought Monitoring",
-        "Adopted by state agricultural departments for pilot testing"
-      ],
-      "image": "project-droughtwatch.jpg",
-      "github": "https://github.com/AnimeshChoudhury/droughtwatch-india",
-      "demo": "",
-      "publication": "https://doi.org/10.1016/j.jenvman.2021.113056",
-      "tags": ["Machine Learning", "Drought", "Agriculture", "SPEI"]
-    },
-    {
-      "id": "project-3",
-      "title": "AirSense: Multi-Pollutant Tracking System",
-      "subtitle": "3D Visualization of Air Quality over Indo-Gangetic Plain",
-      "duration": "2019 - 2020",
-      "category": "Air Quality Monitoring",
-      "description": "Developed an integrated system for tracking and visualizing horizontal and vertical distribution of air pollutants (PM2.5, NO2, CO, SO2) over the Indo-Gangetic Plain using ground sensors and CALIPSO LIDAR satellite data.",
-      "detailed_description": "Air pollution in the Indo-Gangetic Plain affects over 400 million people. This project combined ground-based observations with satellite LIDAR data to create 3D visualizations of pollutant distribution. The system revealed critical patterns in aerosol transport and helped identify pollution sources and their vertical extent in the atmosphere.",
-      "technologies": [
-        "Python",
-        "CALIPSO LIDAR",
-        "Ground Sensors",
-        "Plotly",
-        "NumPy",
-        "Pandas",
-        "Aerosol Analysis",
-        "3D Visualization"
-      ],
-      "features": [
-        "Integration of satellite and ground sensor data",
-        "3D aerosol vertical profile visualization",
-        "Source apportionment analysis",
-        "Temporal trend analysis (seasonal patterns)",
-        "Interactive web-based dashboard"
-      ],
-      "outcomes": [
-        "Presented at Asian Air Pollution Workshop (AAPW-5)",
-        "Identified major dust transport events from Middle East",
-        "Dataset spans 2 years with daily measurements",
-        "Contributed to air quality policy discussions"
-      ],
-      "image": "project-airsense.jpg",
-      "github": "https://github.com/AnimeshChoudhury/airsense-monitoring",
-      "demo": "",
-      "publication": "https://doi.org/10.1007/s13762-022-04520-1",
-      "tags": ["Air Quality", "LIDAR", "Visualization", "Python"]
-    },
-    {
-      "id": "project-4",
-      "title": "ForestSpec: Hyperspectral Tree Species Classifier",
-      "subtitle": "Deep Learning for Himalayan Forest Mapping",
-      "duration": "2018",
-      "category": "Forest Ecology",
-      "description": "Created a comprehensive spectral library and deep learning classifier for identifying Himalayan forest tree species using hyperspectral imagery and field spectroradiometer data.",
-      "detailed_description": "Accurate tree species identification is crucial for forest conservation. This project built a spectral library of 30+ Himalayan tree species using ASD FieldSpec spectroradiometer and developed a CNN-based classifier for automated species mapping from airborne hyperspectral data. The system links spectral signatures to biophysical parameters like chlorophyll content and leaf area index.",
-      "technologies": [
-        "Python",
-        "TensorFlow",
-        "Hyperspectral Imaging",
-        "ASD FieldSpec",
-        "ENVI",
+        "Jupyter Notebooks",
+        "Xarray",
+        "NetCDF",
+        "Machine Learning",
+        "Deep Learning",
         "CNN",
-        "Spectral Analysis",
-        "Field Survey"
+        "ConvLSTM",
+        "IMDAA Reanalysis",
+        "Weather Forecasting"
       ],
       "features": [
-        "Spectral library of 30+ tree species (400-2500 nm)",
-        "CNN-based species classification (92% accuracy)",
-        "Correlation with biophysical parameters",
-        "Field validation across multiple sites",
-        "Integration with satellite hyperspectral data"
+        "31-year IMDAA-derived reanalysis dataset (1990–2020)",
+        "Regional focus: 5°N–40°N, 65°E–100°E with 1.08° spatial resolution",
+        "6-hourly temporal resolution with 13 pressure levels (50–1000 hPa)",
+        "Surface variables: 2m temperature, 10m wind components, sea-level pressure, precipitation",
+        "Pressure-level variables: geopotential height, temperature, humidity, wind components",
+        "Pre-processed and ML-ready — 32×32 grid points for low compute barrier",
+        "Trainable on standard laptop CPU (Intel i7 / 32 GB RAM sufficient)",
+        "Complete baseline implementations: persistence, climatology, linear regression, CNN, ConvLSTM",
+        "Standard evaluation metrics: RMSE, MAE, Anomaly Correlation Coefficient (ACC)",
+        "Train/Val/Test split: 1990–2017 / 2018 / 2019–2020",
+        "Kaggle dataset and Jupyter notebook tutorials included"
       ],
       "outcomes": [
-        "Spectral library adopted by research institutions",
-        "92% species classification accuracy",
-        "Data collection across 15 forest sites",
-        "Contributed to biodiversity monitoring efforts"
+        "Published research paper on arXiv",
+        "Publicly available Kaggle dataset",
+        "Comprehensive benchmark results for 3-day and 5-day lead times",
+        "4 Jupyter notebooks with complete reproducible code",
+        "Baseline CNN model achieves 26.27 RMSE vs. 28.47 climatology baseline",
+        "ConvLSTM baseline achieves 26.87 RMSE, capturing temporal dynamics"
       ],
-      "image": "project-forestspec.jpg",
-      "github": "https://github.com/AnimeshChoudhury/forestspec-classifier",
-      "demo": "",
-      "publication": "",
-      "tags": ["Deep Learning", "Hyperspectral", "Ecology", "CNN"]
+      "benchmark_results": [
+        {
+          "metric": "RMSE @ 3-day lead",
+          "persistence": "—",
+          "climatology": "28.47",
+          "linear_regression": "26.62",
+          "cnn": "26.27",
+          "convlstm": "26.87"
+        },
+        {
+          "metric": "RMSE @ 5-day lead",
+          "persistence": "—",
+          "climatology": "28.47",
+          "linear_regression": "29.58",
+          "cnn": "28.81",
+          "convlstm": "29.59"
+        }
+      ],
+      "image": "project-bharatbench.jpg",
+      "github": "https://github.com/MASLABnitrkl/BharatBench",
+      "demo": "https://www.kaggle.com/datasets/maslab/bharatbench",
+      "publication": "http://arxiv.org/abs/2405.07534",
+      "tags": ["Weather Forecasting", "Machine Learning", "Deep Learning", "CNN", "ConvLSTM", "Dataset", "IMDAA", "India", "Climate", "Benchmark"]
     },
     {
-      "id": "project-5",
-      "title": "ThunderTrack: Urban Thunderstorm Prediction System",
-      "subtitle": "High-Resolution Mesoscale Modeling for Indian Cities",
-      "duration": "2022 - Present",
-      "category": "Weather Modeling",
-      "description": "Developing a high-resolution weather prediction system for forecasting thunderstorms over major Indian cities using WRF model and analyzing land-atmosphere interactions during extreme weather events.",
-      "detailed_description": "Urban areas face increasing thunderstorm risks due to rapid urbanization and climate change. This ongoing project uses the WRF-CHEM mesoscale model at 1km resolution to predict thunderstorm formation and evolution over major Indian cities. The research focuses on understanding how urban land use affects convective processes and storm intensity.",
+      "id": "portfolio-website",
+      "title": "Personal Portfolio Website",
+      "subtitle": "Multi-Page Academic Portfolio with Flask & Static Site Generation",
+      "duration": "2025 - Present",
+      "category": "Web Development",
+      "description": "A professional, statically-generated academic portfolio built with Flask and Frozen-Flask. Features multi-page layouts, data-driven content from JSON, responsive design, and dual deployment to GitHub Pages and Netlify via GitHub Actions.",
+      "detailed_description": "A full-stack portfolio website that demonstrates modern web development practices. Built with Flask for dynamic route generation and Frozen-Flask for static site compilation, the portfolio serves content from JSON data files ensuring separation of concerns. The site features a responsive design with custom CSS, JavaScript interactivity, and optimized asset delivery. Deployment is fully automated — every push to the main branch triggers GitHub Actions to rebuild the static site and deploy to both GitHub Pages and Netlify. Includes security headers (X-Frame-Options, X-XSS-Protection, X-Content-Type-Options) and asset caching strategies.",
       "technologies": [
-        "WRF-CHEM",
         "Python",
-        "NCL",
-        "High-Performance Computing",
-        "Meteorological Modeling",
-        "Satellite Data",
-        "Weather Radar",
-        "Land Surface Modeling"
+        "Flask",
+        "Frozen-Flask",
+        "Jinja2",
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "JSON",
+        "GitHub Actions",
+        "GitHub Pages",
+        "Netlify",
+        "Git"
       ],
       "features": [
-        "1km resolution weather modeling",
-        "Real-time data assimilation",
-        "Urban heat island impact analysis",
-        "Storm intensity and trajectory prediction",
-        "Integration with satellite and radar data"
+        "Multi-page layout: home, about, projects, publications, contact, CV views",
+        "Data-driven architecture: all content sourced from JSON (profile, projects, CV data)",
+        "Responsive design with custom CSS and JavaScript",
+        "Interactive project filtering and detailed project pages",
+        "Publication showcase with type, year, and citation tracking",
+        "Contact form integration with Netlify Forms",
+        "CV download and inline viewer",
+        "Dual deployment: GitHub Pages (via Actions) + Netlify (automatic)",
+        "Security headers: X-Frame-Options, X-XSS-Protection, X-Content-Type-Options",
+        "Asset caching: 1-year immutable cache for static resources",
+        "Search engine optimization (SEO) ready"
       ],
       "outcomes": [
-        "Research ongoing at NIT Rourkela",
-        "Preliminary results show 24-hour forecast skill",
-        "Collaboration with meteorological departments",
-        "Expected publications in 2024"
+        "Live production site deployed across two platforms",
+        "Fully automated CI/CD pipeline with GitHub Actions",
+        "100% static site — no server overhead, instant load times",
+        "Mobile-responsive design serving all device types",
+        "Customizable data structure allowing easy content updates"
       ],
-      "image": "project-thundertrack.jpg",
-      "github": "",
+      "image": "project-portfolio.jpg",
+      "github": "https://github.com/AnimeshChoudhury/AnimeshChoudhury.github.io",
+      "demo": "https://animeshchoudhury.github.io/",
+      "publication": "",
+      "tags": ["Web Development", "Flask", "Python", "Full Stack", "Static Site Generation", "GitHub Pages", "Netlify", "Portfolio", "Responsive Design", "CI/CD"]
+    },
+    {
+      "id": "cv-builder",
+      "title": "Academic CV Builder",
+      "subtitle": "Python-Based PDF CV Generator for Researchers",
+      "duration": "2025",
+      "category": "Tools & Utilities",
+      "description": "A Python tool that generates publication-ready academic CVs from a single JSON data file. Features a clean, professional layout with embedded profile images, clickable social icons, and DOI/URL hyperlinks — all without requiring LaTeX or manual PDF formatting.",
+      "detailed_description": "CV_Builder streamlines the process of creating and maintaining academic CVs. Instead of manually formatting a resume in Word or LaTeX, researchers simply edit a single JSON file containing their profile, experience, education, publications, and skills. The tool uses ReportLab to programmatically generate a polished PDF with precise layout control. Key features include profile image embedding with automatic square-cropping, clickable social profile icons (email, phone, LinkedIn, GitHub, Google Scholar, ResearchGate) in the header, and embedded hyperlinks for publication DOIs and URLs. Work experience entries are automatically sorted chronologically with current roles pinned at the top. The modular architecture makes it easy to add, remove, or reorder CV sections.",
+      "technologies": [
+        "Python",
+        "ReportLab",
+        "PIL/Pillow",
+        "JSON",
+        "PDF Generation",
+        "Automation"
+      ],
+      "features": [
+        "JSON-driven architecture — edit a single file, no code changes needed",
+        "Profile image embedding with automatic square-crop",
+        "Clickable social icons in the header (email, phone, LinkedIn, GitHub, Scholar, ResearchGate)",
+        "Embedded hyperlinks: clickable DOI links for publications, URL links for conference papers",
+        "Auto-sorted work experience — entries chronologically ordered by end date, current roles at top",
+        "Modular section rendering — each CV section as an independent method",
+        "Customizable styling: fonts, sizes, colors via Python code (primary, secondary, text, accent colors)",
+        "Pre-defined CV styles for consistency: CVName, CVTitle, CVContact, CVSectionHeading, CVBody, CVPublication, CVJobTitle, CVOrganization, CVBullet",
+        "Support for multiple entry types: journals, conference papers, posters, training, webinars",
+        "Auto-generated footer with 'Last updated' timestamp",
+        "Fully customizable — maintain separate JSON files for different application contexts (academic vs. industry CVs)"
+      ],
+      "outcomes": [
+        "Single-command CV generation: python cv_builder_final.py",
+        "Publication-ready PDF output with professional typography",
+        "Version-controlled CV content via JSON",
+        "Significantly faster CV updates compared to manual formatting",
+        "Reusable tool for creating multiple CV variants"
+      ],
+      "cv_sections": [
+        {
+          "order": 1,
+          "section": "Header",
+          "content": "Profile photo, name, title, and clickable social/contact icons"
+        },
+        {
+          "order": 2,
+          "section": "Professional Summary",
+          "content": "Research background overview"
+        },
+        {
+          "order": 3,
+          "section": "Education",
+          "content": "Degrees with institution, location, year, and optional thesis title"
+        },
+        {
+          "order": 4,
+          "section": "Work Experience",
+          "content": "Positions sorted by recency, with bullet-point responsibilities"
+        },
+        {
+          "order": 5,
+          "section": "Selected Publications",
+          "content": "Journal articles with clickable DOI hyperlinks, sorted by year"
+        },
+        {
+          "order": 6,
+          "section": "Conference Papers & Proceedings",
+          "content": "Presentations with clickable URL hyperlinks"
+        },
+        {
+          "order": 7,
+          "section": "Technical Skills",
+          "content": "Categorized skill groups (e.g., ML & AI, Remote Sensing, GIS)"
+        },
+        {
+          "order": 8,
+          "section": "Poster, Online Training, Webinar",
+          "content": "Combined section: poster presentations, training programs, and webinars"
+        },
+        {
+          "order": 9,
+          "section": "Footer",
+          "content": "Auto-generated 'Last updated: Month Year' timestamp"
+        }
+      ],
+      "image": "project-cvbuilder.jpg",
+      "github": "https://github.com/AnimeshChoudhury/CV_Builder",
       "demo": "",
       "publication": "",
-      "tags": ["Weather Modeling", "WRF", "Urban Climate", "HPC"]
+      "tags": ["Python", "PDF Generation", "ReportLab", "Automation", "Academic", "Tools", "Researcher", "CV", "Resume", "Open Source"]
     }
   ]
 }

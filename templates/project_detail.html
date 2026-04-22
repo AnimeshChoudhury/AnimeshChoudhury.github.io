@@ -103,6 +103,41 @@
             </div>
             {% endif %}
 
+            <!-- Satellite Datasets (GEE) — shown only if project has gee_datasets -->
+            {% if project.gee_datasets %}
+            <div style="margin-bottom: 4rem;" class="reveal reveal-delay-5">
+                <h2>
+                    <i class="fas fa-satellite" style="color: var(--accent); margin-right: 0.5rem; font-size: 1.1rem;"></i>
+                    Satellite Datasets (Google Earth Engine)
+                </h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.75rem; font-size: 0.97rem; line-height: 1.7;">
+                    Four GEE datasets power the risk intelligence layer of this project, each processed through a dedicated analysis script with both live GEE and synthetic offline demo modes.
+                </p>
+                <div class="gee-table-wrapper">
+                    <table class="gee-table">
+                        <thead>
+                            <tr>
+                                <th>Script</th>
+                                <th>Dataset</th>
+                                <th>Resolution</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ds in project.gee_datasets %}
+                            <tr>
+                                <td><code>{{ ds.script }}</code></td>
+                                <td><strong>{{ ds.dataset }}</strong></td>
+                                <td><span class="gee-res-badge">{{ ds.resolution }}</span></td>
+                                <td>{{ ds.purpose }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+
         </div>
     </div>
 </section>

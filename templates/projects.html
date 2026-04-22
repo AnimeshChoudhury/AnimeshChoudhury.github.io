@@ -44,6 +44,8 @@
                         {% elif 'Drought' in project.title %}🌾
                         {% elif 'Air' in project.title %}🌪️
                         {% elif 'Forest' in project.title %}🌲
+                        {% elif 'Utility' in project.title or 'Urban' in project.title or 'Network' in project.title %}⚡
+                        {% elif 'Weather' in project.title or 'Thunder' in project.title %}⛈️
                         {% else %}🛰️
                         {% endif %}
                     </span>
@@ -55,18 +57,41 @@
                     <a href="{{ url_for('project_detail', project_id=project.id) }}"
                        class="project-card-title">{{ project.title }}</a>
                     <div class="project-card-subtitle">{{ project.subtitle }}</div>
-                    <p class="project-card-desc">{{ project.description }}</p>
+                    <p class="project-card-desc">{{ project.description[:180] }}{% if project.description|length > 180 %}…{% endif %}</p>
 
                     <div class="project-tech-tags">
-                        {% for tech in project.technologies[:3] %}
+                        {% for tech in project.technologies[:4] %}
                         <span class="project-tech-tag">{{ tech }}</span>
                         {% endfor %}
                     </div>
 
-                    <a href="{{ url_for('project_detail', project_id=project.id) }}"
-                       class="project-card-link">
-                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
-                    </a>
+                    <!-- Action row: details / github / paper -->
+                    <div class="project-card-actions">
+                        <a href="{{ url_for('project_detail', project_id=project.id) }}"
+                           class="project-card-link">
+                            View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
+                        </a>
+                        <div class="project-card-links">
+                            {% if project.github %}
+                            <a href="{{ project.github }}" target="_blank" rel="noopener"
+                               class="project-icon-link" title="View Code on GitHub" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            {% endif %}
+                            {% if project.publication %}
+                            <a href="{{ project.publication }}" target="_blank" rel="noopener"
+                               class="project-icon-link" title="Read Publication" aria-label="Publication">
+                                <i class="fas fa-file-alt"></i>
+                            </a>
+                            {% endif %}
+                            {% if project.demo %}
+                            <a href="{{ project.demo }}" target="_blank" rel="noopener"
+                               class="project-icon-link project-icon-link--demo" title="Live Demo" aria-label="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
 
             </article>
