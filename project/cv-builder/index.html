@@ -12,7 +12,7 @@
     <meta property="og:title" content="Animesh Choudhury — Remote Sensing Researcher">
     <meta property="og:description" content="Transforming Earth Observation Data into Actionable Insights">
 
-    <title>ThunderTrack: Urban Thunderstorm Prediction System — Animesh Choudhury</title>
+    <title>Academic CV Builder — Animesh Choudhury</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -422,11 +422,21 @@
         </a>
         <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
                     text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.75rem;">
-            Weather Modeling · 2022 - Present
+            Tools &amp; Utilities · 2025
         </div>
-        <h1>ThunderTrack: Urban Thunderstorm Prediction System</h1>
-        <p>High-Resolution Mesoscale Modeling for Indian Cities</p>
+        <h1>Academic CV Builder</h1>
+        <p>Python-Based PDF CV Generator for Researchers</p>
 
+        
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+            
+            <a href="https://github.com/AnimeshChoudhury/CV_Builder" target="_blank" rel="noopener" class="btn btn-outline">
+                <i class="fab fa-github"></i> View Code
+            </a>
+            
+            
+            
+        </div>
         
     </div>
 </section>
@@ -441,7 +451,7 @@
             <div style="margin-bottom: 4rem;" class="reveal">
                 <h2>Overview</h2>
                 <p style="font-size: 1.05rem; line-height: 1.85; color: var(--text);">
-                    Developing a high-resolution weather prediction system for forecasting thunderstorms over major Indian cities using WRF model and analyzing land-atmosphere interactions during extreme weather events.
+                    A Python tool that generates publication-ready academic CVs from a single JSON data file. Features a clean, professional layout with embedded profile images, clickable social icons, and DOI/URL hyperlinks — all without requiring LaTeX or manual PDF formatting.
                 </p>
             </div>
 
@@ -449,7 +459,7 @@
             <div style="margin-bottom: 4rem;" class="reveal reveal-delay-1">
                 <h2>Project Details</h2>
                 <p style="font-size: 1rem; line-height: 1.85; color: var(--text-muted);">
-                    Urban areas face increasing thunderstorm risks due to rapid urbanization and climate change. This ongoing project uses the WRF-CHEM mesoscale model at 1km resolution to predict thunderstorm formation and evolution over major Indian cities. The research focuses on understanding how urban land use affects convective processes and storm intensity.
+                    CV_Builder streamlines the process of creating and maintaining academic CVs. Instead of manually formatting a resume in Word or LaTeX, researchers simply edit a single JSON file containing their profile, experience, education, publications, and skills. The tool uses ReportLab to programmatically generate a polished PDF with precise layout control. Key features include profile image embedding with automatic square-cropping, clickable social profile icons (email, phone, LinkedIn, GitHub, Google Scholar, ResearchGate) in the header, and embedded hyperlinks for publication DOIs and URLs. Work experience entries are automatically sorted chronologically with current roles pinned at the top. The modular architecture makes it easy to add, remove, or reorder CV sections.
                 </p>
             </div>
 
@@ -458,21 +468,17 @@
                 <h2>Technologies Used</h2>
                 <div style="display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1rem;">
                     
-                    <span class="tech-pill">WRF-CHEM</span>
-                    
                     <span class="tech-pill">Python</span>
                     
-                    <span class="tech-pill">NCL</span>
+                    <span class="tech-pill">ReportLab</span>
                     
-                    <span class="tech-pill">High-Performance Computing</span>
+                    <span class="tech-pill">PIL/Pillow</span>
                     
-                    <span class="tech-pill">Meteorological Modeling</span>
+                    <span class="tech-pill">JSON</span>
                     
-                    <span class="tech-pill">Satellite Data</span>
+                    <span class="tech-pill">PDF Generation</span>
                     
-                    <span class="tech-pill">Weather Radar</span>
-                    
-                    <span class="tech-pill">Land Surface Modeling</span>
+                    <span class="tech-pill">Automation</span>
                     
                 </div>
             </div>
@@ -485,27 +491,57 @@
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>1km resolution weather modeling</span>
+                        <span>JSON-driven architecture — edit a single file, no code changes needed</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Real-time data assimilation</span>
+                        <span>Profile image embedding with automatic square-crop</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Urban heat island impact analysis</span>
+                        <span>Clickable social icons in the header (email, phone, LinkedIn, GitHub, Scholar, ResearchGate)</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Storm intensity and trajectory prediction</span>
+                        <span>Embedded hyperlinks: clickable DOI links for publications, URL links for conference papers</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Integration with satellite and radar data</span>
+                        <span>Auto-sorted work experience — entries chronologically ordered by end date, current roles at top</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Modular section rendering — each CV section as an independent method</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Customizable styling: fonts, sizes, colors via Python code (primary, secondary, text, accent colors)</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Pre-defined CV styles for consistency: CVName, CVTitle, CVContact, CVSectionHeading, CVBody, CVPublication, CVJobTitle, CVOrganization, CVBullet</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Support for multiple entry types: journals, conference papers, posters, training, webinars</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Auto-generated footer with &#39;Last updated&#39; timestamp</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Fully customizable — maintain separate JSON files for different application contexts (academic vs. industry CVs)</span>
                     </li>
                     
                 </ul>
@@ -521,27 +557,35 @@
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Research ongoing at NIT Rourkela</span>
+                            <span>Single-command CV generation: python cv_builder_final.py</span>
                         </li>
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Preliminary results show 24-hour forecast skill</span>
+                            <span>Publication-ready PDF output with professional typography</span>
                         </li>
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Collaboration with meteorological departments</span>
+                            <span>Version-controlled CV content via JSON</span>
                         </li>
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Expected publications in 2024</span>
+                            <span>Significantly faster CV updates compared to manual formatting</span>
+                        </li>
+                        
+                        <li>
+                            <i class="fas fa-star"></i>
+                            <span>Reusable tool for creating multiple CV variants</span>
                         </li>
                         
                     </ul>
                 </div>
             </div>
+            
+
+            <!-- Satellite Datasets (GEE) — shown only if project has gee_datasets -->
             
 
         </div>

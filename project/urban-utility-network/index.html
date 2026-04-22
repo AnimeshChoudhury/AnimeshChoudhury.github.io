@@ -12,7 +12,7 @@
     <meta property="og:title" content="Animesh Choudhury — Remote Sensing Researcher">
     <meta property="og:description" content="Transforming Earth Observation Data into Actionable Insights">
 
-    <title>DroughtWatch India: ML-Based Drought Forecasting Platform — Animesh Choudhury</title>
+    <title>Urban Utility Network Explorer — Animesh Choudhury</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -422,22 +422,18 @@
         </a>
         <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
                     text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.75rem;">
-            Agricultural Monitoring · 2020 - 2022
+            GIS &amp; Urban Analytics · 2024 - Present
         </div>
-        <h1>DroughtWatch India: ML-Based Drought Forecasting Platform</h1>
-        <p>Sub-seasonal to Seasonal Agricultural Drought Prediction</p>
+        <h1>Urban Utility Network Explorer</h1>
+        <p>Satellite + Street-Level Intelligence for Bengaluru&#39;s Power Grid</p>
 
         
         <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
             
-            <a href="https://github.com/AnimeshChoudhury/droughtwatch-india" target="_blank" rel="noopener" class="btn btn-outline">
+            <a href="https://github.com/AnimeshChoudhury/UtilityNetwork" target="_blank" rel="noopener" class="btn btn-outline">
                 <i class="fab fa-github"></i> View Code
             </a>
             
-            
-            <a href="https://doi.org/10.1016/j.jenvman.2021.113056" target="_blank" rel="noopener" class="btn btn-outline">
-                <i class="fas fa-file-alt"></i> Read Paper
-            </a>
             
             
         </div>
@@ -455,7 +451,7 @@
             <div style="margin-bottom: 4rem;" class="reveal">
                 <h2>Overview</h2>
                 <p style="font-size: 1.05rem; line-height: 1.85; color: var(--text);">
-                    Built a machine learning framework for predicting agricultural droughts across India using 30+ years of satellite data, meteorological records, and soil moisture indices. The system provides early warnings up to 3 months in advance.
+                    An end-to-end Python GIS pipeline that downloads real OSM utility infrastructure data for Bengaluru, enriches it with satellite imagery from Google Earth Engine, and serves interactive analysis through a Streamlit dashboard — network tracing, flood risk, vegetation encroachment, and terrain analysis all in one command.
                 </p>
             </div>
 
@@ -463,7 +459,7 @@
             <div style="margin-bottom: 4rem;" class="reveal reveal-delay-1">
                 <h2>Project Details</h2>
                 <p style="font-size: 1rem; line-height: 1.85; color: var(--text-muted);">
-                    Agricultural drought impacts millions of farmers in India annually. This project developed a sophisticated ML pipeline that combines multiple drought indices (SPEI, VCI, SPI) with Random Forest and LSTM models to predict drought conditions. The system analyzes historical patterns and current conditions to provide actionable forecasts for agricultural planning.
+                    Urban utility networks are increasingly vulnerable to climate-driven risks. This project builds a reproducible, production-ready GIS pipeline integrating OpenStreetMap infrastructure data with four Google Earth Engine satellite datasets (DynamicWorld LULC, SRTM terrain, Sentinel-2 NDVI, and JRC Global Surface Water). The core analysis identifies which substations lie in flood-prone zones, which power lines face vegetation encroachment risk, and which grid segments cross steep terrain. A Streamlit dashboard with Folium interactive maps, network graph tracing (Dijkstra), and outage simulation visualizes the full risk picture. The pipeline runs end-to-end with a single command and includes a synthetic offline demo mode requiring no GEE authentication.
                 </p>
             </div>
 
@@ -474,19 +470,29 @@
                     
                     <span class="tech-pill">Python</span>
                     
-                    <span class="tech-pill">TensorFlow</span>
+                    <span class="tech-pill">Google Earth Engine</span>
                     
-                    <span class="tech-pill">Scikit-learn</span>
+                    <span class="tech-pill">Streamlit</span>
                     
-                    <span class="tech-pill">MODIS NDVI</span>
+                    <span class="tech-pill">GeoPandas</span>
                     
-                    <span class="tech-pill">ERA5 Climate Data</span>
+                    <span class="tech-pill">OSMnx</span>
                     
-                    <span class="tech-pill">SPEI/VCI Indices</span>
+                    <span class="tech-pill">NetworkX</span>
                     
-                    <span class="tech-pill">Random Forest</span>
+                    <span class="tech-pill">Folium</span>
                     
-                    <span class="tech-pill">LSTM Networks</span>
+                    <span class="tech-pill">Sentinel-2</span>
+                    
+                    <span class="tech-pill">SRTM</span>
+                    
+                    <span class="tech-pill">JRC Global Surface Water</span>
+                    
+                    <span class="tech-pill">Rasterio</span>
+                    
+                    <span class="tech-pill">Geemap</span>
+                    
+                    <span class="tech-pill">Dijkstra Shortest Path</span>
                     
                 </div>
             </div>
@@ -499,27 +505,47 @@
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Multi-index drought monitoring (SPEI, VCI, TCI, VHI)</span>
+                        <span>Live OSM data download — real power lines, substations &amp; towers for Bengaluru</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Machine learning models for 1-3 month forecasts</span>
+                        <span>500 m service-area buffer analysis and spatial joins</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>District-level drought risk mapping</span>
+                        <span>Network graph model with Dijkstra shortest-path tracing</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Historical trend analysis (1990-2022)</span>
+                        <span>GEE flood risk mapping (JRC GSW) — 50.6% of substations in flood-prone zones</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Crop yield impact assessment</span>
+                        <span>Sentinel-2 NDVI vegetation risk — 188 km of lines at encroachment risk</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>SRTM terrain slope analysis — 321 km of lines crossing steep terrain (&gt;15°)</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>5-tab interactive Streamlit dashboard with toggleable satellite + OSM layers</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Offline synthetic demo mode — no GEE account needed</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Fully reproducible: pinned dependencies, deterministic seed (seed=42), EPSG:4326 / UTM 43N</span>
                     </li>
                     
                 </ul>
@@ -535,25 +561,86 @@
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Published in Journal of Environmental Management</span>
+                            <span>Identified 89 of 176 substations (50.6%) in flood-prone zones</span>
                         </li>
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>75% forecast accuracy for 2-month predictions</span>
+                            <span>Flagged 188 km of power lines at vegetation encroachment risk</span>
                         </li>
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Presented at National Workshop on Drought Monitoring</span>
+                            <span>Detected 321 km of grid lines crossing steep terrain (&gt;15° slope)</span>
                         </li>
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Adopted by state agricultural departments for pilot testing</span>
+                            <span>Integrated 4 GEE satellite datasets with real-time OSM network data</span>
+                        </li>
+                        
+                        <li>
+                            <i class="fas fa-star"></i>
+                            <span>Built end-to-end pipeline runnable with a single command</span>
                         </li>
                         
                     </ul>
+                </div>
+            </div>
+            
+
+            <!-- Satellite Datasets (GEE) — shown only if project has gee_datasets -->
+            
+            <div style="margin-bottom: 4rem;" class="reveal reveal-delay-5">
+                <h2>
+                    <i class="fas fa-satellite" style="color: var(--accent); margin-right: 0.5rem; font-size: 1.1rem;"></i>
+                    Satellite Datasets (Google Earth Engine)
+                </h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.75rem; font-size: 0.97rem; line-height: 1.7;">
+                    Four GEE datasets power the risk intelligence layer of this project, each processed through a dedicated analysis script with both live GEE and synthetic offline demo modes.
+                </p>
+                <div class="gee-table-wrapper">
+                    <table class="gee-table">
+                        <thead>
+                            <tr>
+                                <th>Script</th>
+                                <th>Dataset</th>
+                                <th>Resolution</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td><code>01_lulc_analysis.py</code></td>
+                                <td><strong>DynamicWorld V1</strong></td>
+                                <td><span class="gee-res-badge">10 m</span></td>
+                                <td>Urban vs. vegetation land cover</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><code>02_slope_analysis.py</code></td>
+                                <td><strong>USGS SRTM</strong></td>
+                                <td><span class="gee-res-badge">30 m</span></td>
+                                <td>Terrain slope in degrees</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><code>03_ndvi_analysis.py</code></td>
+                                <td><strong>Sentinel-2 SR</strong></td>
+                                <td><span class="gee-res-badge">10 m</span></td>
+                                <td>Vegetation density (encroachment risk)</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><code>04_flood_risk.py</code></td>
+                                <td><strong>JRC Global Surface Water</strong></td>
+                                <td><span class="gee-res-badge">30 m</span></td>
+                                <td>Historical flood occurrence</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
             

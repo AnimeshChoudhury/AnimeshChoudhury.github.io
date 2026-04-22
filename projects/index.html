@@ -434,24 +434,20 @@
                     All Projects
                 </button>
                 
-                <button class="filter-btn" onclick="filterProjects('Agricultural Monitoring')" id="filter-1">
-                    Agricultural Monitoring
+                <button class="filter-btn" onclick="filterProjects('GIS &amp; Urban Analytics')" id="filter-1">
+                    GIS &amp; Urban Analytics
                 </button>
                 
-                <button class="filter-btn" onclick="filterProjects('Air Quality Monitoring')" id="filter-2">
-                    Air Quality Monitoring
+                <button class="filter-btn" onclick="filterProjects('Machine Learning &amp; Data Science')" id="filter-2">
+                    Machine Learning &amp; Data Science
                 </button>
                 
-                <button class="filter-btn" onclick="filterProjects('Forest Ecology')" id="filter-3">
-                    Forest Ecology
+                <button class="filter-btn" onclick="filterProjects('Tools &amp; Utilities')" id="filter-3">
+                    Tools &amp; Utilities
                 </button>
                 
-                <button class="filter-btn" onclick="filterProjects('Snow Hydrology')" id="filter-4">
-                    Snow Hydrology
-                </button>
-                
-                <button class="filter-btn" onclick="filterProjects('Weather Modeling')" id="filter-5">
-                    Weather Modeling
+                <button class="filter-btn" onclick="filterProjects('Web Development')" id="filter-4">
+                    Web Development
                 </button>
                 
             </div>
@@ -461,155 +457,59 @@
         <div id="projectsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 2rem;">
             
             <article class="project-card reveal reveal-delay-1"
-                     data-category="Snow Hydrology">
+                     data-category="GIS &amp; Urban Analytics">
 
                 <!-- Header -->
                 <div class="project-card-header">
                     <span style="opacity: 0.25; font-size: 3.2rem;">
-                        ❄️
+                        ⚡
                         
                     </span>
-                    <span class="project-category-badge">Snow Hydrology</span>
+                    <span class="project-category-badge">GIS &amp; Urban Analytics</span>
                 </div>
 
                 <!-- Body -->
                 <div class="project-card-body">
-                    <a href="../project/project-1/index.html"
-                       class="project-card-title">HimalSnow: AI-Powered Snow Cover Monitoring System</a>
-                    <div class="project-card-subtitle">Real-time Snow Cover Analysis for Northwest Himalaya</div>
-                    <p class="project-card-desc">Developed an automated system for monitoring snow cover dynamics in the Northwest Himalayan region using multi-sensor satellite data. The system processes MODIS, Sentinel-2, and Landsat imagery to provide near real-time snow cover area mapping and trend analysis.</p>
+                    <a href="../project/urban-utility-network/index.html"
+                       class="project-card-title">Urban Utility Network Explorer</a>
+                    <div class="project-card-subtitle">Satellite + Street-Level Intelligence for Bengaluru&#39;s Power Grid</div>
+                    <p class="project-card-desc">An end-to-end Python GIS pipeline that downloads real OSM utility infrastructure data for Bengaluru, enriches it with satellite imagery from Google Earth Engine, and serves interac…</p>
 
                     <div class="project-tech-tags">
                         
-                        <span class="project-tech-tag">Google Earth Engine</span>
-                        
                         <span class="project-tech-tag">Python</span>
                         
-                        <span class="project-tech-tag">MODIS</span>
+                        <span class="project-tech-tag">Google Earth Engine</span>
+                        
+                        <span class="project-tech-tag">Streamlit</span>
+                        
+                        <span class="project-tech-tag">GeoPandas</span>
                         
                     </div>
 
-                    <a href="../project/project-1/index.html"
-                       class="project-card-link">
-                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
-                    </a>
+                    <!-- Action row: details / github / paper -->
+                    <div class="project-card-actions">
+                        <a href="../project/urban-utility-network/index.html"
+                           class="project-card-link">
+                            View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
+                        </a>
+                        <div class="project-card-links">
+                            
+                            <a href="https://github.com/AnimeshChoudhury/UtilityNetwork" target="_blank" rel="noopener"
+                               class="project-icon-link" title="View Code on GitHub" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            
+                            
+                            
+                        </div>
+                    </div>
                 </div>
 
             </article>
             
             <article class="project-card reveal reveal-delay-2"
-                     data-category="Agricultural Monitoring">
-
-                <!-- Header -->
-                <div class="project-card-header">
-                    <span style="opacity: 0.25; font-size: 3.2rem;">
-                        🌾
-                        
-                    </span>
-                    <span class="project-category-badge">Agricultural Monitoring</span>
-                </div>
-
-                <!-- Body -->
-                <div class="project-card-body">
-                    <a href="../project/project-2/index.html"
-                       class="project-card-title">DroughtWatch India: ML-Based Drought Forecasting Platform</a>
-                    <div class="project-card-subtitle">Sub-seasonal to Seasonal Agricultural Drought Prediction</div>
-                    <p class="project-card-desc">Built a machine learning framework for predicting agricultural droughts across India using 30+ years of satellite data, meteorological records, and soil moisture indices. The system provides early warnings up to 3 months in advance.</p>
-
-                    <div class="project-tech-tags">
-                        
-                        <span class="project-tech-tag">Python</span>
-                        
-                        <span class="project-tech-tag">TensorFlow</span>
-                        
-                        <span class="project-tech-tag">Scikit-learn</span>
-                        
-                    </div>
-
-                    <a href="../project/project-2/index.html"
-                       class="project-card-link">
-                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
-                    </a>
-                </div>
-
-            </article>
-            
-            <article class="project-card reveal reveal-delay-3"
-                     data-category="Air Quality Monitoring">
-
-                <!-- Header -->
-                <div class="project-card-header">
-                    <span style="opacity: 0.25; font-size: 3.2rem;">
-                        🌪️
-                        
-                    </span>
-                    <span class="project-category-badge">Air Quality Monitoring</span>
-                </div>
-
-                <!-- Body -->
-                <div class="project-card-body">
-                    <a href="../project/project-3/index.html"
-                       class="project-card-title">AirSense: Multi-Pollutant Tracking System</a>
-                    <div class="project-card-subtitle">3D Visualization of Air Quality over Indo-Gangetic Plain</div>
-                    <p class="project-card-desc">Developed an integrated system for tracking and visualizing horizontal and vertical distribution of air pollutants (PM2.5, NO2, CO, SO2) over the Indo-Gangetic Plain using ground sensors and CALIPSO LIDAR satellite data.</p>
-
-                    <div class="project-tech-tags">
-                        
-                        <span class="project-tech-tag">Python</span>
-                        
-                        <span class="project-tech-tag">CALIPSO LIDAR</span>
-                        
-                        <span class="project-tech-tag">Ground Sensors</span>
-                        
-                    </div>
-
-                    <a href="../project/project-3/index.html"
-                       class="project-card-link">
-                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
-                    </a>
-                </div>
-
-            </article>
-            
-            <article class="project-card reveal reveal-delay-4"
-                     data-category="Forest Ecology">
-
-                <!-- Header -->
-                <div class="project-card-header">
-                    <span style="opacity: 0.25; font-size: 3.2rem;">
-                        🌲
-                        
-                    </span>
-                    <span class="project-category-badge">Forest Ecology</span>
-                </div>
-
-                <!-- Body -->
-                <div class="project-card-body">
-                    <a href="../project/project-4/index.html"
-                       class="project-card-title">ForestSpec: Hyperspectral Tree Species Classifier</a>
-                    <div class="project-card-subtitle">Deep Learning for Himalayan Forest Mapping</div>
-                    <p class="project-card-desc">Created a comprehensive spectral library and deep learning classifier for identifying Himalayan forest tree species using hyperspectral imagery and field spectroradiometer data.</p>
-
-                    <div class="project-tech-tags">
-                        
-                        <span class="project-tech-tag">Python</span>
-                        
-                        <span class="project-tech-tag">TensorFlow</span>
-                        
-                        <span class="project-tech-tag">Hyperspectral Imaging</span>
-                        
-                    </div>
-
-                    <a href="../project/project-4/index.html"
-                       class="project-card-link">
-                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
-                    </a>
-                </div>
-
-            </article>
-            
-            <article class="project-card reveal reveal-delay-5"
-                     data-category="Weather Modeling">
+                     data-category="Machine Learning &amp; Data Science">
 
                 <!-- Header -->
                 <div class="project-card-header">
@@ -617,30 +517,164 @@
                         🛰️
                         
                     </span>
-                    <span class="project-category-badge">Weather Modeling</span>
+                    <span class="project-category-badge">Machine Learning &amp; Data Science</span>
                 </div>
 
                 <!-- Body -->
                 <div class="project-card-body">
-                    <a href="../project/project-5/index.html"
-                       class="project-card-title">ThunderTrack: Urban Thunderstorm Prediction System</a>
-                    <div class="project-card-subtitle">High-Resolution Mesoscale Modeling for Indian Cities</div>
-                    <p class="project-card-desc">Developing a high-resolution weather prediction system for forecasting thunderstorms over major Indian cities using WRF model and analyzing land-atmosphere interactions during extreme weather events.</p>
+                    <a href="../project/bharatbench/index.html"
+                       class="project-card-title">BharatBench</a>
+                    <div class="project-card-subtitle">A Benchmark Dataset for Data-Driven Weather Forecasting over India</div>
+                    <p class="project-card-desc">A ready-to-use dataset and benchmarking framework designed to accelerate data-driven weather forecasting research over India. Derived from IMDAA reanalysis with pre-processed, ML-r…</p>
 
                     <div class="project-tech-tags">
                         
-                        <span class="project-tech-tag">WRF-CHEM</span>
-                        
                         <span class="project-tech-tag">Python</span>
                         
-                        <span class="project-tech-tag">NCL</span>
+                        <span class="project-tech-tag">TensorFlow</span>
+                        
+                        <span class="project-tech-tag">Jupyter Notebooks</span>
+                        
+                        <span class="project-tech-tag">Xarray</span>
                         
                     </div>
 
-                    <a href="../project/project-5/index.html"
-                       class="project-card-link">
-                        View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
-                    </a>
+                    <!-- Action row: details / github / paper -->
+                    <div class="project-card-actions">
+                        <a href="../project/bharatbench/index.html"
+                           class="project-card-link">
+                            View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
+                        </a>
+                        <div class="project-card-links">
+                            
+                            <a href="https://github.com/MASLABnitrkl/BharatBench" target="_blank" rel="noopener"
+                               class="project-icon-link" title="View Code on GitHub" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            
+                            
+                            <a href="http://arxiv.org/abs/2405.07534" target="_blank" rel="noopener"
+                               class="project-icon-link" title="Read Publication" aria-label="Publication">
+                                <i class="fas fa-file-alt"></i>
+                            </a>
+                            
+                            
+                            <a href="https://www.kaggle.com/datasets/maslab/bharatbench" target="_blank" rel="noopener"
+                               class="project-icon-link project-icon-link--demo" title="Live Demo" aria-label="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+            
+            <article class="project-card reveal reveal-delay-3"
+                     data-category="Web Development">
+
+                <!-- Header -->
+                <div class="project-card-header">
+                    <span style="opacity: 0.25; font-size: 3.2rem;">
+                        🛰️
+                        
+                    </span>
+                    <span class="project-category-badge">Web Development</span>
+                </div>
+
+                <!-- Body -->
+                <div class="project-card-body">
+                    <a href="../project/portfolio-website/index.html"
+                       class="project-card-title">Personal Portfolio Website</a>
+                    <div class="project-card-subtitle">Multi-Page Academic Portfolio with Flask &amp; Static Site Generation</div>
+                    <p class="project-card-desc">A professional, statically-generated academic portfolio built with Flask and Frozen-Flask. Features multi-page layouts, data-driven content from JSON, responsive design, and dual d…</p>
+
+                    <div class="project-tech-tags">
+                        
+                        <span class="project-tech-tag">Python</span>
+                        
+                        <span class="project-tech-tag">Flask</span>
+                        
+                        <span class="project-tech-tag">Frozen-Flask</span>
+                        
+                        <span class="project-tech-tag">Jinja2</span>
+                        
+                    </div>
+
+                    <!-- Action row: details / github / paper -->
+                    <div class="project-card-actions">
+                        <a href="../project/portfolio-website/index.html"
+                           class="project-card-link">
+                            View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
+                        </a>
+                        <div class="project-card-links">
+                            
+                            <a href="https://github.com/AnimeshChoudhury/AnimeshChoudhury.github.io" target="_blank" rel="noopener"
+                               class="project-icon-link" title="View Code on GitHub" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            
+                            
+                            
+                            <a href="https://animeshchoudhury.github.io/" target="_blank" rel="noopener"
+                               class="project-icon-link project-icon-link--demo" title="Live Demo" aria-label="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+            
+            <article class="project-card reveal reveal-delay-4"
+                     data-category="Tools &amp; Utilities">
+
+                <!-- Header -->
+                <div class="project-card-header">
+                    <span style="opacity: 0.25; font-size: 3.2rem;">
+                        🛰️
+                        
+                    </span>
+                    <span class="project-category-badge">Tools &amp; Utilities</span>
+                </div>
+
+                <!-- Body -->
+                <div class="project-card-body">
+                    <a href="../project/cv-builder/index.html"
+                       class="project-card-title">Academic CV Builder</a>
+                    <div class="project-card-subtitle">Python-Based PDF CV Generator for Researchers</div>
+                    <p class="project-card-desc">A Python tool that generates publication-ready academic CVs from a single JSON data file. Features a clean, professional layout with embedded profile images, clickable social icons…</p>
+
+                    <div class="project-tech-tags">
+                        
+                        <span class="project-tech-tag">Python</span>
+                        
+                        <span class="project-tech-tag">ReportLab</span>
+                        
+                        <span class="project-tech-tag">PIL/Pillow</span>
+                        
+                        <span class="project-tech-tag">JSON</span>
+                        
+                    </div>
+
+                    <!-- Action row: details / github / paper -->
+                    <div class="project-card-actions">
+                        <a href="../project/cv-builder/index.html"
+                           class="project-card-link">
+                            View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
+                        </a>
+                        <div class="project-card-links">
+                            
+                            <a href="https://github.com/AnimeshChoudhury/CV_Builder" target="_blank" rel="noopener"
+                               class="project-icon-link" title="View Code on GitHub" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            
+                            
+                            
+                        </div>
+                    </div>
                 </div>
 
             </article>

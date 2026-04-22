@@ -12,7 +12,7 @@
     <meta property="og:title" content="Animesh Choudhury — Remote Sensing Researcher">
     <meta property="og:description" content="Transforming Earth Observation Data into Actionable Insights">
 
-    <title>AirSense: Multi-Pollutant Tracking System — Animesh Choudhury</title>
+    <title>BharatBench — Animesh Choudhury</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -422,23 +422,27 @@
         </a>
         <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
                     text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.75rem;">
-            Air Quality Monitoring · 2019 - 2020
+            Machine Learning &amp; Data Science · 2024 - Present
         </div>
-        <h1>AirSense: Multi-Pollutant Tracking System</h1>
-        <p>3D Visualization of Air Quality over Indo-Gangetic Plain</p>
+        <h1>BharatBench</h1>
+        <p>A Benchmark Dataset for Data-Driven Weather Forecasting over India</p>
 
         
         <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
             
-            <a href="https://github.com/AnimeshChoudhury/airsense-monitoring" target="_blank" rel="noopener" class="btn btn-outline">
+            <a href="https://github.com/MASLABnitrkl/BharatBench" target="_blank" rel="noopener" class="btn btn-outline">
                 <i class="fab fa-github"></i> View Code
             </a>
             
             
-            <a href="https://doi.org/10.1007/s13762-022-04520-1" target="_blank" rel="noopener" class="btn btn-outline">
+            <a href="http://arxiv.org/abs/2405.07534" target="_blank" rel="noopener" class="btn btn-outline">
                 <i class="fas fa-file-alt"></i> Read Paper
             </a>
             
+            
+            <a href="https://www.kaggle.com/datasets/maslab/bharatbench" target="_blank" rel="noopener" class="btn btn-primary">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
             
         </div>
         
@@ -455,7 +459,7 @@
             <div style="margin-bottom: 4rem;" class="reveal">
                 <h2>Overview</h2>
                 <p style="font-size: 1.05rem; line-height: 1.85; color: var(--text);">
-                    Developed an integrated system for tracking and visualizing horizontal and vertical distribution of air pollutants (PM2.5, NO2, CO, SO2) over the Indo-Gangetic Plain using ground sensors and CALIPSO LIDAR satellite data.
+                    A ready-to-use dataset and benchmarking framework designed to accelerate data-driven weather forecasting research over India. Derived from IMDAA reanalysis with pre-processed, ML-ready data optimized for limited computational resources.
                 </p>
             </div>
 
@@ -463,7 +467,7 @@
             <div style="margin-bottom: 4rem;" class="reveal reveal-delay-1">
                 <h2>Project Details</h2>
                 <p style="font-size: 1rem; line-height: 1.85; color: var(--text-muted);">
-                    Air pollution in the Indo-Gangetic Plain affects over 400 million people. This project combined ground-based observations with satellite LIDAR data to create 3D visualizations of pollutant distribution. The system revealed critical patterns in aerosol transport and helped identify pollution sources and their vertical extent in the atmosphere.
+                    BharatBench addresses the gap in regional weather forecasting research by providing a high-quality dataset specifically tailored to the Indian monsoon region. Unlike global datasets like WeatherBench (ERA5), BharatBench focuses on the meteorologically distinct Indian subcontinent with complex orography (Himalayas, Western Ghats) and diverse microclimates. The dataset spans 31 years (1990–2020) with 6-hourly temporal resolution, covering surface variables (2m temperature, wind, pressure, precipitation) and 13 pressure levels. With a 32×32 grid at 1.08° resolution, it is trainable on standard laptop CPUs. Complete benchmarks are provided: persistence, climatology, weekly climatology, linear regression, CNN, and ConvLSTM baselines with evaluation code.
                 </p>
             </div>
 
@@ -474,19 +478,25 @@
                     
                     <span class="tech-pill">Python</span>
                     
-                    <span class="tech-pill">CALIPSO LIDAR</span>
+                    <span class="tech-pill">TensorFlow</span>
                     
-                    <span class="tech-pill">Ground Sensors</span>
+                    <span class="tech-pill">Jupyter Notebooks</span>
                     
-                    <span class="tech-pill">Plotly</span>
+                    <span class="tech-pill">Xarray</span>
                     
-                    <span class="tech-pill">NumPy</span>
+                    <span class="tech-pill">NetCDF</span>
                     
-                    <span class="tech-pill">Pandas</span>
+                    <span class="tech-pill">Machine Learning</span>
                     
-                    <span class="tech-pill">Aerosol Analysis</span>
+                    <span class="tech-pill">Deep Learning</span>
                     
-                    <span class="tech-pill">3D Visualization</span>
+                    <span class="tech-pill">CNN</span>
+                    
+                    <span class="tech-pill">ConvLSTM</span>
+                    
+                    <span class="tech-pill">IMDAA Reanalysis</span>
+                    
+                    <span class="tech-pill">Weather Forecasting</span>
                     
                 </div>
             </div>
@@ -499,27 +509,57 @@
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Integration of satellite and ground sensor data</span>
+                        <span>31-year IMDAA-derived reanalysis dataset (1990–2020)</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>3D aerosol vertical profile visualization</span>
+                        <span>Regional focus: 5°N–40°N, 65°E–100°E with 1.08° spatial resolution</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Source apportionment analysis</span>
+                        <span>6-hourly temporal resolution with 13 pressure levels (50–1000 hPa)</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Temporal trend analysis (seasonal patterns)</span>
+                        <span>Surface variables: 2m temperature, 10m wind components, sea-level pressure, precipitation</span>
                     </li>
                     
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Interactive web-based dashboard</span>
+                        <span>Pressure-level variables: geopotential height, temperature, humidity, wind components</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Pre-processed and ML-ready — 32×32 grid points for low compute barrier</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Trainable on standard laptop CPU (Intel i7 / 32 GB RAM sufficient)</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Complete baseline implementations: persistence, climatology, linear regression, CNN, ConvLSTM</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Standard evaluation metrics: RMSE, MAE, Anomaly Correlation Coefficient (ACC)</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Train/Val/Test split: 1990–2017 / 2018 / 2019–2020</span>
+                    </li>
+                    
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Kaggle dataset and Jupyter notebook tutorials included</span>
                     </li>
                     
                 </ul>
@@ -535,27 +575,40 @@
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Presented at Asian Air Pollution Workshop (AAPW-5)</span>
+                            <span>Published research paper on arXiv</span>
                         </li>
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Identified major dust transport events from Middle East</span>
+                            <span>Publicly available Kaggle dataset</span>
                         </li>
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Dataset spans 2 years with daily measurements</span>
+                            <span>Comprehensive benchmark results for 3-day and 5-day lead times</span>
                         </li>
                         
                         <li>
                             <i class="fas fa-star"></i>
-                            <span>Contributed to air quality policy discussions</span>
+                            <span>4 Jupyter notebooks with complete reproducible code</span>
+                        </li>
+                        
+                        <li>
+                            <i class="fas fa-star"></i>
+                            <span>Baseline CNN model achieves 26.27 RMSE vs. 28.47 climatology baseline</span>
+                        </li>
+                        
+                        <li>
+                            <i class="fas fa-star"></i>
+                            <span>ConvLSTM baseline achieves 26.87 RMSE, capturing temporal dynamics</span>
                         </li>
                         
                     </ul>
                 </div>
             </div>
+            
+
+            <!-- Satellite Datasets (GEE) — shown only if project has gee_datasets -->
             
 
         </div>
