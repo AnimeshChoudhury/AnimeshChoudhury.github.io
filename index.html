@@ -14,369 +14,19 @@
 
     <title>Animesh Choudhury — Remote Sensing Researcher</title>
 
-    <!-- Google Fonts -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/modern.css">
     
-
-    <style>
-        /* ════════════════════════════════════════
-           DESIGN TOKENS
-        ════════════════════════════════════════ */
-        :root {
-            /* ── Palette ── */
-            --primary:        #0b4f6c;   /* deep ocean */
-            --primary-light:  #1a7a99;   /* teal */
-            --accent:         #e05d07;   /* bold amber-orange */
-            --accent-dark:    #c24f00;
-            --dark:           #111827;
-            --bg:             #f5f7fa;
-            --bg-input:       #fafbfc;
-            --text:           #1e293b;
-            --text-muted:     #64748b;
-
-            /* ── Gradients ── */
-            --gradient-hero: linear-gradient(
-                150deg,
-                #0b3d55 0%,
-                #0b4f6c 30%,
-                #1a7a99 65%,
-                #c24f00 100%
-            );
-            --gradient-card: linear-gradient(
-                145deg,
-                rgba(26, 122, 153, 0.06) 0%,
-                rgba(224, 93, 7, 0.05) 100%
-            );
-
-            /* ── Typography ── */
-            --font-display: 'Syne', sans-serif;
-            --font-mono:    'Space Mono', monospace;
-            --font-body:    'Inter', sans-serif;
-
-            /* ── Spacing ── */
-            --section-padding:  100px;
-            --container-width:  1200px;
-
-            /* ── Transitions ── */
-            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        /* ════════════════════════════════════════
-           RESET & BASE
-        ════════════════════════════════════════ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-body);
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.65;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        img { display: block; }
-
-        /* ════════════════════════════════════════
-           CONTAINER
-        ════════════════════════════════════════ */
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* ════════════════════════════════════════
-           NAVIGATION
-        ════════════════════════════════════════ */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(11, 79, 108, 0.12);
-            box-shadow: 0 1px 20px rgba(0,0,0,0.04);
-            padding: 0;
-            transition: padding 0.3s var(--ease-out),
-                        box-shadow 0.3s ease,
-                        background 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(255,255,255,0.97);
-            box-shadow: 0 4px 28px rgba(0,0,0,0.09);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 72px;
-            transition: height 0.3s var(--ease-out);
-        }
-
-        nav.scrolled .container {
-            height: 60px;
-        }
-
-        /* Logo */
-        .logo {
-            font-family: var(--font-display);
-            font-size: 1.55rem;
-            font-weight: 900;
-            color: var(--primary);
-            text-decoration: none;
-            letter-spacing: -0.03em;
-            transition: color 0.22s;
-            display: flex;
-            align-items: center;
-            gap: 0.2rem;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .logo:hover { color: var(--primary-light); }
-
-        /* Nav links */
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            position: relative;
-            padding-bottom: 3px;
-            transition: color 0.22s;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 1px;
-            transition: width 0.28s var(--ease-out);
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        /* CV Button */
-        .nav-cv-btn {
-            font-family: var(--font-mono) !important;
-            font-size: 0.75rem !important;
-            font-weight: 700 !important;
-            background: var(--accent) !important;
-            color: white !important;
-            padding: 0.5rem 1.25rem;
-            border-radius: 6px;
-            transition: background 0.22s, transform 0.22s, box-shadow 0.22s !important;
-            box-shadow: 0 2px 10px rgba(224,93,7,0.25);
-        }
-
-        .nav-cv-btn:hover {
-            background: var(--accent-dark) !important;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(224,93,7,0.35) !important;
-        }
-
-        .nav-cv-btn::after { display: none !important; }
-
-        /* Mobile toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 4px;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 26px;
-            height: 2px;
-            background: var(--primary);
-            border-radius: 1px;
-            transition: all 0.28s ease;
-        }
-
-        /* ════════════════════════════════════════
-           MAIN CONTENT
-        ════════════════════════════════════════ */
-        main {
-            padding-top: 72px;
-            min-height: 100vh;
-        }
-
-        /* ════════════════════════════════════════
-           FOOTER
-        ════════════════════════════════════════ */
-        footer {
-            background: var(--dark);
-            color: rgba(255,255,255,0.8);
-            padding: 4rem 0 2.5rem;
-            margin-top: 0;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            margin-bottom: 2rem;
-        }
-
-        .footer-brand .logo {
-            color: white;
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-brand .logo:hover { color: rgba(255,255,255,0.75); }
-
-        .footer-tagline {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.45);
-            letter-spacing: 0.04em;
-            max-width: 260px;
-            line-height: 1.6;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .footer-social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-            font-size: 1.05rem;
-            text-decoration: none;
-            transition: all 0.22s ease;
-        }
-
-        .footer-social a:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 14px rgba(224,93,7,0.35);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-copy {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.35);
-            letter-spacing: 0.03em;
-        }
-
-        .footer-built {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.28);
-        }
-
-        /* ════════════════════════════════════════
-           RESPONSIVE — MOBILE NAV
-        ════════════════════════════════════════ */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 72px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 72px);
-                background: rgba(255,255,255,0.99);
-                flex-direction: column;
-                justify-content: center;
-                gap: 2rem;
-                transition: left 0.3s var(--ease-out);
-                padding: 2rem;
-                box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05);
-            }
-
-            .nav-links.active { left: 0; }
-
-            .nav-links a {
-                font-size: 1.1rem;
-                letter-spacing: 0.06em;
-            }
-
-            .menu-toggle { display: flex; }
-
-            .footer-top {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-            }
-        }
-    </style>
 </head>
 <body>
 
@@ -387,7 +37,7 @@
                 A<span>C</span>
             </a>
 
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" id="menuToggleBtn">
+            <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -403,7 +53,7 @@
                     <a href="static/files/Animesh_Choudhury_CV.pdf"
                        download="Animesh_Choudhury_CV.pdf"
                        class="nav-cv-btn">
-                        <i class="fas fa-download" style="font-size:0.7rem; margin-right:0.35rem;"></i>CV
+                        <i class="fas fa-download"></i>CV
                     </a>
                 </li>
             </ul>
@@ -415,81 +65,114 @@
         
 
 <!-- ══ HERO ═══════════════════════════════════════ -->
-<section class="hero">
+<section class="hero" id="hero">
+    <!-- Three.js particle canvas -->
+    <canvas id="hero-canvas"></canvas>
+
     <div class="container">
-        <div class="hero-content hero-flex">
+        <div class="hero-content">
+            <!-- Floating ambient orbs -->
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
 
-            <!-- Profile Photo -->
-            <div class="hero-image">
-                <img src="static/images/profile_image.png"
-                     alt="Portrait of Animesh Choudhury"
-                     width="300" height="300">
-            </div>
+            <div class="hero-main">
+                <!-- Text Column -->
+                <div class="hero-text" data-parallax="0.06">
+                    <div class="hero-label">Welcome to my portfolio</div>
+                    <h1>Animesh Choudhury</h1>
+                    <p class="hero-subtitle">Transforming Earth Observation Data into Actionable Insights</p>
+                    <p class="hero-description">Accomplished researcher specializing in Remote Sensing, GIS, and Climate Science with extensive experience in satellite data analysis, machine learning applications for environmental monitoring, and geospatial modeling. Strong background in drought monitoring, snow cover mapping, air quality analysis, and land-atmosphere interactions. Proficient in Python, R, Google Earth Engine, and various remote sensing tools.</p>
+                    <div class="cta-buttons">
+                        <a href="projects/index.html" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Explore Work
+                        </a>
+                        <a href="contact/index.html" class="btn btn-outline">
+                            <i class="fas fa-envelope"></i> Get in Touch
+                        </a>
+                    </div>
+                </div>
 
-            <!-- Text -->
-            <div class="hero-text">
-                <h1>Animesh Choudhury</h1>
-                <p class="tagline">Transforming Earth Observation Data into Actionable Insights</p>
-                <p>Accomplished researcher specializing in Remote Sensing, GIS, and Climate Science with extensive experience in satellite data analysis, machine learning applications for environmental monitoring, and geospatial modeling. Strong background in drought monitoring, snow cover mapping, air quality analysis, and land-atmosphere interactions. Proficient in Python, R, Google Earth Engine, and various remote sensing tools.</p>
-                <div class="cta-buttons">
-                    <a href="projects/index.html" class="btn btn-primary">
-                        <i class="fas fa-satellite-dish"></i> View Projects
-                    </a>
-                    <a href="contact/index.html" class="btn btn-outline">
-                        <i class="fas fa-paper-plane"></i> Get in Touch
-                    </a>
+                <!-- Profile Photo Column -->
+                <div class="hero-image">
+                    <div class="hero-image-wrapper">
+                        <img src="static/images/profile_image.png"
+                             alt="Portrait of Animesh Choudhury"
+                             width="400" height="400"
+                             loading="eager">
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 
-<!-- ══ RESEARCH INTERESTS ══════════════════════════ -->
-<section style="background: white;">
+<!-- ══ RESEARCH FOCUS ═══════════════════════════════ -->
+<section>
     <div class="container">
         <div class="section-header reveal">
             <span class="subtitle">What I Do</span>
-            <h2>Research Interests</h2>
+            <h2>Research &amp; Expertise</h2>
+            <p>Advancing Earth observation through satellite data, machine learning, and environmental science.</p>
         </div>
 
-        <div class="card-grid">
+        <div class="services-grid">
             
             
-            <div class="interest-card reveal reveal-delay-1">
-                <div class="interest-icon">🛰️</div>
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-satellite"></i>
+                </div>
                 <h3>Remote Sensing &amp; Earth Observation</h3>
+                <p>Leveraging geospatial intelligence and computational methods to solve real-world Earth observation challenges.</p>
             </div>
             
-            <div class="interest-card reveal reveal-delay-2">
-                <div class="interest-icon">🌍</div>
+            <div class="service-card reveal reveal-delay-2">
+                <div class="service-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
                 <h3>Drought Monitoring &amp; Climate Analysis</h3>
+                <p>Leveraging geospatial intelligence and computational methods to solve real-world Earth observation challenges.</p>
             </div>
             
-            <div class="interest-card reveal reveal-delay-3">
-                <div class="interest-icon">❄️</div>
+            <div class="service-card reveal reveal-delay-3">
+                <div class="service-icon">
+                    <i class="fas fa-snowflake"></i>
+                </div>
                 <h3>Snow Cover Dynamics &amp; Hydrology</h3>
+                <p>Leveraging geospatial intelligence and computational methods to solve real-world Earth observation challenges.</p>
             </div>
             
-            <div class="interest-card reveal reveal-delay-4">
-                <div class="interest-icon">🤖</div>
+            <div class="service-card reveal reveal-delay-4">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
                 <h3>Machine Learning for Environmental Prediction</h3>
+                <p>Leveraging geospatial intelligence and computational methods to solve real-world Earth observation challenges.</p>
             </div>
             
-            <div class="interest-card reveal reveal-delay-5">
-                <div class="interest-icon">🌾</div>
+            <div class="service-card reveal reveal-delay-5">
+                <div class="service-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
                 <h3>Agricultural Remote Sensing</h3>
+                <p>Leveraging geospatial intelligence and computational methods to solve real-world Earth observation challenges.</p>
             </div>
             
-            <div class="interest-card reveal reveal-delay-6">
-                <div class="interest-icon">🌪️</div>
+            <div class="service-card reveal reveal-delay-6">
+                <div class="service-icon">
+                    <i class="fas fa-wind"></i>
+                </div>
                 <h3>Air Quality &amp; Atmospheric Science</h3>
+                <p>Leveraging geospatial intelligence and computational methods to solve real-world Earth observation challenges.</p>
             </div>
             
-            <div class="interest-card reveal reveal-delay-6">
-                <div class="interest-icon">📊</div>
+            <div class="service-card reveal reveal-delay-6">
+                <div class="service-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
                 <h3>Geospatial Data Analysis</h3>
+                <p>Leveraging geospatial intelligence and computational methods to solve real-world Earth observation challenges.</p>
             </div>
             
         </div>
@@ -498,27 +181,28 @@
 
 
 <!-- ══ FEATURED PROJECTS ═══════════════════════════ -->
-<section>
+<section style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-header reveal">
             <span class="subtitle">Featured Work</span>
             <h2>Recent Projects</h2>
-            <p>Exploring Earth systems through satellite data, machine learning, and environmental analysis.</p>
+            <p>Exploring Earth systems through innovative satellite data analysis and computational approaches.</p>
         </div>
 
-        <div class="card-grid">
+        <div class="projects-showcase">
             
-            
-            <div class="card reveal reveal-delay-1">
-                <div class="card-image">
-                    🛰️
+            <div class="project-card reveal reveal-delay-1">
+                <div class="project-card-image">
+                    
+                        <i class="fas fa-bolt"></i>
                     
                 </div>
-                <div class="card-content">
-                    <div class="card-meta">GIS &amp; Urban Analytics · 2024 - Present</div>
-                    <h3 class="card-title">Urban Utility Network Explorer</h3>
-                    <p class="card-description">An end-to-end Python GIS pipeline that downloads real OSM utility infrastructure data for Bengaluru, enriches it with satellite imagery from Google Earth Engine…</p>
-                    <div class="card-tags">
+                <div class="project-card-content">
+                    <span class="project-category">GIS &amp; Urban Analytics</span>
+                    <h3>Urban Utility Network Explorer</h3>
+                    <p class="project-subtitle">Satellite + Street-Level Intelligence for Bengaluru&#39;s Power Grid</p>
+                    <p class="project-description">An end-to-end Python GIS pipeline that downloads real OSM utility infrastructure data for Bengaluru, enriches it with satellite imagery from Google Earth Engine, and serves interactive analysis through a Streamlit dashboard — network tracing, flood risk, vegetation encroachment, and terrain analysis all in one command.</p>
+                    <div class="project-tags">
                         
                         <span class="tag">GIS</span>
                         
@@ -526,24 +210,28 @@
                         
                         <span class="tag">Streamlit</span>
                         
+                        <span class="tag">Python</span>
+                        
                     </div>
                     <a href="project/urban-utility-network/index.html"
-                       class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.78rem;">
-                        Learn More <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+                       class="project-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
             
-            <div class="card reveal reveal-delay-2">
-                <div class="card-image">
-                    🛰️
+            <div class="project-card reveal reveal-delay-2">
+                <div class="project-card-image">
+                    
+                        <i class="fas fa-cloud-sun"></i>
                     
                 </div>
-                <div class="card-content">
-                    <div class="card-meta">Machine Learning &amp; Data Science · 2024 - Present</div>
-                    <h3 class="card-title">BharatBench</h3>
-                    <p class="card-description">A ready-to-use dataset and benchmarking framework designed to accelerate data-driven weather forecasting research over India. Derived from IMDAA reanalysis with…</p>
-                    <div class="card-tags">
+                <div class="project-card-content">
+                    <span class="project-category">Machine Learning &amp; Data Science</span>
+                    <h3>BharatBench</h3>
+                    <p class="project-subtitle">A Benchmark Dataset for Data-Driven Weather Forecasting over India</p>
+                    <p class="project-description">A ready-to-use dataset and benchmarking framework designed to accelerate data-driven weather forecasting research over India. Derived from IMDAA reanalysis with pre-processed, ML-ready data optimized for limited computational resources.</p>
+                    <div class="project-tags">
                         
                         <span class="tag">Weather Forecasting</span>
                         
@@ -551,24 +239,28 @@
                         
                         <span class="tag">Deep Learning</span>
                         
+                        <span class="tag">CNN</span>
+                        
                     </div>
                     <a href="project/bharatbench/index.html"
-                       class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.78rem;">
-                        Learn More <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+                       class="project-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
             
-            <div class="card reveal reveal-delay-3">
-                <div class="card-image">
-                    🛰️
+            <div class="project-card reveal reveal-delay-3">
+                <div class="project-card-image">
+                    
+                        <i class="fas fa-globe"></i>
                     
                 </div>
-                <div class="card-content">
-                    <div class="card-meta">Web Development · 2025 - Present</div>
-                    <h3 class="card-title">Personal Portfolio Website</h3>
-                    <p class="card-description">A professional, statically-generated academic portfolio built with Flask and Frozen-Flask. Features multi-page layouts, data-driven content from JSON, responsiv…</p>
-                    <div class="card-tags">
+                <div class="project-card-content">
+                    <span class="project-category">Web Development</span>
+                    <h3>Personal Portfolio Website</h3>
+                    <p class="project-subtitle">Multi-Page Academic Portfolio with Flask &amp; Static Site Generation</p>
+                    <p class="project-description">A professional, statically-generated academic portfolio built with Flask and Frozen-Flask. Features multi-page layouts, data-driven content from JSON, responsive design, and dual deployment to GitHub Pages and Netlify via GitHub Actions.</p>
+                    <div class="project-tags">
                         
                         <span class="tag">Web Development</span>
                         
@@ -576,57 +268,66 @@
                         
                         <span class="tag">Python</span>
                         
+                        <span class="tag">Full Stack</span>
+                        
                     </div>
                     <a href="project/portfolio-website/index.html"
-                       class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.78rem;">
-                        Learn More <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+                       class="project-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
             
         </div>
 
-        <div style="text-align: center; margin-top: 3rem;" class="reveal">
+        <div style="text-align: center; margin-top: 3.5rem;" class="reveal">
             <a href="projects/index.html" class="btn btn-outline-dark">
-                View All Projects <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+                View All Projects <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
             </a>
         </div>
     </div>
 </section>
 
 
-<!-- ══ RESEARCH METRICS ══════════════════════════════ -->
-<section class="stats-section">
+<!-- ══ RESEARCH IMPACT ══════════════════════════════ -->
+<section class="impact-section">
     <div class="container">
         <div class="section-header reveal" style="margin-bottom: 3rem;">
-            <span class="subtitle" style="color: var(--accent);">Impact</span>
-            <h2 style="color: white;">Research Metrics</h2>
+            <span class="subtitle" style="color: var(--accent-cyan);">Metrics &amp; Impact</span>
+            <h2>Research Publications</h2>
+            <p style="color: var(--text-secondary);">A track record of peer-reviewed contributions advancing Earth observation and climate science.</p>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-item reveal reveal-delay-1">
-                <span class="stat-number" data-target="9">0</span>
-                <span class="stat-label">Journal Publications</span>
+        <div class="impact-grid">
+            <div class="impact-item reveal reveal-delay-1">
+                <div class="impact-number" data-target="9">0</div>
+                <div class="impact-label">Journal Publications</div>
+                <p class="impact-desc">Peer-reviewed journal articles</p>
             </div>
-            <div class="stat-item reveal reveal-delay-2">
-                <span class="stat-number" data-target="4">0</span>
-                <span class="stat-label">Conference Papers</span>
+            <div class="impact-item reveal reveal-delay-2">
+                <div class="impact-number" data-target="4">0</div>
+                <div class="impact-label">Conference Papers</div>
+                <p class="impact-desc">International conference proceedings</p>
             </div>
-            <div class="stat-item reveal reveal-delay-3">
-                <span class="stat-number" data-target="2">0</span>
-                <span class="stat-label">Book Chapters</span>
+            <div class="impact-item reveal reveal-delay-3">
+                <div class="impact-number" data-target="2">0</div>
+                <div class="impact-label">Book Chapters</div>
+                <p class="impact-desc">Contributed book chapters</p>
             </div>
-            <div class="stat-item reveal reveal-delay-4">
-                <span class="stat-number" data-target="134">0</span>
-                <span class="stat-label">Total Citations</span>
+            <div class="impact-item reveal reveal-delay-4">
+                <div class="impact-number" data-target="134">0</div>
+                <div class="impact-label">Total Citations</div>
+                <p class="impact-desc">Research citations &amp; references</p>
             </div>
-            <div class="stat-item reveal reveal-delay-5">
-                <span class="stat-number" data-target="6">0</span>
-                <span class="stat-label">h-index</span>
+            <div class="impact-item reveal reveal-delay-5">
+                <div class="impact-number" data-target="6">6</div>
+                <div class="impact-label">h-index</div>
+                <p class="impact-desc">Research impact index</p>
             </div>
-            <div class="stat-item reveal reveal-delay-6">
-                <span class="stat-number" data-target="5">0</span>
-                <span class="stat-label">i10-index</span>
+            <div class="impact-item reveal reveal-delay-6">
+                <div class="impact-number" data-target="5">5</div>
+                <div class="impact-label">i10-index</div>
+                <p class="impact-desc">Highly-cited publications</p>
             </div>
         </div>
     </div>
@@ -634,16 +335,18 @@
 
 
 <!-- ══ CALL TO ACTION ════════════════════════════════ -->
-<section style="background: white;">
-    <div class="container" style="text-align: center;">
+<section style="background: var(--bg-secondary); text-align: center;">
+    <div class="container">
         <div class="reveal">
-            <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); color: var(--primary); margin-bottom: 1rem; font-weight: 900;">
+            <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; margin-bottom: 1rem;
+                        background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 100%);
+                        background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 Let's Collaborate
             </h2>
-            <p style="font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.75;">
+            <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.8;">
                 Open to research collaborations, consulting opportunities, and discussions around Remote Sensing, Earth Observation, and Geospatial Intelligence.
             </p>
-            <a href="contact/index.html" class="btn btn-primary" style="padding: 1.1rem 3rem; font-size: 0.9rem;">
+            <a href="contact/index.html" class="btn btn-primary" style="display: inline-flex; width: auto; padding: 1.1rem 3rem;">
                 <i class="fas fa-envelope"></i> Contact Me
             </a>
         </div>
@@ -658,7 +361,7 @@
         <div class="container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo" >A<span style="color:var(--accent);">C</span></a>
+                    <a href="index.html" class="logo">A<span>C</span></a>
                     <p class="footer-tagline">Remote Sensing Researcher — Earth Observation &amp; Geospatial Intelligence</p>
                 </div>
 
@@ -679,71 +382,16 @@
         </div>
     </footer>
 
-    <!-- ── Scripts ─────────────────────────────── -->
-    <script src="static/js/main.js"></script>
-    <script>
-        /* ── Mobile nav toggle ── */
-        function toggleMenu() {
-            const navLinks   = document.getElementById('navLinks');
-            const toggleBtn  = document.getElementById('menuToggleBtn');
-            const isOpen     = navLinks.classList.toggle('active');
-            toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        }
+    <!-- ── CDN Libraries ──────────────────────── -->
+    <!-- Three.js for 3D particle hero -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <!-- GSAP + ScrollTrigger for scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
-        /* Click-outside closes menu */
-        document.addEventListener('click', function(e) {
-            const navLinks  = document.getElementById('navLinks');
-            const menuBtn   = document.getElementById('menuToggleBtn');
-            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
-                navLinks.classList.remove('active');
-                menuBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        /* ── Scroll-shrink nav ── */
-        const nav = document.getElementById('mainNav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 40);
-        }, { passive: true });
-    </script>
+    <!-- ── Portfolio JS ───────────────────────── -->
+    <script src="static/js/modern.js" defer></script>
 
     
-<script>
-/* ── Counter animation for stat numbers ── */
-function animateCounter(el, target, duration) {
-    const start     = performance.now();
-    const startVal  = 0;
-    el.textContent  = startVal;
-
-    function update(ts) {
-        const elapsed  = ts - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased    = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(startVal + (target - startVal) * eased);
-        if (progress < 1) requestAnimationFrame(update);
-    }
-
-    requestAnimationFrame(update);
-}
-
-/* Trigger counters once stats section enters the viewport */
-const statNumbers   = document.querySelectorAll('.stat-number[data-target]');
-let countersStarted = false;
-
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !countersStarted) {
-            countersStarted = true;
-            statNumbers.forEach(el => {
-                const target = parseInt(el.dataset.target, 10);
-                animateCounter(el, target, 1600);
-            });
-        }
-    });
-}, { threshold: 0.4 });
-
-if (statNumbers.length) counterObserver.observe(statNumbers[0].closest('section') || document.body);
-</script>
-
 </body>
 </html>

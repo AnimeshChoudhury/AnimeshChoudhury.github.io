@@ -14,369 +14,19 @@
 
     <title>Personal Portfolio Website — Animesh Choudhury</title>
 
-    <!-- Google Fonts -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../../static/css/main.css">
+    <link rel="stylesheet" href="../../static/css/modern.css">
     
-
-    <style>
-        /* ════════════════════════════════════════
-           DESIGN TOKENS
-        ════════════════════════════════════════ */
-        :root {
-            /* ── Palette ── */
-            --primary:        #0b4f6c;   /* deep ocean */
-            --primary-light:  #1a7a99;   /* teal */
-            --accent:         #e05d07;   /* bold amber-orange */
-            --accent-dark:    #c24f00;
-            --dark:           #111827;
-            --bg:             #f5f7fa;
-            --bg-input:       #fafbfc;
-            --text:           #1e293b;
-            --text-muted:     #64748b;
-
-            /* ── Gradients ── */
-            --gradient-hero: linear-gradient(
-                150deg,
-                #0b3d55 0%,
-                #0b4f6c 30%,
-                #1a7a99 65%,
-                #c24f00 100%
-            );
-            --gradient-card: linear-gradient(
-                145deg,
-                rgba(26, 122, 153, 0.06) 0%,
-                rgba(224, 93, 7, 0.05) 100%
-            );
-
-            /* ── Typography ── */
-            --font-display: 'Syne', sans-serif;
-            --font-mono:    'Space Mono', monospace;
-            --font-body:    'Inter', sans-serif;
-
-            /* ── Spacing ── */
-            --section-padding:  100px;
-            --container-width:  1200px;
-
-            /* ── Transitions ── */
-            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        /* ════════════════════════════════════════
-           RESET & BASE
-        ════════════════════════════════════════ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-body);
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.65;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        img { display: block; }
-
-        /* ════════════════════════════════════════
-           CONTAINER
-        ════════════════════════════════════════ */
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* ════════════════════════════════════════
-           NAVIGATION
-        ════════════════════════════════════════ */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(11, 79, 108, 0.12);
-            box-shadow: 0 1px 20px rgba(0,0,0,0.04);
-            padding: 0;
-            transition: padding 0.3s var(--ease-out),
-                        box-shadow 0.3s ease,
-                        background 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(255,255,255,0.97);
-            box-shadow: 0 4px 28px rgba(0,0,0,0.09);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 72px;
-            transition: height 0.3s var(--ease-out);
-        }
-
-        nav.scrolled .container {
-            height: 60px;
-        }
-
-        /* Logo */
-        .logo {
-            font-family: var(--font-display);
-            font-size: 1.55rem;
-            font-weight: 900;
-            color: var(--primary);
-            text-decoration: none;
-            letter-spacing: -0.03em;
-            transition: color 0.22s;
-            display: flex;
-            align-items: center;
-            gap: 0.2rem;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .logo:hover { color: var(--primary-light); }
-
-        /* Nav links */
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            position: relative;
-            padding-bottom: 3px;
-            transition: color 0.22s;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 1px;
-            transition: width 0.28s var(--ease-out);
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        /* CV Button */
-        .nav-cv-btn {
-            font-family: var(--font-mono) !important;
-            font-size: 0.75rem !important;
-            font-weight: 700 !important;
-            background: var(--accent) !important;
-            color: white !important;
-            padding: 0.5rem 1.25rem;
-            border-radius: 6px;
-            transition: background 0.22s, transform 0.22s, box-shadow 0.22s !important;
-            box-shadow: 0 2px 10px rgba(224,93,7,0.25);
-        }
-
-        .nav-cv-btn:hover {
-            background: var(--accent-dark) !important;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(224,93,7,0.35) !important;
-        }
-
-        .nav-cv-btn::after { display: none !important; }
-
-        /* Mobile toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 4px;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 26px;
-            height: 2px;
-            background: var(--primary);
-            border-radius: 1px;
-            transition: all 0.28s ease;
-        }
-
-        /* ════════════════════════════════════════
-           MAIN CONTENT
-        ════════════════════════════════════════ */
-        main {
-            padding-top: 72px;
-            min-height: 100vh;
-        }
-
-        /* ════════════════════════════════════════
-           FOOTER
-        ════════════════════════════════════════ */
-        footer {
-            background: var(--dark);
-            color: rgba(255,255,255,0.8);
-            padding: 4rem 0 2.5rem;
-            margin-top: 0;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            margin-bottom: 2rem;
-        }
-
-        .footer-brand .logo {
-            color: white;
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-brand .logo:hover { color: rgba(255,255,255,0.75); }
-
-        .footer-tagline {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.45);
-            letter-spacing: 0.04em;
-            max-width: 260px;
-            line-height: 1.6;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .footer-social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-            font-size: 1.05rem;
-            text-decoration: none;
-            transition: all 0.22s ease;
-        }
-
-        .footer-social a:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 14px rgba(224,93,7,0.35);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-copy {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.35);
-            letter-spacing: 0.03em;
-        }
-
-        .footer-built {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.28);
-        }
-
-        /* ════════════════════════════════════════
-           RESPONSIVE — MOBILE NAV
-        ════════════════════════════════════════ */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 72px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 72px);
-                background: rgba(255,255,255,0.99);
-                flex-direction: column;
-                justify-content: center;
-                gap: 2rem;
-                transition: left 0.3s var(--ease-out);
-                padding: 2rem;
-                box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05);
-            }
-
-            .nav-links.active { left: 0; }
-
-            .nav-links a {
-                font-size: 1.1rem;
-                letter-spacing: 0.06em;
-            }
-
-            .menu-toggle { display: flex; }
-
-            .footer-top {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-            }
-        }
-    </style>
 </head>
 <body>
 
@@ -387,7 +37,7 @@
                 A<span>C</span>
             </a>
 
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" id="menuToggleBtn">
+            <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -403,7 +53,7 @@
                     <a href="../../static/files/Animesh_Choudhury_CV.pdf"
                        download="Animesh_Choudhury_CV.pdf"
                        class="nav-cv-btn">
-                        <i class="fas fa-download" style="font-size:0.7rem; margin-right:0.35rem;"></i>CV
+                        <i class="fas fa-download"></i>CV
                     </a>
                 </li>
             </ul>
@@ -420,7 +70,7 @@
         <a href="../../projects/index.html" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Projects
         </a>
-        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-cyan);
                     text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.75rem;">
             Web Development · 2025 - Present
         </div>
@@ -447,24 +97,20 @@
 
 
 <!-- ══ PROJECT CONTENT ═══════════════════════════════ -->
-<section style="background: white;" class="project-detail-section">
+<section class="project-detail-section">
     <div class="container">
         <div style="max-width: 880px; margin: 0 auto;">
 
             <!-- Overview -->
             <div style="margin-bottom: 4rem;" class="reveal">
                 <h2>Overview</h2>
-                <p style="font-size: 1.05rem; line-height: 1.85; color: var(--text);">
-                    A professional, statically-generated academic portfolio built with Flask and Frozen-Flask. Features multi-page layouts, data-driven content from JSON, responsive design, and dual deployment to GitHub Pages and Netlify via GitHub Actions.
-                </p>
+                <p>A professional, statically-generated academic portfolio built with Flask and Frozen-Flask. Features multi-page layouts, data-driven content from JSON, responsive design, and dual deployment to GitHub Pages and Netlify via GitHub Actions.</p>
             </div>
 
             <!-- Detailed Description -->
             <div style="margin-bottom: 4rem;" class="reveal reveal-delay-1">
                 <h2>Project Details</h2>
-                <p style="font-size: 1rem; line-height: 1.85; color: var(--text-muted);">
-                    A full-stack portfolio website that demonstrates modern web development practices. Built with Flask for dynamic route generation and Frozen-Flask for static site compilation, the portfolio serves content from JSON data files ensuring separation of concerns. The site features a responsive design with custom CSS, JavaScript interactivity, and optimized asset delivery. Deployment is fully automated — every push to the main branch triggers GitHub Actions to rebuild the static site and deploy to both GitHub Pages and Netlify. Includes security headers (X-Frame-Options, X-XSS-Protection, X-Content-Type-Options) and asset caching strategies.
-                </p>
+                <p>A full-stack portfolio website that demonstrates modern web development practices. Built with Flask for dynamic route generation and Frozen-Flask for static site compilation, the portfolio serves content from JSON data files ensuring separation of concerns. The site features a responsive design with custom CSS, JavaScript interactivity, and optimized asset delivery. Deployment is fully automated — every push to the main branch triggers GitHub Actions to rebuild the static site and deploy to both GitHub Pages and Netlify. Includes security headers (X-Frame-Options, X-XSS-Protection, X-Content-Type-Options) and asset caching strategies.</p>
             </div>
 
             <!-- Technologies -->
@@ -601,7 +247,7 @@
             </div>
             
 
-            <!-- Satellite Datasets (GEE) — shown only if project has gee_datasets -->
+            <!-- Satellite Datasets (GEE) -->
             
 
         </div>
@@ -610,17 +256,19 @@
 
 
 <!-- ══ EXPLORE MORE CTA ══════════════════════════════ -->
-<section>
-    <div class="container" style="text-align: center;">
+<section style="text-align: center;">
+    <div class="container">
         <div class="reveal">
-            <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.25rem); color: var(--primary); margin-bottom: 2rem; font-weight: 900;">
+            <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.25rem); font-weight: 900; margin-bottom: 2rem;
+                        background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 100%);
+                        background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 Explore More
             </h2>
             <div class="cta-buttons-centered">
-                <a href="../../projects/index.html" class="btn btn-outline-dark">
+                <a href="../../projects/index.html" class="btn btn-outline">
                     <i class="fas fa-th-large"></i> All Projects
                 </a>
-                <a href="../../publications/index.html" class="btn btn-outline-dark">
+                <a href="../../publications/index.html" class="btn btn-outline">
                     <i class="fas fa-book"></i> Publications
                 </a>
                 <a href="../../contact/index.html" class="btn btn-primary">
@@ -639,7 +287,7 @@
         <div class="container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <a href="../../index.html" class="logo" >A<span style="color:var(--accent);">C</span></a>
+                    <a href="../../index.html" class="logo">A<span>C</span></a>
                     <p class="footer-tagline">Remote Sensing Researcher — Earth Observation &amp; Geospatial Intelligence</p>
                 </div>
 
@@ -660,33 +308,15 @@
         </div>
     </footer>
 
-    <!-- ── Scripts ─────────────────────────────── -->
-    <script src="../../static/js/main.js"></script>
-    <script>
-        /* ── Mobile nav toggle ── */
-        function toggleMenu() {
-            const navLinks   = document.getElementById('navLinks');
-            const toggleBtn  = document.getElementById('menuToggleBtn');
-            const isOpen     = navLinks.classList.toggle('active');
-            toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        }
+    <!-- ── CDN Libraries ──────────────────────── -->
+    <!-- Three.js for 3D particle hero -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <!-- GSAP + ScrollTrigger for scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
-        /* Click-outside closes menu */
-        document.addEventListener('click', function(e) {
-            const navLinks  = document.getElementById('navLinks');
-            const menuBtn   = document.getElementById('menuToggleBtn');
-            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
-                navLinks.classList.remove('active');
-                menuBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        /* ── Scroll-shrink nav ── */
-        const nav = document.getElementById('mainNav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 40);
-        }, { passive: true });
-    </script>
+    <!-- ── Portfolio JS ───────────────────────── -->
+    <script src="../../static/js/modern.js" defer></script>
 
     
 </body>
