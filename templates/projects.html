@@ -14,7 +14,7 @@
 
 
 <!-- ══ PROJECTS GRID ════════════════════════════════ -->
-<section style="background: white;">
+<section>
     <div class="container">
 
         <!-- Category Filter -->
@@ -39,13 +39,14 @@
 
                 <!-- Header -->
                 <div class="project-card-header">
-                    <span style="opacity: 0.25; font-size: 3.2rem;">
+                    <span style="font-size: 2.8rem; opacity: 0.25; line-height: 1;">
                         {% if 'Snow' in project.title %}❄️
                         {% elif 'Drought' in project.title %}🌾
                         {% elif 'Air' in project.title %}🌪️
                         {% elif 'Forest' in project.title %}🌲
                         {% elif 'Utility' in project.title or 'Urban' in project.title or 'Network' in project.title %}⚡
                         {% elif 'Weather' in project.title or 'Thunder' in project.title %}⛈️
+                        {% elif 'BharatBench' in project.title %}🌏
                         {% else %}🛰️
                         {% endif %}
                     </span>
@@ -65,11 +66,11 @@
                         {% endfor %}
                     </div>
 
-                    <!-- Action row: details / github / paper -->
+                    <!-- Action row -->
                     <div class="project-card-actions">
                         <a href="{{ url_for('project_detail', project_id=project.id) }}"
                            class="project-card-link">
-                            View Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i>
+                            View Details <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
                         </a>
                         <div class="project-card-links">
                             {% if project.github %}
@@ -104,8 +105,7 @@
             <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
                 No projects found in this category.
             </p>
-            <button onclick="filterProjects('all')"
-                    style="background: var(--primary); color: white; padding: 0.75rem 1.75rem; border-radius: 6px; border: none; cursor: pointer; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; transition: background 0.2s;">
+            <button onclick="filterProjects('all')" class="btn btn-outline" style="display:inline-flex; width:auto;">
                 View All Projects
             </button>
         </div>
@@ -122,34 +122,32 @@ function filterProjects(category) {
     const noResults    = document.getElementById('noResults');
     const projectsGrid = document.getElementById('projectsGrid');
 
-    /* Update button states */
     buttons.forEach(btn => btn.classList.remove('active'));
     buttons.forEach(btn => {
-        const isAll     = (category === 'all' && btn.textContent.trim() === 'All Projects');
-        const isMatch   = btn.textContent.trim() === category;
+        const isAll   = (category === 'all' && btn.textContent.trim() === 'All Projects');
+        const isMatch = btn.textContent.trim() === category;
         if (isAll || isMatch) btn.classList.add('active');
     });
 
-    /* Filter cards */
     let visible = 0;
     cards.forEach(card => {
         const show = (category === 'all' || card.dataset.category === category);
-        card.style.display = show ? 'flex' : 'none';
+        card.style.display = show ? '' : 'none';
         if (show) {
             card.style.opacity = '0';
-            setTimeout(() => { card.style.opacity = '1'; }, 20);
+            setTimeout(() => { card.style.opacity = '1'; card.style.transition = 'opacity 0.3s ease'; }, 20);
             visible++;
         }
     });
 
     noResults.style.display    = visible ? 'none' : 'block';
-    projectsGrid.style.display = visible ? 'grid' : 'none';
+    projectsGrid.style.display = visible ? 'grid'  : 'none';
 
-    /* Update URL hash */
-    history.replaceState(null, '', category !== 'all' ? '#' + category.toLowerCase().replace(/\s+/g, '-') : location.pathname);
+    history.replaceState(null, '', category !== 'all'
+        ? '#' + category.toLowerCase().replace(/\s+/g, '-')
+        : location.pathname);
 }
 
-/* Restore filter from URL hash */
 window.addEventListener('DOMContentLoaded', () => {
     const hash = location.hash.slice(1);
     if (!hash) return;

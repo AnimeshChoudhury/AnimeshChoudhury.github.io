@@ -14,13 +14,15 @@
 
 
 <!-- ══ BIO ═════════════════════════════════════════ -->
-<section style="background: white;">
+<section>
     <div class="container">
-        <div style="max-width: 800px; margin: 0 auto;" class="reveal">
-            <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--primary); margin-bottom: 1.75rem; font-weight: 900;">
+        <div style="max-width: 800px; margin: 0 auto;" class="reveal bio-text">
+            <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 900; margin-bottom: 1.75rem;
+                        background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 100%);
+                        background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 Who I Am
             </h2>
-            <div style="font-size: 1.02rem; line-height: 1.85; color: var(--text);">
+            <div style="font-size: 1.02rem; line-height: 1.9; color: var(--text-secondary);">
                 <p style="margin-bottom: 1.5rem;">{{ profile.bio }}</p>
                 <p style="margin-bottom: 1.5rem;">
                     With expertise spanning satellite data analysis to machine learning applications in environmental monitoring,
@@ -39,7 +41,7 @@
 
 
 <!-- ══ EXPERIENCE TIMELINE ═════════════════════════ -->
-<section>
+<section style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-header reveal">
             <span class="subtitle">Career Journey</span>
@@ -52,10 +54,10 @@
                 <div class="timeline-content">
                     <h3 class="timeline-title">{{ exp.position }}</h3>
                     <div class="timeline-meta">
-                        <i class="fas fa-building" style="margin-right:0.35rem;"></i>
+                        <i class="fas fa-building"></i>
                         {{ exp.organization }}, {{ exp.location }}
-                        <span style="margin: 0 0.5rem; opacity:0.4;">|</span>
-                        <i class="fas fa-calendar-alt" style="margin-right:0.35rem;"></i>
+                        <span style="opacity:0.4;">|</span>
+                        <i class="fas fa-calendar-alt"></i>
                         {{ exp.period }}
                     </div>
                     <ul>
@@ -72,7 +74,7 @@
 
 
 <!-- ══ EDUCATION ════════════════════════════════════ -->
-<section style="background: white;">
+<section>
     <div class="container">
         <div class="section-header reveal">
             <span class="subtitle">Academic Background</span>
@@ -84,7 +86,7 @@
             <div class="edu-card reveal reveal-delay-{{ loop.index }}">
                 <div class="edu-degree">{{ edu.degree }}</div>
                 <div class="edu-institution">
-                    <i class="fas fa-university" style="margin-right:0.4rem; color:var(--primary-light);"></i>
+                    <i class="fas fa-university" style="margin-right:0.4rem; color:var(--accent-cyan);"></i>
                     {{ edu.institution }}
                 </div>
                 <div class="edu-year">
@@ -98,7 +100,7 @@
 
 
 <!-- ══ SKILLS ═══════════════════════════════════════ -->
-<section>
+<section style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-header reveal">
             <span class="subtitle">Technical Proficiency</span>
@@ -127,7 +129,7 @@
 
 <!-- ══ LANGUAGES ════════════════════════════════════ -->
 {% if languages %}
-<section style="background: white;">
+<section>
     <div class="container">
         <div class="section-header reveal">
             <span class="subtitle">Communication</span>

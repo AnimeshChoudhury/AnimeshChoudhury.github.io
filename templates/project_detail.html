@@ -10,7 +10,7 @@
         <a href="{{ url_for('projects') }}" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Projects
         </a>
-        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent);
+        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-cyan);
                     text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.75rem;">
             {{ project.category }} · {{ project.duration }}
         </div>
@@ -41,24 +41,20 @@
 
 
 <!-- ══ PROJECT CONTENT ═══════════════════════════════ -->
-<section style="background: white;" class="project-detail-section">
+<section class="project-detail-section">
     <div class="container">
         <div style="max-width: 880px; margin: 0 auto;">
 
             <!-- Overview -->
             <div style="margin-bottom: 4rem;" class="reveal">
                 <h2>Overview</h2>
-                <p style="font-size: 1.05rem; line-height: 1.85; color: var(--text);">
-                    {{ project.description }}
-                </p>
+                <p>{{ project.description }}</p>
             </div>
 
             <!-- Detailed Description -->
             <div style="margin-bottom: 4rem;" class="reveal reveal-delay-1">
                 <h2>Project Details</h2>
-                <p style="font-size: 1rem; line-height: 1.85; color: var(--text-muted);">
-                    {{ project.detailed_description }}
-                </p>
+                <p>{{ project.detailed_description }}</p>
             </div>
 
             <!-- Technologies -->
@@ -103,14 +99,14 @@
             </div>
             {% endif %}
 
-            <!-- Satellite Datasets (GEE) — shown only if project has gee_datasets -->
+            <!-- Satellite Datasets (GEE) -->
             {% if project.gee_datasets %}
             <div style="margin-bottom: 4rem;" class="reveal reveal-delay-5">
                 <h2>
-                    <i class="fas fa-satellite" style="color: var(--accent); margin-right: 0.5rem; font-size: 1.1rem;"></i>
+                    <i class="fas fa-satellite" style="margin-right: 0.5rem; font-size: 1.1rem;"></i>
                     Satellite Datasets (Google Earth Engine)
                 </h2>
-                <p style="color: var(--text-muted); margin-bottom: 1.75rem; font-size: 0.97rem; line-height: 1.7;">
+                <p style="margin-bottom: 1.75rem;">
                     Four GEE datasets power the risk intelligence layer of this project, each processed through a dedicated analysis script with both live GEE and synthetic offline demo modes.
                 </p>
                 <div class="gee-table-wrapper">
@@ -127,7 +123,7 @@
                             {% for ds in project.gee_datasets %}
                             <tr>
                                 <td><code>{{ ds.script }}</code></td>
-                                <td><strong>{{ ds.dataset }}</strong></td>
+                                <td><strong style="color: var(--text-primary);">{{ ds.dataset }}</strong></td>
                                 <td><span class="gee-res-badge">{{ ds.resolution }}</span></td>
                                 <td>{{ ds.purpose }}</td>
                             </tr>
@@ -144,17 +140,19 @@
 
 
 <!-- ══ EXPLORE MORE CTA ══════════════════════════════ -->
-<section>
-    <div class="container" style="text-align: center;">
+<section style="text-align: center;">
+    <div class="container">
         <div class="reveal">
-            <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.25rem); color: var(--primary); margin-bottom: 2rem; font-weight: 900;">
+            <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.25rem); font-weight: 900; margin-bottom: 2rem;
+                        background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 100%);
+                        background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 Explore More
             </h2>
             <div class="cta-buttons-centered">
-                <a href="{{ url_for('projects') }}" class="btn btn-outline-dark">
+                <a href="{{ url_for('projects') }}" class="btn btn-outline">
                     <i class="fas fa-th-large"></i> All Projects
                 </a>
-                <a href="{{ url_for('publications') }}" class="btn btn-outline-dark">
+                <a href="{{ url_for('publications') }}" class="btn btn-outline">
                     <i class="fas fa-book"></i> Publications
                 </a>
                 <a href="{{ url_for('contact') }}" class="btn btn-primary">
