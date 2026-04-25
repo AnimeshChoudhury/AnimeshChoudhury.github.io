@@ -1,6 +1,97 @@
 {
   "projects": [
     {
+      "id": "kaggle-land-cover-classification",
+      "title": "Data-Centric Land Cover Classification",
+      "subtitle": "Label Noise Ranking via Fine-Tuned SAM & SAM2 Geospatial Auto-Segmentation",
+      "duration": "2024",
+      "category": "Machine Learning & Data Science",
+      "description": "A seven-step Kaggle competition pipeline that ranks satellite training patches by their level of label noise — not by building the best model, but by identifying which labels are most trustworthy. Uses a fine-tuned Segment Anything Model (SAM) and a SAM2 geospatial auto-segmentation model to score and rank each training patch.",
+      "detailed_description": "This project tackles the Kaggle Data-Centric Land Cover Classification Challenge, where the objective is to rank training samples by label noise rather than maximise model accuracy. The pipeline consists of seven ordered notebooks: (1) Data Visualization to explore patches and define a PyTorch SegmentationDataset; (2) Fine-tuning facebook/sam-vit-base with DiceCE loss for 10 epochs, producing per-image IoU scores; (3) Threshold Scoring to batch-run inference and export IoU CSVs; (4) Ranking Model Setup to convert (image, mask) pairs into 4-channel tensors for a DataLoader; (5) SAM2geo Auto-Segmentation using segment-geospatial to generate agreement-ratio scores; (6) SAM2 Threshold Scoring to refine per-image scores; and (7) Combined Score Ranking that merges both score streams, trains a small UNet regressor, and outputs the final submission. The combined score formula (IoU × (1 + 0.1 × auto_score)) rewards samples that both models agree are clean, placing cleaner labels earlier in the ranking.",
+      "technologies": [
+        "Python",
+        "PyTorch",
+        "Hugging Face Transformers",
+        "Segment Anything Model (SAM)",
+        "SAM2 / segment-geospatial",
+        "MONAI",
+        "Jupyter Notebook",
+        "NumPy",
+        "Pandas",
+        "Scikit-learn",
+        "Pillow",
+        "Matplotlib",
+        "CUDA"
+      ],
+      "features": [
+        "Seven-notebook end-to-end pipeline from raw patches to final submission CSV",
+        "Fine-tuned facebook/sam-vit-base (mask decoder only) with DiceCELoss over 10 epochs",
+        "Per-image IoU scoring pipeline with batch inference and CSV export",
+        "SAM2 geospatial auto-segmentation for independent agreement-ratio scoring",
+        "4-channel tensor DataLoader for UNet ranking regressor training",
+        "Combined noise score: IoU × (1 + 0.1 × auto_score)",
+        "Dual-model consensus — images both models agree are clean ranked highest",
+        "Reproducible: pinned requirements.txt and sequential notebook execution order",
+        "GPU-accelerated (CUDA) for all inference and training loops"
+      ],
+      "outcomes": [
+        "Produced submission_33.csv — final ranked image list for Kaggle evaluation",
+        "Demonstrated a data-centric approach to label-noise detection in satellite imagery",
+        "Achieved dual-model score fusion (SAM + SAM2) for more robust noise estimation",
+        "Built a reusable PyTorch SegmentationDataset for land cover patch datasets",
+        "Established a template pipeline for label-noise ranking in geospatial ML challenges"
+      ],
+      "pipeline_steps": [
+        {
+          "step": 1,
+          "notebook": "1_Data_Visualization.ipynb",
+          "description": "Load & visualise training patches and noisy label masks; define SegmentationDataset",
+          "outputs": []
+        },
+        {
+          "step": 2,
+          "notebook": "2_Fine_Tune_SAM.ipynb",
+          "description": "Fine-tune facebook/sam-vit-base (mask decoder only) using DiceCE loss for 10 epochs",
+          "outputs": ["mito_model_checkpoint.pth", "prediction.npy", "IOU_epoch_10_filtered.csv"]
+        },
+        {
+          "step": 3,
+          "notebook": "3_Thresold.ipynb",
+          "description": "Batch inference with saved checkpoint; export IoU scores CSV",
+          "outputs": ["IOU_epoch_10_filtered.csv"]
+        },
+        {
+          "step": 4,
+          "notebook": "4_Ranking_Model.ipynb",
+          "description": "Build 4-channel tensors from (image, mask) pairs and wrap in DataLoader",
+          "outputs": []
+        },
+        {
+          "step": 5,
+          "notebook": "5_Sam2geo.ipynb",
+          "description": "SAM2 geospatial auto-segmentation for independent agreement-ratio scores",
+          "outputs": ["sam2_agreement_ratio_scores.csv"]
+        },
+        {
+          "step": 6,
+          "notebook": "6_Thresold_sam2.ipynb",
+          "description": "Threshold and refine SAM2 predictions to produce clean per-image scores",
+          "outputs": ["auto_segmentation_scores.csv"]
+        },
+        {
+          "step": 7,
+          "notebook": "7_RankingWithCombinedScores.ipynb",
+          "description": "Merge SAM + SAM2 scores, train UNet regressor, output final submission",
+          "outputs": ["submission_33.csv"]
+        }
+      ],
+      "image": "project-kaggle-landcover.jpg",
+      "github": "https://github.com/AnimeshChoudhury/Kaggle_01",
+      "demo": "https://www.kaggle.com/competitions/data-centric-land-cover-classification-challenge/overview",
+      "publication": "",
+      "tags": ["Kaggle", "Machine Learning", "Deep Learning", "SAM", "SAM2", "Segmentation", "Label Noise", "Remote Sensing", "PyTorch", "Data-Centric AI", "Land Cover", "Geospatial"]
+    },
+    {
       "id": "urban-utility-network",
       "title": "Urban Utility Network Explorer",
       "subtitle": "Satellite + Street-Level Intelligence for Bengaluru's Power Grid",
@@ -72,6 +163,97 @@
       "demo": "",
       "publication": "",
       "tags": ["GIS", "Google Earth Engine", "Streamlit", "Python", "OSM", "Flood Risk", "Network Analysis"]
+    },
+    {
+      "id": "gee-tools",
+      "title": "GEE Utilities",
+      "subtitle": "Curated Google Earth Engine Scripts & Notebooks for Geospatial Analysis",
+      "duration": "2023 - Present",
+      "category": "Remote Sensing & GIS",
+      "description": "A curated collection of lightweight, self-contained Google Earth Engine utility scripts and Jupyter notebooks covering essential geospatial workflows — from Land Surface Temperature estimation and LULC classification to spatial sampling, raster-to-vector conversion, and temporal image filtering.",
+      "detailed_description": "GEE_Tools is a practical, open-source toolkit built to streamline recurring geospatial operations in Earth observation research. Each utility is independently usable, requiring no inter-script dependencies. The collection spans both the GEE JavaScript Code Editor and the Python API via Jupyter notebooks. Workflows include: randomized spatial sampling with configurable buffer zones, Landsat 8 Land Surface Temperature retrieval using split-window and single-channel algorithms, date-driven satellite image selection and compositing, raster-to-vector format conversion using GeoPandas and Rasterio, study area boundary definition and Folium-based visualization, and supervised LULC classification using GEE's built-in ML classifiers (Random Forest, SVM, CART). The toolkit is designed for reproducibility — all scripts are self-documented and ready to run after GEE authentication and a single pip install.",
+      "technologies": [
+        "Google Earth Engine",
+        "Python",
+        "JavaScript",
+        "Jupyter Notebook",
+        "Landsat 8",
+        "GeoPandas",
+        "Rasterio",
+        "NumPy",
+        "Pandas",
+        "Folium",
+        "Random Forest",
+        "SVM",
+        "CART"
+      ],
+      "features": [
+        "Random Points Buffer (01): Randomized spatial sampling with configurable buffer radii for field survey design",
+        "LS8 LST Estimation (02): Land Surface Temperature retrieval from Landsat 8 thermal bands using GEE JavaScript",
+        "Date-Wise Image Selection (03): Temporal satellite image filtering and compositing by custom date ranges",
+        "Raster to Vector (04): Automated conversion of raster outputs to vector formats (Shapefile/GeoJSON) using GeoPandas",
+        "Study Area Map (05): Interactive boundary definition and choropleth visualization with Folium",
+        "LULC GEE ML (06): Supervised Land Use/Land Cover classification using GEE's Random Forest, SVM, and CART classifiers",
+        "Each utility is self-contained — no inter-script dependencies",
+        "Supports both GEE JavaScript Code Editor and Python API workflows",
+        "MIT licensed and open for community contributions"
+      ],
+      "outcomes": [
+        "6 production-ready geospatial utilities covering the full RS processing pipeline",
+        "Reduces repetitive boilerplate in Earth observation research workflows",
+        "Supports studies in thermal analysis, land cover change detection, and spatial sampling",
+        "Jupyter notebooks are reproducible with a single pip install + GEE authentication",
+        "Dual-environment support: GEE Code Editor (JS) and Python API (Jupyter)"
+      ],
+      "image": "project-geetools.jpg",
+      "github": "https://github.com/AnimeshChoudhury/GEE_Tools",
+      "demo": "",
+      "publication": "",
+      "tags": ["Google Earth Engine", "Remote Sensing", "Python", "JavaScript", "Landsat 8", "LST", "LULC", "Machine Learning", "Geospatial", "Open Source"]
+    },
+    {
+      "id": "maximum-sca",
+      "title": "Maximum Snow Cover Area — NW Himalaya",
+      "subtitle": "Monthly Maximum Snow Cover Extent Analysis of the Northwest Himalayan Region (2000–2020)",
+      "duration": "2020 - 2021",
+      "category": "Snow & Cryosphere",
+      "description": "A 20-year (2000–2020) analysis of monthly maximum Snow Cover Area (SCA) over the Northwest Himalaya using MODIS/Terra MOD10A2 V6 satellite data. Implements a multi-tile mosaicking, reprojection, and pixel-wise monthly maximum snow detection pipeline — underpinning a peer-reviewed Remote Sensing journal publication.",
+      "detailed_description": "The Northwest Himalaya (NWH) is one of the world's most climatically sensitive regions, acting as the primary freshwater reservoir for millions of people through snow and glacier melt. This study built an end-to-end satellite data processing pipeline using the MODIS/Terra Level-3 8-day composite Snow Cover product (MOD10A2 V6, 500 m resolution) spanning March 2000 to February 2020. The spatial domain covers four MOD10A2 tiles (h23v05, h24v05, h24v06, h25v06) representing the full Northwest Himalayan extent. The pipeline performs: (1) date-sorted file organisation from NASA Earthdata, (2) four-tile mosaic generation per 8-day period, (3) reprojection to EPSG:4326, (4) rectangular clipping to study area bounding box, (5) precise boundary clipping via shapefile, and (6) monthly maximum SCA computation — where any pixel recording DN=200 (snow) in at least one 8-day observation within a month is classified as snow. This conservative maximum approach reduces cloud contamination bias. Results were published in a peer-reviewed article in Remote Sensing (MDPI, Q1 journal) exploring the response of NWH snow cover dynamics to climate variability.",
+      "technologies": [
+        "Python",
+        "Jupyter Notebook",
+        "MODIS MOD10A2 V6",
+        "NumPy",
+        "Rasterio",
+        "GeoPandas",
+        "GDAL",
+        "NASA Earthdata",
+        "EPSG:4326",
+        "Matplotlib"
+      ],
+      "features": [
+        "20-year MODIS snow cover time series: March 2000 – February 2020",
+        "Four-tile mosaic pipeline covering the full Northwest Himalayan extent (h23v05, h24v05, h24v06, h25v06)",
+        "500 m spatial resolution using MOD10A2 V6 Level-3 8-day composite product",
+        "DN-class-aware pixel filtering: snow (DN=200), cloud (DN=50), lake ice (DN=100), no-snow (DN=25)",
+        "Monthly maximum SCA: pixel marked snow if any 8-day observation within the month shows DN=200",
+        "Automated date-based file sorting from NASA Earthdata filenames",
+        "Shapefile-based precise boundary clipping (bounding box + exact polygon)",
+        "Reprojection pipeline: native sinusoidal → EPSG:4326",
+        "Backed by a peer-reviewed Remote Sensing (MDPI) journal publication"
+      ],
+      "outcomes": [
+        "Published in Remote Sensing 2021, 13(4), 655 (MDPI — Q1 journal)",
+        "Quantified 20-year snow cover dynamics across the Northwest Himalaya",
+        "Demonstrated the climate sensitivity of NWH snow cover to temperature and precipitation variability",
+        "Provided a reproducible Python pipeline for MODIS SCA analysis",
+        "Contributed to regional water resource and hydropower planning research"
+      ],
+      "image": "project-maximumsca.jpg",
+      "github": "https://github.com/AnimeshChoudhury/Maximum_SCA",
+      "demo": "",
+      "publication": "https://doi.org/10.3390/rs13040655",
+      "tags": ["Snow Cover", "MODIS", "Remote Sensing", "Himalaya", "Cryosphere", "Python", "Time Series", "Climate", "Hydrology", "Published Research"]
     },
     {
       "id": "bharatbench",
