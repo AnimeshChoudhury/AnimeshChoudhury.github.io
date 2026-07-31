@@ -65,6 +65,11 @@
                 <h3 class="publication-title">"{{ paper.title }}"</h3>
                 <p class="publication-venue"><em>{{ paper.venue }}</em>, {{ paper.year }}</p>
                 <div class="publication-meta">
+                    {% if paper.citations and paper.citations > 0 %}
+                    <span class="citation-badge">
+                        <i class="fas fa-quote-right"></i> {{ paper.citations }} citations
+                    </span>
+                    {% endif %}
                     <span style="color: var(--text-muted); font-family: var(--font-mono); font-size: 0.78rem;">
                         <i class="fas fa-calendar-alt" style="margin-right:0.3rem;"></i>{{ paper.year }}
                     </span>

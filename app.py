@@ -36,17 +36,18 @@ def index():
     # 1. Extract lists
     pubs = cv_data.get('publications', [])
     conf_papers = cv_data.get('conference_papers', [])
-    
+    all_works = pubs + conf_papers
+
     # 2. Automated Calculations
     metrics = {
         'journal_pubs': len([p for p in pubs if p.get('type') == 'journal']),
         'book_chapters': len([p for p in pubs if p.get('type') == 'book_chapter']),
         'conference_total': len(conf_papers),
-        'total_citations': sum(p.get('citations', 0) for p in pubs),
+        'total_citations': sum(p.get('citations', 0) for p in all_works),
     }
-    
-    # 3. Calculate h-index and i10-index
-    citation_list = sorted([p.get('citations', 0) for p in pubs], reverse=True)
+
+    # 3. Calculate h-index and i10-index (across all works, matching Google Scholar)
+    citation_list = sorted([p.get('citations', 0) for p in all_works], reverse=True)
     
     # h-index: h papers with at least h citations
     h_index = 0
