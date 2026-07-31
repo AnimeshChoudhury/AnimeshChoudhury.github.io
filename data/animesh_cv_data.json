@@ -14,7 +14,7 @@
     "address": "Pahartali, Ward No 9, Raghunathpur, Purulia, 723133, West Bengal, India",
     "profile_image": "profileImage.jpg"
   },
-  "summary": "PhD researcher with 6+ years of experience in Earth and Atmospheric Sciences, specializing in data-driven weather forecasting, machine learning for climate science, and geospatial analysis. Currently developing cutting-edge weather prediction systems using Pangu-Weather architecture and IMDAA reanalysis data at NIT Rourkela. Proven track record with 10 publications (160+ total citations) in high-impact journals including Remote Sensing, Journal of Environmental Management, and Urban Climate. Expert in WRF mesoscale modeling, deep learning for atmospheric sciences, drought monitoring, and satellite remote sensing with proficiency in Python, R, Google Earth Engine, and advanced ML frameworks.",
+  "summary": "PhD researcher with 6+ years of experience in Earth and Atmospheric Sciences, specializing in data-driven weather forecasting, machine learning for climate science, and geospatial analysis. Currently developing cutting-edge weather prediction systems using Pangu-Weather architecture and IMDAA reanalysis data at NIT Rourkela. Proven track record with 11 publications (163+ total citations) in high-impact journals including Remote Sensing, Journal of Environmental Management, and Urban Climate. Expert in WRF mesoscale modeling, deep learning for atmospheric sciences, drought monitoring, and satellite remote sensing with proficiency in Python, R, Google Earth Engine, and advanced ML frameworks.",
   "education": [
     {
       "degree": "PhD in Earth and Atmospheric Sciences",
@@ -203,6 +203,18 @@
       "citations": 14,
       "type": "book_chapter",
       "doi": "https://doi.org/10.1007/978-3-031-28728-2"
+    },
+    {
+      "title": "Machine learning and deep learning applications in weather and climate studies: A systematic review",
+      "authors": "Mukherjee, A., Panda, J., Choudhury, A., & Giri, R. K.",
+      "venue": "Vayumandal",
+      "year": 2023,
+      "volume": "49",
+      "issue": "2",
+      "pages": "1–25",
+      "citations": 2,
+      "type": "journal",
+      "doi": "https://scholar.google.com/scholar_lookup?hl=en&title=Machine%20learning%20and%20deep%20learning%20applications%20in%20weather%20and%20climate%20studies:%20A%20systematic%20review"
     },
     {
       "title": "Transport of a severe dust storm from Middle East to Indian region and its impact on surrounding environment",
