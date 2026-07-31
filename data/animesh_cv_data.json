@@ -14,7 +14,7 @@
     "address": "Pahartali, Ward No 9, Raghunathpur, Purulia, 723133, West Bengal, India",
     "profile_image": "profileImage.jpg"
   },
-  "summary": "PhD researcher with 6+ years of experience in Earth and Atmospheric Sciences, specializing in data-driven weather forecasting, machine learning for climate science, and geospatial analysis. Currently developing cutting-edge weather prediction systems using Pangu-Weather architecture and IMDAA reanalysis data at NIT Rourkela. Proven track record with 9 publications (437+ total citations) in high-impact journals including Remote Sensing, Journal of Environmental Management, and Urban Climate. Expert in WRF mesoscale modeling, deep learning for atmospheric sciences, drought monitoring, and satellite remote sensing with proficiency in Python, R, Google Earth Engine, and advanced ML frameworks.",
+  "summary": "PhD researcher with 6+ years of experience in Earth and Atmospheric Sciences, specializing in data-driven weather forecasting, machine learning for climate science, and geospatial analysis. Currently developing cutting-edge weather prediction systems using Pangu-Weather architecture and IMDAA reanalysis data at NIT Rourkela. Proven track record with 11 publications (163+ total citations) in high-impact journals including Remote Sensing, Journal of Environmental Management, and Urban Climate. Expert in WRF mesoscale modeling, deep learning for atmospheric sciences, drought monitoring, and satellite remote sensing with proficiency in Python, R, Google Earth Engine, and advanced ML frameworks.",
   "education": [
     {
       "degree": "PhD in Earth and Atmospheric Sciences",
@@ -115,15 +115,30 @@
       "authors": "Panda, J., Mukherjee, A., Sarkar, A., Kumar, G., & Choudhury, A.",
       "venue": "Geospatial Technologies",
       "year": 2026,
+      "pages": "112-135",
       "citations": 0,
       "type": "book_chapter",
       "doi": "https://doi.org/10.1201/9781003562986-8"
+    },
+    {
+      "title": "Urban growth analysis and prediction over six Indian cities and its association with pre-monsoon LST and rainfall",
+      "authors": "Choudhury, A., Panda, J. & Mukherjee, A.",
+      "venue": "Journal of Earth System Science",
+      "year": 2026,
+      "volume": "135",
+      "pages": "190",
+      "citations": 0,
+      "type": "journal",
+      "doi": "https://doi.org/10.1007/s12040-026-02896-z"
     },
     {
       "title": "A long-term analysis of pre-monsoon thunderstorm characteristic features over major urban areas of India",
       "authors": "Roy, D., Panda, J., Mukherjee, A., Choudhury, A., & Panda, S. K.",
       "venue": "Acta Geophysica",
       "year": 2026,
+      "volume": "74",
+      "issue": "2",
+      "pages": "95",
       "citations": 0,
       "type": "journal",
       "doi": "https://doi.org/10.1007/s11600-026-01806-7"
@@ -142,7 +157,7 @@
       "authors": "Choudhury, A., Panda, J., & Mukherjee, A.",
       "venue": "In Preparation",
       "year": 2024,
-      "citations": 6,
+      "citations": 8,
       "type": "journal",
       "doi": "https://arxiv.org/abs/2405.07534"
     },
@@ -153,7 +168,7 @@
       "year": 2024,
       "volume": "57",
       "pages": "102123",
-      "citations": 8,
+      "citations": 9,
       "type": "journal",
       "doi": "https://doi.org/10.1016/j.uclim.2024.102123"
     },
@@ -164,7 +179,7 @@
       "year": 2024,
       "volume": "8",
       "pages": "599–625",
-      "citations": 17,
+      "citations": 18,
       "type": "journal",
       "doi": "https://doi.org/10.1007/s41748-024-00396-y"
     },
@@ -183,17 +198,30 @@
       "title": "Urban Heat: UHI and Heat Stress Threat to Megacities",
       "authors": "Panda, J., Mukherjee, A., Choudhury, A., Biswas, S.",
       "venue": "Climate Crisis: Adaptive Approaches and Sustainability. Sustainable Development Goals Series. Springer, Cham",
-      "year": 2023,
-      "citations": 11,
+      "year": 2024,
+      "pages": "425–445",
+      "citations": 14,
       "type": "book_chapter",
       "doi": "https://doi.org/10.1007/978-3-031-28728-2"
+    },
+    {
+      "title": "Machine learning and deep learning applications in weather and climate studies: A systematic review",
+      "authors": "Mukherjee, A., Panda, J., Choudhury, A., & Giri, R. K.",
+      "venue": "Vayumandal",
+      "year": 2023,
+      "volume": "49",
+      "issue": "2",
+      "pages": "1–25",
+      "citations": 2,
+      "type": "journal",
+      "doi": "https://scholar.google.com/scholar_lookup?hl=en&title=Machine%20learning%20and%20deep%20learning%20applications%20in%20weather%20and%20climate%20studies:%20A%20systematic%20review"
     },
     {
       "title": "Transport of a severe dust storm from Middle East to Indian region and its impact on surrounding environment",
       "authors": "Budakoti, S., Singh, C. & Choudhury, A.",
       "venue": "International Journal of Environmental Science and Technology",
       "year": 2022,
-      "citations": 6,
+      "citations": 9,
       "type": "journal",
       "doi": "https://doi.org/10.1007/s13762-022-04520-1"
     },
@@ -204,7 +232,7 @@
       "year": 2021,
       "volume": "296",
       "pages": "113056",
-      "citations": 45,
+      "citations": 52,
       "type": "journal",
       "doi": "https://doi.org/10.1016/j.jenvman.2021.113056"
     },
@@ -216,7 +244,7 @@
       "volume": "13",
       "issue": "4",
       "pages": "655",
-      "citations": 27,
+      "citations": 30,
       "type": "journal",
       "doi": "https://doi.org/10.3390/rs13040655"
     }
@@ -224,20 +252,24 @@
   "conference_papers": [
     {
       "title": "A Step Towards Building Medium-Range Data-Driven Weather Forecasting System Over India",
-      "venue": "IEEE Conference",
+      "venue": "2024 IEEE India Geoscience and Remote Sensing Symposium (InGARSS)",
       "year": 2024,
+      "pages": "1-4",
+      "citations": 0,
       "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10984239"
     },
     {
       "title": "Monitoring of Surface Water of East Kolkata Wetlands (1984-2015) with Global Surface Water Dataset",
       "venue": "ACRS 2020",
       "year": 2020,
+      "citations": 2,
       "url": "https://a-a-r-s.org/proceeding/ACRS2020/yi3x7w.pdf"
     },
     {
       "title": "Role of Earth Observation Data and Hydrological Modeling in Supporting UN SDGs in North West Himalaya",
       "venue": "ISPRS Archives",
       "year": 2020,
+      "citations": 5,
       "url": "https://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XLIII-B3-2020/853/2020/"
     },
     {

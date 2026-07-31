@@ -457,6 +457,89 @@
       "demo": "",
       "publication": "",
       "tags": ["Python", "PDF Generation", "ReportLab", "Automation", "Academic", "Tools", "Researcher", "CV", "Resume", "Open Source"]
+    },
+    {
+      "id": "nisar-tutorial",
+      "title": "NISAR Tutorial",
+      "subtitle": "Hands-On SAR & InSAR Analysis with Real NISAR Mission Data",
+      "duration": "2026",
+      "category": "Remote Sensing & GIS",
+      "description": "A hands-on Python tutorial for working with NASA-ISRO SAR (NISAR) mission data, built entirely on five real NISAR sample products (RSLC, GCOV, and GUNW; L-band and S-band) — teaching SAR and InSAR techniques such as multilooking, backscatter differencing, polarimetric ratios, and coherence-based masking using real data throughout.",
+      "detailed_description": "Seven progressive Jupyter modules take a learner from SAR theory to applied InSAR analysis on five real NISAR RSLC/GCOV/GUNW products (L-band and S-band). Module 00 is a standalone theory primer covering geometry, speckle statistics, scattering mechanisms, polarimetry, and InSAR phase; Modules 01-06 build on real data readers (band/product auto-detection in nisar_tools/io.py) to demonstrate reading complex SLC data, repeat-pass change detection, GCOV HH/HV polarimetric ratios, InSAR deformation basics, and L-band vs. S-band comparison. The repo is explicit about scope: it is a technique demonstration, not a validated case study — no flood, subsidence, or land-cover claim is asserted without ground truth, and a dedicated 'Lessons learned' section documents cases where a first-pass result looked plausible (e.g. an apparent meter-scale deformation signal, or spurious spatial structure in a correlation map) but turned out to be a calibration artifact or an estimator-bias effect once checked against theory.",
+      "technologies": [
+        "Python",
+        "h5py",
+        "NumPy",
+        "SciPy",
+        "Matplotlib",
+        "Xarray",
+        "Rioxarray",
+        "Rasterio",
+        "GeoPandas",
+        "Shapely",
+        "PyProj",
+        "Cartopy",
+        "Folium",
+        "Jupyter Notebook",
+        "pytest"
+      ],
+      "features": [
+        "Seven-module progression: theory primer → RSLC fundamentals → repeat-pass change detection → GCOV polarimetric ratios → InSAR deformation basics → L/S-band comparison → S-band polarimetric exploration",
+        "Product readers that auto-detect band and product type (RSLC/GCOV/GUNW) from each file's own HDF5 metadata rather than hardcoded per-file logic",
+        "Real SAR/InSAR techniques throughout: multilooking, backscatter differencing, HH/HV ratio computation, coherence-based masking, dual-pol correlation, cross-band comparison",
+        "Full metadata inventory and data-access guide (ASF DAAC for L-band, ISRO Bhoonidhi for S-band) since the large real .h5 files themselves are not redistributed",
+        "'Lessons learned' table documenting plausible-looking first-pass results that turned out to be calibration or estimator-bias artifacts, checked in place rather than scrubbed out",
+        "Smoke tests (tests/test_io.py) verifying product readers against the real sample files"
+      ],
+      "outcomes": [
+        "Working, auto-detecting readers for NISAR RSLC, GCOV, and GUNW products",
+        "Demonstrated repeat-pass change detection and InSAR deformation workflows on real L-band NISAR data",
+        "Cross-band (L vs. S) backscatter comparison over a confirmed shared footprint",
+        "Documented and explained two statistical traps (speckle CV bias, correlation estimator bias) with synthetic and real-data checks",
+        "Reusable reference for the SAR/InSAR community ahead of full NISAR mission data availability"
+      ],
+      "image": "project-nisartutorial.jpg",
+      "github": "https://github.com/AnimeshChoudhury/NISAR_Tutorial",
+      "demo": "",
+      "publication": "",
+      "tags": ["NISAR", "SAR", "InSAR", "Remote Sensing", "Python", "Polarimetry", "Deformation", "L-band", "S-band", "NASA-ISRO", "Tutorial", "Open Source"]
+    },
+    {
+      "id": "anemoi-tutorial",
+      "title": "Anemoi Beginner Tutorial",
+      "subtitle": "A Beginner's Guide to ECMWF's Open-Source AI Weather Forecasting Toolkit",
+      "duration": "2026",
+      "category": "Machine Learning & Data Science",
+      "description": "A beginner-friendly, ten-notebook scaffold for learning Anemoi — ECMWF's open-source toolkit for AI weather-model experimentation and forecasting — covering datasets, graphs, models, transforms, training, and inference, designed to run entirely on free-tier Colab CPU.",
+      "detailed_description": "AnemoiTutorial walks machine-learning beginners through the major Anemoi ecosystem concepts across ten sequential notebooks: environment setup and orientation, an ecosystem deep dive, a quick-win inference run on a pretrained AIFS model, exploring Anemoi datasets, training a first model, building graphs, understanding model architectures, applying transforms and filters, an end-to-end mini project, and next steps. The series is deliberately kept small and fast so the entire path — including training and inference — runs on CPU in a free-tier Google Colab session; only running the full-scale AIFS checkpoint locally requires a GPU with flash-attn, and that is an explicitly commented-out, optional path. A Drive-backed shared folder structure preserves checkpoints and outputs between Colab sessions to work around free-tier disconnects.",
+      "technologies": [
+        "Python",
+        "Anemoi",
+        "ECMWF AIFS",
+        "PyTorch",
+        "Jupyter Notebook",
+        "Google Colab",
+        "Google Drive API"
+      ],
+      "features": [
+        "Ten sequential notebooks: setup & orientation, ecosystem deep dive, quick-win pretrained inference, exploring datasets, training your first model, graphs, models, transforms & filters, end-to-end mini project, next steps",
+        "Fully CPU-friendly — the whole series, including training and inference, is designed to run on a free-tier Colab session",
+        "Quick-win notebook downloads ECMWF's already-computed AIFS forecast output, needing no GPU at all",
+        "Optional, clearly commented-out GPU paths in later notebooks for learners who want to try them",
+        "Drive-backed shared environment helper that checkpoints progress across Colab session disconnects",
+        "Both Colab and local (conda) setup paths supported"
+      ],
+      "outcomes": [
+        "End-to-end beginner path from environment setup to a working mini forecasting project using Anemoi",
+        "Hands-on familiarity with Anemoi datasets, graphs, model configuration, and training/inference workflows",
+        "Zero-GPU-required learning path validated for free-tier Google Colab",
+        "Reusable scaffold for onboarding new researchers to ECMWF's AIFS / Anemoi ecosystem"
+      ],
+      "image": "project-anemoitutorial.jpg",
+      "github": "https://github.com/AnimeshChoudhury/AnemoiTutorial",
+      "demo": "",
+      "publication": "",
+      "tags": ["Anemoi", "ECMWF", "AIFS", "Weather Forecasting", "Machine Learning", "Deep Learning", "PyTorch", "Google Colab", "Tutorial", "Open Source"]
     }
   ]
 }
